@@ -113,7 +113,7 @@
 
       /* Header */
       .header {
-        height: 530px;
+        height: 530px; /* Revert to original height */
         position: relative;
         background-color: #000;
       }
@@ -140,15 +140,15 @@
 
       .header nav .login-btn {
         cursor: pointer;
-        background: none;
+        background: none; /* No background before hover */
         border: none;
-        color: #fff; /* White text before and on hover */
-        font-weight: bold; /* Make text bold */
+        color: #2F343A; /* Grey color for text */
+        font-weight: bold;
         text-transform: uppercase;
         letter-spacing: 1px;
         padding: 10px 20px;
         border-radius: 5px;
-        transition: background 0.3s ease; /* Only transition background */
+        transition: background 0.3s ease, color 0.3s ease; /* Smooth transition for hover */
       }
 
       .header nav .login-btn:hover {
@@ -418,11 +418,11 @@
         height: 25px;
         margin-right: 25px;
         transition: filter 0.3s ease;
-        filter: grayscale(100%) brightness(0); /* Start with black and white to control color */
+        filter: grayscale(100%); /* Start with grayscale for better color control */
       }
 
       .social-icons img:hover {
-        filter: brightness(0) saturate(100%) hue-rotate(120deg); /* Adjusted to target green (#00ed82) */
+        filter: grayscale(0%) hue-rotate(150deg) saturate(2); /* Adjusted to match Hulu's green */
       }
 
       /* Modal */
