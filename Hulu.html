@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ztream TV and Movies Live and Online | Hulu</title>
+    <title>Stream TV and Movies Live and Online | Hulu</title>
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;700&display=swap");
 
@@ -308,34 +308,6 @@
         font-size: 10px;
         opacity: 0.7;
         margin-top: 5px;
-      }
-
-      .carousel-btn {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        background: #fff;
-        color: #000;
-        border: none;
-        padding: 10px 15px;
-        cursor: pointer;
-        z-index: 2;
-        font-size: 18px;
-        border-radius: 5px;
-        transition: background 0.3s ease, color 0.3s ease;
-      }
-
-      .carousel-btn:hover {
-        background: #00ed82;
-        color: #000;
-      }
-
-      .carousel-btn.left {
-        left: 10px;
-      }
-
-      .carousel-btn.right {
-        right: 10px;
       }
 
       /* Live */
@@ -708,7 +680,6 @@
         Originals, kids shows, and more.
       </div>
       <div class="carousel-container">
-        <button class="carousel-btn left"><</button>
         <div class="carousel">
           <div class="carousel-item">
             <a href="https://www.hulu.com">
@@ -808,7 +779,7 @@
           </div>
           <div class="carousel-item">
             <a href="https://www.hulu.com">
-              <div style="background: url('https://wallpapercave.com/wp/wp14853544.webp?q=80&w=1080&auto=format&fit=crop') no-repeat center center / cover; width: 100%; height: 100%;">
+              <div style="background: url('https://wallpapercave.com/wp/wp14853544.webp?q=80&w=1080&auto=format&fit=crop') no-repeat center center / cover; width:  Thief! 100%; height: 100%;">
                 <div class="cover-grad"></div>
                 <div class="cover-text">
                   <div class="sub-title">Past & Current Seasons</div>
@@ -891,7 +862,6 @@
             </a>
           </div>
         </div>
-        <button class="carousel-btn right">></button>
       </div>
     </section>
     <section class="live">
@@ -1050,8 +1020,6 @@
       const loginButton = document.querySelector(".login-btn");
       const closeButton = document.querySelector(".close");
       const carousel = document.querySelector(".carousel");
-      const leftBtn = document.querySelector(".carousel-btn.left");
-      const rightBtn = document.querySelector(".carousel-btn.right");
       
       // Dynamically calculate itemWidth (width + margin-right)
       const firstItem = document.querySelector(".carousel-item");
@@ -1083,20 +1051,6 @@
       const moveCarousel = () => {
         carousel.style.transition = "transform 0.5s ease-in-out";
         carousel.style.transform = `translateX(${-currentIndex * itemWidth}px)`;
-        updateButtonsVisibility();
-      };
-
-      const resetPosition = (newIndex) => {
-        currentIndex = newIndex;
-        carousel.style.transition = "none"; // Instant reset
-        carousel.style.transform = `translateX(${-currentIndex * itemWidth}px)`;
-        updateButtonsVisibility();
-      };
-
-      const updateButtonsVisibility = () => {
-        leftBtn.style.display = currentIndex === cloneCount ? "none" : "block";
-        rightBtn.style.display =
-          currentIndex === totalItems + cloneCount - 1 ? "none" : "block";
       };
 
       const nextItem = () => {
@@ -1111,23 +1065,8 @@
         moveCarousel();
       };
 
-      const prevItem = () => {
-        currentIndex--;
-        if (currentIndex < cloneCount) {
-          currentIndex = totalItems + cloneCount - 1; // Reset to the last real item
-          carousel.style.transition = "none"; // Instant reset
-          carousel.style.transform = `translateX(${-currentIndex * itemWidth}px)`;
-          carousel.offsetHeight; // Force reflow
-        }
-        moveCarousel();
-      };
-
       // Auto-move every 2 seconds
       setInterval(nextItem, 2000);
-
-      // Button controls
-      rightBtn.addEventListener("click", nextItem);
-      leftBtn.addEventListener("click", prevItem);
 
       // Modal controls
       const openModal = () => (modal.style.display = "block");
@@ -1141,9 +1080,6 @@
       loginButton.addEventListener("click", openModal);
       closeButton.addEventListener("click", closeModal);
       window.addEventListener("click", outsideClick);
-
-      // Initial button visibility
-      updateButtonsVisibility();
     </script>
   </body>
 </html>
