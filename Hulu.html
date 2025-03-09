@@ -111,12 +111,11 @@
         font-size: 24px;
       }
 
-      /* Header with Parallax */
+      /* Header */
       .header {
-        height: 100vh; /* Full viewport height for parallax effect */
+        height: 530px; /* Revert to original height */
         position: relative;
-        background-color: transparent; /* Remove black background to ensure image shows */
-        overflow: visible; /* Allow content to overflow if needed */
+        background-color: #000;
       }
 
       .header::before {
@@ -125,11 +124,10 @@
         top: 0;
         left: 0;
         width: 100%;
-        height: 120%; /* Ensure image covers the full height with movement */
+        height: 100%;
         background: url(https://raw.githubusercontent.com/EliasAndEllis/Web-Works/main/tech-daily-cF6Le-0viHY-unsplash.jpg) no-repeat center center / cover;
         opacity: 0.25;
-        z-index: -1;
-        transform-origin: bottom; /* Keep the bottom anchored */
+        z-index: 0;
       }
 
       .header nav {
@@ -142,20 +140,20 @@
 
       .header nav .login-btn {
         cursor: pointer;
-        background: #2F343A;
+        background: none; /* No background before hover */
         border: none;
-        color: #fff;
+        color: #2F343A; /* Grey color for text */
         font-weight: bold;
         text-transform: uppercase;
         letter-spacing: 1px;
         padding: 10px 20px;
         border-radius: 5px;
-        transition: color 0.3s ease;
+        transition: background 0.3s ease, color 0.3s ease; /* Smooth transition for hover */
       }
 
       .header nav .login-btn:hover {
-        background: #2F343A;
-        color: #fff;
+        background: #2F343A; /* Grey background on hover */
+        color: #fff; /* White text on hover */
       }
 
       .header .header-content {
@@ -163,10 +161,9 @@
         flex-direction: column;
         justify-content: flex-start;
         align-items: center;
-        margin-top: 15%;
+        margin-top: 30px;
         position: relative;
         z-index: 2;
-        transition: transform 0.1s ease-out;
       }
 
       .header .logo {
@@ -198,7 +195,6 @@
           rgba(0, 0, 0, 0.192) 60.23%,
           rgba(0, 0, 0, 8e-5) 100%
         );
-        transition: transform 0.1s ease-out;
       }
 
       /* Sub Header */
@@ -422,10 +418,11 @@
         height: 25px;
         margin-right: 25px;
         transition: filter 0.3s ease;
+        filter: grayscale(100%); /* Start with grayscale for better color control */
       }
 
       .social-icons img:hover {
-        filter: hue-rotate(150deg) saturate(2);
+        filter: grayscale(0%) hue-rotate(150deg) saturate(2); /* Adjusted to match Hulu's green */
       }
 
       /* Modal */
@@ -509,7 +506,7 @@
       /* Enhanced Media Queries for Responsiveness */
       @media (max-width: 1024px) {
         .header {
-          height: 80vh;
+          height: 450px;
         }
         .text-xl {
           font-size: 50px;
@@ -540,13 +537,12 @@
 
       @media (max-width: 768px) {
         .header {
-          height: 70vh;
+          height: 400px;
         }
         .header .logo {
           width: 200px;
         }
         .header .header-content {
-          margin-top: 20%;
           text-align: center;
           padding: 0 20px;
         }
@@ -611,7 +607,7 @@
 
       @media (max-width: 480px) {
         .header {
-          height: 60vh;
+          height: 350px;
         }
         .header .logo {
           width: 150px;
@@ -1033,60 +1029,32 @@
         />
       </div>
     </div>
-    <!-- Add GSAP and ScrollMagic Libraries -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.6/ScrollMagic.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.6/plugins/animation.gsap.js"></script>
     <script>
-      // Parallax Effect for Header
-      let controller = new ScrollMagic.Controller();
-      let timeline = new TimelineMax();
-
-      timeline
-        .to(".header::before", 10, { y: -200, ease: Linear.easeNone }) // Move background up
-        .to(".header .header-content", 10, { y: -100, ease: Linear.easeNone }, "-=10") // Move content up slightly less
-        .to(".header::after", 10, { y: -50, ease: Linear.easeNone }, "-=10"); // Move gradient up
-
-      let scene = new ScrollMagic.Scene({
-        triggerElement: ".header",
-        duration: "100%", // Adjust duration to control how long the effect lasts
-        triggerHook: 0,
-      })
-        .setTween(timeline)
-        .setPin(".header") // Pin the header while scrolling
-        .addTo(controller);
-
-      // Existing Carousel Script
+      // Carousel Script
       const modal = document.querySelector(".modal");
       const loginButton = document.querySelector(".login-btn");
       const closeButton = document.querySelector(".close");
       const carousel = document.querySelector(".carousel");
 
-      // Dynamically calculate itemWidth (width + margin-right)
       const firstItem = document.querySelector(".carousel-item");
       const itemWidth = firstItem.offsetWidth + parseInt(window.getComputedStyle(firstItem).marginRight, 10);
 
-      const totalItems = 15; // Original number of items
-      const cloneCount = 5; // Ensures no blank space
-      let currentIndex = cloneCount; // Start at the first real item (after clones)
+      const totalItems = 15;
+      const cloneCount = 5;
+      let currentIndex = cloneCount;
 
-      // Clone the first few items and append them to the end for infinite loop
       const items = document.querySelectorAll(".carousel-item");
       for (let i = 0; i < cloneCount; i++) {
         const clone = items[i].cloneNode(true);
         carousel.appendChild(clone);
       }
 
-      // Clone the last few items and prepend them to the start for backward looping
       for (let i = totalItems - cloneCount; i < totalItems; i++) {
         const clone = items[i].cloneNode(true);
         carousel.insertBefore(clone, items[0]);
       }
 
-      // Total items including clones
       const totalItemsWithClones = totalItems + cloneCount * 2;
-
-      // Set initial position
       carousel.style.transform = `translateX(${-currentIndex * itemWidth}px)`;
 
       const moveCarousel = () => {
@@ -1097,19 +1065,16 @@
       const nextItem = () => {
         currentIndex++;
         if (currentIndex >= totalItems + cloneCount) {
-          currentIndex = cloneCount; // Reset to the first real item
-          carousel.style.transition = "none"; // Instant reset
+          currentIndex = cloneCount;
+          carousel.style.transition = "none";
           carousel.style.transform = `translateX(${-currentIndex * itemWidth}px)`;
-          // Trigger a reflow to ensure the transition applies on the next move
-          carousel.offsetHeight; // Accessing offsetHeight forces a reflow
+          carousel.offsetHeight;
         }
         moveCarousel();
       };
 
-      // Auto-move every 2 seconds
       setInterval(nextItem, 2000);
 
-      // Modal controls
       const openModal = () => (modal.style.display = "block");
       const closeModal = () => (modal.style.display = "none");
       const outsideClick = (e) => {
