@@ -234,6 +234,7 @@
       .carousel {
         display: flex;
         transition: transform 0.5s ease-in-out;
+        touch-action: pan-y; /* Allow vertical scrolling of the page, but not horizontal */
       }
 
       .carousel-item {
@@ -336,6 +337,13 @@
 
       .carousel-btn.right {
         right: 10px;
+      }
+
+      /* Hide buttons on phone and tablet */
+      @media (max-width: 768px) {
+        .carousel-btn {
+          display: none;
+        }
       }
 
       /* Live */
@@ -1036,8 +1044,12 @@
       const rightBtn = document.querySelector(".carousel-btn.right");
       const itemWidth = 320; // 300px width + 20px margin-right
       const totalItems = 15; // Original number of items
-      const cloneCount = 5; // Increased to ensure no blank space (covers visible items)
+      const cloneCount = 5; // Ensures no blank space
       let currentIndex = cloneCount; // Start at the first real item (after clones)
+      let touchStartX = 0;
+      let touchMoveX = 0;
+      let isDragging = false;
+      let currentTranslate = 0;
 
       // Clone the first few items and append them to the end for infinite loop
       const items = document.querySelectorAll(".carousel-item");
@@ -1052,29 +1064,30 @@
         carousel.insertBefore(clone, items[0]);
       }
 
-      // Total items including clones (clones at start + original + clones at end)
+      // Total items including clones
       const totalItemsWithClones = totalItems + cloneCount * 2;
 
-      // Set initial position to the first real item
-      carousel.style.transform = `translateX(-${currentIndex * itemWidth}px)`;
+      // Set initial position
+      currentTranslate = -currentIndex * itemWidth;
+      carousel.style.transform = `translateX(${currentTranslate}px)`;
 
       const moveCarousel = () => {
+        currentTranslate = -currentIndex * itemWidth;
         carousel.style.transition = "transform 0.5s ease-in-out";
-        carousel.style.transform = `translateX(-${currentIndex * itemWidth}px)`;
+        carousel.style.transform = `translateX(${currentTranslate}px)`;
         updateButtonsVisibility();
       };
 
       const resetPosition = (newIndex) => {
-        carousel.style.transition = "none";
         currentIndex = newIndex;
-        carousel.style.transform = `translateX(-${currentIndex * itemWidth}px)`;
+        currentTranslate = -currentIndex * itemWidth;
+        carousel.style.transition = "none";
+        carousel.style.transform = `translateX(${currentTranslate}px)`;
         updateButtonsVisibility();
       };
 
       const updateButtonsVisibility = () => {
-        // Hide left button when at the first real item (index = cloneCount)
         leftBtn.style.display = currentIndex === cloneCount ? "none" : "block";
-        // Hide right button when at the last real item (index = totalItems + cloneCount - 1)
         rightBtn.style.display =
           currentIndex === totalItems + cloneCount - 1 ? "none" : "block";
       };
@@ -1083,11 +1096,8 @@
         currentIndex++;
         moveCarousel();
 
-        // When reaching the cloned items at the end, reset to the real first item
         if (currentIndex >= totalItems + cloneCount) {
-          setTimeout(() => {
-            resetPosition(cloneCount); // Jump to the first real item
-          }, 500); // Match the transition duration
+          setTimeout(() => resetPosition(cloneCount), 500);
         }
       };
 
@@ -1095,13 +1105,56 @@
         currentIndex--;
         moveCarousel();
 
-        // When reaching the cloned items at the start, reset to the real last item
         if (currentIndex < cloneCount) {
-          setTimeout(() => {
-            resetPosition(totalItems + cloneCount - 1); // Jump to the last real item
-          }, 500); // Match the transition duration
+          setTimeout(() => resetPosition(totalItems + cloneCount - 1), 500);
         }
       };
+
+      // Touch event handlers
+      const handleTouchStart = (e) => {
+        touchStartX = e.touches[0].clientX;
+        isDragging = true;
+        carousel.style.transition = "none"; // Disable transition during drag
+      };
+
+      const handleTouchMove = (e) => {
+        if (!isDragging) return;
+        touchMoveX = e.touches[0].clientX;
+        const diff = touchMoveX - touchStartX;
+        carousel.style.transform = `translateX(${currentTranslate + diff}px)`;
+      };
+
+      const handleTouchEnd = () => {
+        if (!isDragging) return;
+        isDragging = false;
+
+        const diff = touchMoveX - touchStartX;
+        const threshold = itemWidth / 4; // Reduced threshold for more responsive swiping
+
+        if (diff < -threshold) {
+          // Swipe left (next)
+          currentIndex++;
+          moveCarousel();
+          if (currentIndex >= totalItems + cloneCount) {
+            setTimeout(() => resetPosition(cloneCount), 500);
+          }
+        } else if (diff > threshold) {
+          // Swipe right (prev)
+          currentIndex--;
+          moveCarousel();
+          if (currentIndex < cloneCount) {
+            setTimeout(() => resetPosition(totalItems + cloneCount - 1), 500);
+          }
+        } else {
+          // Snap back if swipe distance is too small
+          moveCarousel();
+        }
+      };
+
+      // Add touch event listeners
+      carousel.addEventListener("touchstart", handleTouchStart);
+      carousel.addEventListener("touchmove", handleTouchMove);
+      carousel.addEventListener("touchend", handleTouchEnd);
 
       // Auto-move every 2 seconds
       setInterval(nextItem, 2000);
