@@ -1,0 +1,1130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stream TV and Movies Live and Online | Hulu</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;700&display=swap");
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html,
+      body {
+        font-family: "Rubik", sans-serif;
+        background-color: #000;
+        color: #fff;
+        line-height: 1.7;
+        overflow-x: hidden;
+      }
+
+      a {
+        color: #fff;
+        text-decoration: none;
+      }
+
+      a:hover {
+        color: #ccc;
+      }
+
+      ul {
+        list-style-type: none;
+      }
+
+      img {
+        width: 100%;
+      }
+
+      h3 {
+        font-size: 26px;
+        font-weight: 300;
+      }
+
+      h4 {
+        color: #00ed82;
+        font-size: 13px;
+        text-transform: uppercase;
+      }
+
+      .btn {
+        display: inline-block;
+        background: #fff;
+        color: #333;
+        min-width: 135px;
+        padding: 20px 32px;
+        font-size: 15px;
+        font-weight: 600;
+        line-height: 14px;
+        border: none;
+        border-radius: 5px;
+        letter-spacing: 1px;
+        cursor: pointer;
+        text-transform: uppercase;
+      }
+
+      .btn-cta:hover {
+        opacity: 0.8;
+      }
+
+      .btn-outline {
+        background: none;
+        color: #fff;
+        border: 2px solid #fff;
+      }
+
+      .btn-outline:hover {
+        color: #fff;
+        border-color: #ccc;
+      }
+
+      .btn-dark {
+        color: #fff;
+        background-color: #000;
+      }
+
+      .legal-text {
+        font-size: 10px;
+        color: #ccc;
+        margin-top: 20px;
+      }
+
+      .sub-link {
+        display: block;
+        color: #ccc;
+        font-size: 12px;
+        margin-top: 5px;
+        text-decoration: underline;
+      }
+
+      .text-xl {
+        font-size: 70px;
+        font-weight: bold;
+      }
+
+      .sub-text {
+        max-width: 850px;
+        margin-bottom: 10px;
+        font-size: 24px;
+      }
+
+      /* Header */
+      .header {
+        height: 530px;
+        position: relative;
+        background-color: #000; /* Fallback color in case the image doesn't load */
+      }
+
+      .header::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url(https://raw.githubusercontent.com/EliasAndEllis/Web-Works/main/tech-daily-cF6Le-0viHY-unsplash.jpg) no-repeat center center / cover;
+        opacity: 0.25; /* 25% opacity = 75% transparency */
+        z-index: 0;
+      }
+
+      .header nav {
+        display: flex;
+        justify-content: flex-end;
+        padding: 20px 40px;
+        z-index: 2;
+        position: relative;
+      }
+
+      .header nav .login-btn {
+        cursor: pointer;
+        background: none;
+        border: none;
+        color: #fff;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      .header .header-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        margin-top: 30px;
+        position: relative;
+        z-index: 2; /* Ensure content is above the pseudo-element */
+      }
+
+      .header .logo {
+        width: 270px;
+        margin: 20px 0;
+      }
+
+      .header .header-text-1 {
+        font-size: 22px;
+        font-weight: bold;
+      }
+
+      .header .header-text-2 {
+        font-size: 18px;
+        margin: 25px 0;
+      }
+
+      .header::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 180px;
+        z-index: 1;
+        background: linear-gradient(
+          180deg,
+          rgba(0, 0, 0, 0.76) 15.54%,
+          rgba(0, 0, 0, 0.192) 60.23%,
+          rgba(0, 0, 0, 8e-5) 100%
+        );
+      }
+
+      /* Sub Header */
+      .sub-header {
+        display: grid;
+        grid-template-columns: 2fr 4fr 2fr;
+        gap: 40px;
+        align-items: center;
+        padding: 30px 40px;
+        background: linear-gradient(
+          318.68deg,
+          #0f495c 0%,
+          #0d3640 49.72%,
+          #08141f 100%
+        );
+      }
+
+      .sub-header > div:last-of-type {
+        justify-self: end;
+        align-self: end;
+      }
+
+      .sub-header > div:last-of-type .sub-link {
+        text-align: center;
+      }
+
+      /* Categories (Carousel) */
+      .categories {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 90px 40px;
+        position: relative;
+      }
+
+      .carousel-container {
+        width: 100%;
+        overflow: hidden;
+        position: relative;
+        margin-top: 40px;
+      }
+
+      .carousel {
+        display: flex;
+        transition: transform 0.5s ease-in-out;
+      }
+
+      .carousel-item {
+        flex: 0 0 300px;
+        height: 500px;
+        margin-right: 20px;
+        position: relative;
+        background-size: cover;
+        background-position: center;
+        border-radius: 8px;
+        overflow: hidden;
+        transition: transform 0.3s ease;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      .carousel-item a {
+        display: block;
+        width: 100%;
+        height: 100%;
+        position: relative;
+      }
+
+      .carousel-item .cover-grad {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          to top,
+          rgba(0, 0, 0, 0.7) 0%,
+          rgba(0, 0, 0, 0) 100%
+        );
+        transition: background 0.3s ease;
+      }
+
+      .carousel-item a:hover .cover-grad {
+        background: linear-gradient(
+          to top,
+          rgba(0, 237, 130, 0.5) 0%,
+          rgba(0, 237, 130, 0) 100%
+        );
+      }
+
+      .carousel-item a:hover {
+        transform: scale(1.08);
+      }
+
+      .carousel-item .cover-text {
+        position: absolute;
+        bottom: 20px;
+        left: 20px;
+        text-align: left;
+        z-index: 1;
+        color: #fff;
+      }
+
+      .carousel-item .cover-text .sub-title {
+        font-size: 12px;
+        text-transform: uppercase;
+        opacity: 0.8;
+        margin-bottom: 5px;
+      }
+
+      .carousel-item .cover-text h3 {
+        font-size: 20px;
+        font-weight: 500;
+        line-height: 1.2;
+      }
+
+      .carousel-item .cover-text .network {
+        font-size: 10px;
+        opacity: 0.7;
+        margin-top: 5px;
+      }
+
+      .carousel-btn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: #fff;
+        color: #000;
+        border: none;
+        padding: 10px 15px;
+        cursor: pointer;
+        z-index: 2;
+        font-size: 18px;
+        border-radius: 5px;
+        transition: background 0.3s ease, color 0.3s ease;
+      }
+
+      .carousel-btn:hover {
+        background: #00ed82;
+        color: #000;
+      }
+
+      .carousel-btn.left {
+        left: 10px;
+      }
+
+      .carousel-btn.right {
+        right: 10px;
+      }
+
+      /* Live */
+      .live {
+        background-color: #151516;
+        padding: 40px;
+      }
+
+      .live-border {
+        border: 4px solid #1ce783;
+        border-radius: 16px;
+        padding: 100px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+      }
+
+      .live a {
+        text-transform: uppercase;
+        font-size: 18px;
+        margin-top: 20px;
+        text-decoration: underline;
+      }
+
+      /* Live Sports */
+      .live-sports {
+        background: url("https://github.com/bradtraversy/hulu-webpage-clone/blob/main/img/live-sports.jpg?raw=true")
+          no-repeat center center / cover;
+        height: 800px;
+        position: relative;
+      }
+
+      .live-sports-content {
+        position: absolute;
+        top: 160px;
+        left: 100px;
+        max-width: 550px;
+      }
+
+      .live-sports-logos {
+        width: 300px;
+        margin-top: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .live-sports-logos > div {
+        background: url("https://github.com/bradtraversy/hulu-webpage-clone/blob/main/img/network-logo-bg.png?raw=true")
+          no-repeat center center / cover;
+        height: 60px;
+        width: 60px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .live-sports-logos img {
+        width: 40px;
+      }
+
+      /* Footer */
+      .footer {
+        background: #ebedf2;
+        color: #333;
+      }
+
+      .footer a {
+        color: #333;
+      }
+
+      .footer-container {
+        max-width: 1100px;
+        margin: auto;
+        padding: 40px;
+      }
+
+      .footer-lists {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .footer-lists .list-head {
+        text-transform: uppercase;
+        font-weight: bold;
+        margin-bottom: 5px;
+      }
+
+      .divider {
+        width: 100%;
+        height: 3px;
+        border-top: 1px solid #ccc;
+        margin: 30px 0;
+      }
+
+      .social-icons img {
+        width: 25px;
+        height: 25px;
+        margin-right: 25px;
+      }
+
+      /* Modal */
+      .modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 1;
+        height: 100%;
+        width: 100%;
+        background: rgba(0, 0, 0, 0.5);
+      }
+
+      .modal-box {
+        margin: 10% auto;
+        width: 400px;
+        background-color: #fff;
+        color: #333;
+        position: relative;
+        animation: modalopen 1s;
+      }
+
+      @keyframes modalopen {
+        from { opacity: 0; }
+        to { opacity: 1; }
+      }
+
+      .modal-body {
+        padding: 50px;
+      }
+
+      .modal-body h3 {
+        font-weight: bold;
+      }
+
+      .modal-body .btn {
+        width: 100%;
+        margin-top: 30px;
+      }
+
+      .modal .close {
+        cursor: pointer;
+        height: 23px;
+        width: 23px;
+        position: absolute;
+        top: 20px;
+        right: 20px;
+      }
+
+      .modal .modal-footer {
+        background-color: #f7f7f9;
+        color: #333;
+        padding: 20px 0;
+        border-top: 1px solid #eee;
+        text-align: center;
+      }
+
+      .modal a {
+        color: steelblue;
+      }
+
+      /* Form */
+      .form-control {
+        margin: 20px 0;
+      }
+
+      .form-control label {
+        display: block;
+        text-transform: uppercase;
+      }
+
+      .form-control input {
+        width: 100%;
+        border: 2px solid #ccc;
+        border-radius: 5px;
+        height: 50px;
+        padding: 5px;
+      }
+
+      /* Enhanced Media Queries for Responsiveness */
+      @media (max-width: 1024px) {
+        .header {
+          height: 450px;
+        }
+        .text-xl {
+          font-size: 50px;
+        }
+        .sub-text {
+          font-size: 20px;
+        }
+        .carousel-item {
+          flex: 0 0 250px;
+          height: 400px;
+        }
+        .sub-header {
+          grid-template-columns: 1fr 2fr 1fr;
+          gap: 20px;
+        }
+        .live-border {
+          padding: 60px 20px;
+        }
+        .live-sports {
+          height: 600px;
+        }
+        .live-sports-content {
+          top: 100px;
+          left: 50px;
+          max-width: 450px;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .header {
+          height: 400px;
+        }
+        .header .logo {
+          width: 200px;
+        }
+        .header .header-content {
+          text-align: center;
+          padding: 0 20px;
+        }
+        .header .header-text-1 {
+          margin-bottom: 20px;
+          font-size: 18px;
+        }
+        .header .header-text-2 {
+          display: none;
+        }
+        .sub-header {
+          grid-template-columns: 1fr;
+          text-align: center;
+          gap: 20px;
+        }
+        .sub-header img {
+          width: 250px;
+          margin: auto;
+        }
+        .sub-header > div:last-of-type {
+          justify-self: center;
+          align-self: center;
+        }
+        .text-xl {
+          font-size: 40px;
+          line-height: 1.3;
+        }
+        .sub-text {
+          font-size: 18px;
+        }
+        .carousel-item {
+          flex: 0 0 200px;
+          height: 300px;
+        }
+        .live-border {
+          padding: 30px 10px;
+        }
+        .live-sports {
+          background: url("https://github.com/bradtraversy/hulu-webpage-clone/blob/main/img/live-sports-small.jpg?raw=true")
+            no-repeat center center / cover;
+          height: 500px;
+        }
+        .live-sports-content {
+          top: 30px;
+          left: 20px;
+          max-width: 90%;
+        }
+        .footer-lists {
+          flex-direction: column;
+          gap: 20px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .header {
+          height: 350px;
+        }
+        .header .logo {
+          width: 150px;
+        }
+        .btn {
+          padding: 15px 20px;
+          font-size: 14px;
+        }
+        .text-xl {
+          font-size: 30px;
+        }
+        .sub-text {
+          font-size: 16px;
+        }
+        .carousel-item {
+          flex: 0 0 150px;
+          height: 250px;
+        }
+        .live-sports {
+          height: 400px;
+        }
+        .modal-box {
+          width: 90%;
+          margin: 20% auto;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header">
+      <nav>
+        <ul>
+          <li>
+            <button class="login-btn">Log In</button>
+          </li>
+        </ul>
+      </nav>
+      <div class="header-content">
+        <h4>Try up to one month free</h4>
+        <img
+          src="https://github.com/bradtraversy/hulu-webpage-clone/blob/main/img/logo.png?raw=true"
+          alt="Hulu"
+          class="logo"
+        />
+        <div class="header-text-1">Watch thousands of TV shows and movies.</div>
+        <div class="header-text-2">
+          HBO Max™, SHOWTIME®, CINEMAX® and STARZ® available as add-ons.
+        </div>
+        <a href="https://www.hulu.com" class="btn btn-cta">Start Your Free Trial</a>
+        <div class="legal-text">
+          Free trial for new & eligible returning subscribers only.
+        </div>
+      </div>
+    </header>
+    <section class="sub-header">
+      <img
+        src="https://github.com/bradtraversy/hulu-webpage-clone/blob/main/img/logos.png?raw=true"
+        alt=""
+      />
+      <div>
+        <h4>Bundle with any Hulu plan & save</h4>
+        <h3>Get Hulu, Disney+, and ESPN+.</h3>
+        <a href="https://www.hulu.com" class="sub-link">Details</a>
+      </div>
+      <div>
+        <a href="https://www.hulu.com" class="btn btn-outline">Get Bundle</a>
+        <a href="https://www.hulu.com" class="sub-link">Terms apply</a>
+      </div>
+    </section>
+    <section class="categories">
+      <h4>Included in all plans</h4>
+      <div class="text-xl">All the TV You Love</div>
+      <div class="sub-text">
+        Stream full seasons of exclusive streaming series, current-season episodes, hit movies, Hulu
+        Originals, kids shows, and more.
+      </div>
+      <div class="carousel-container">
+        <button class="carousel-btn left"><</button>
+        <div class="carousel">
+          <div class="carousel-item">
+            <a href="https://www.hulu.com">
+              <div style="background: url('https://wallpapercave.com/wp/wp9461252.jpg?q=80&w=1080&auto=format&fit=crop') no-repeat center center / cover; width: 100%; height: 100%;">
+                <div class="cover-grad"></div>
+                <div class="cover-text">
+                  <div class="sub-title">Past & Current Seasons</div>
+                  <h3>Family Guy</h3>
+                  <div class="network">FOX</div>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="carousel-item">
+            <a href="https://www.hulu.com">
+              <div style="background: url('https://wallpapercave.com/wp/wp13798644.jpg?q=80&w=1080&auto=format&fit=crop') no-repeat center center / cover; width: 100%; height: 100%;">
+                <div class="cover-grad"></div>
+                <div class="cover-text">
+                  <div class="sub-title">New & Classic</div>
+                  <h3>Planet of the Apes Trilogy</h3>
+                  <div class="network">20th Century Studios</div>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="carousel-item">
+            <a href="https://www.hulu.com">
+              <div style="background: url('https://picfiles.alphacoders.com/647/647518.jpeg?q=80&w=1080&auto=format&fit=crop') no-repeat center center / cover; width: 100%; height: 100%;">
+                <div class="cover-grad"></div>
+                <div class="cover-text">
+                  <div class="sub-title">Groundbreaking</div>
+                  <h3>Shogun</h3>
+                  <div class="network">FX</div>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="carousel-item">
+            <a href="https://www.hulu.com">
+              <div style="background: url('https://wallpapercave.com/wp/wp14253407.jpg?q=80&w=1080&auto=format&fit=crop') no-repeat center center / cover; width: 100%; height: 100%;">
+                <div class="cover-grad"></div>
+                <div class="cover-text">
+                  <div class="sub-title">Add-on</div>
+                  <h3>House of the Dragon</h3>
+                  <div class="network">HBO</div>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="carousel-item">
+            <a href="https://www.hulu.com">
+              <div style="background: url('https://wallpapercave.com/wp/wp13315327.jpg?q=80&w=1080&auto=format&fit=crop') no-repeat center center / cover; width: 100%; height: 100%;">
+                <div class="cover-grad"></div>
+                <div class="cover-text">
+                  <div class="sub-title">Past & Current Seasons</div>
+                  <h3>The Bear</h3>
+                  <div class="network">FX</div>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="carousel-item">
+            <a href="https://www.hulu.com">
+              <div style="background: url('https://wallpapercave.com/wp/wp12939699.jpg?q=80&w=1080&auto=format&fit=crop') no-repeat center center / cover; width: 100%; height: 100%;">
+                <div class="cover-grad"></div>
+                <div class="cover-text">
+                  <div class="sub-title">Classic</div>
+                  <h3>The Big Bang Theory</h3>
+                  <div class="network">HBO</div>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="carousel-item">
+            <a href="https://www.hulu.com">
+              <div style="background: url('https://wallpapercave.com/wp/wp13333982.jpg?q=80&w=1080&auto=format&fit=crop') no-repeat center center / cover; width: 100%; height: 100%;">
+                <div class="cover-grad"></div>
+                <div class="cover-text">
+                  <div class="sub-title">Groundbreaking</div>
+                  <h3>Succession</h3>
+                  <div class="network">HBO</div>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="carousel-item">
+            <a href="https://www.hulu.com">
+              <div style="background: url('https://wallpapercave.com/wp/wp9767227.jpg?q=80&w=1080&auto=format&fit=crop') no-repeat center center / cover; width: 100%; height: 100%;">
+                <div class="cover-grad"></div>
+                <div class="cover-text">
+                  <div class="sub-title">Add-on</div>
+                  <h3>The White Lotus</h3>
+                  <div class="network">HBO</div>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="carousel-item">
+            <a href="https://www.hulu.com">
+              <div style="background: url('https://wallpapercave.com/wp/wp14853544.webp?q=80&w=1080&auto=format&fit=crop') no-repeat center center / cover; width: 100%; height: 100%;">
+                <div class="cover-grad"></div>
+                <div class="cover-text">
+                  <div class="sub-title">Past & Current Seasons</div>
+                  <h3>Ted Lasso</h3>
+                  <div class="network">Apple TV+</div>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="carousel-item">
+            <a href="https://www.hulu.com">
+              <div style="background: url('https://wallpapercave.com/wp/wp15009412.jpg?q=80&w=1080&auto=format&fit=crop') no-repeat center center / cover; width: 100%; height: 100%;">
+                <div class="cover-grad"></div>
+                <div class="cover-text">
+                  <div class="sub-title">New & Classic</div>
+                  <h3>Mufasa: The Lion King</h3>
+                  <div class="network">Disney</div>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="carousel-item">
+            <a href="https://www.hulu.com">
+              <div style="background: url('https://wallpapercave.com/wp/wp12902513.jpg?q=80&w=1080&auto=format&fit=crop') no-repeat center center / cover; width: 100%; height: 100%;">
+                <div class="cover-grad"></div>
+                <div class="cover-text">
+                  <div class="sub-title">Groundbreaking</div>
+                  <h3>Killers of the Flower Moon</h3>
+                  <div class="network">Apple Originals</div>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="carousel-item">
+            <a href="https://www.hulu.com">
+              <div style="background: url('https://wallpapercave.com/wp/wp14685548.jpg?q=80&w=1080&auto=format&fit=crop') no-repeat center center / cover; width: 100%; height: 100%;">
+                <div class="cover-grad"></div>
+                <div class="cover-text">
+                  <div class="sub-title">Add-on</div>
+                  <h3>Gladiator II</h3>
+                  <div class="network">Paramount+</div>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="carousel-item">
+            <a href="https://www.hulu.com">
+              <div style="background: url('https://wallpapercave.com/wp/wp12004695.jpg?q=80&w=1080&auto=format&fit=crop') no-repeat center center / cover; width: 100%; height: 100%;">
+                <div class="cover-grad"></div>
+                <div class="cover-text">
+                  <div class="sub-title">Past & Current Seasons</div>
+                  <h3>The Last of Us</h3>
+                  <div class="network">HBO</div>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="carousel-item">
+            <a href="https://www.hulu.com">
+              <div style="background: url('https://wallpapercave.com/wp/V8MlLd7.jpg?q=80&w=1080&auto=format&fit=crop') no-repeat center center / cover; width: 100%; height: 100%;">
+                <div class="cover-grad"></div>
+                <div class="cover-text">
+                  <div class="sub-title">Old & Classic</div>
+                  <h3>Pulp Fiction</h3>
+                  <div class="network">FX</div>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="carousel-item">
+            <a href="https://www.hulu.com">
+              <div style="background: url('https://wallpapercave.com/wp/wp11883936.jpg?q=80&w=1080&auto=format&fit=crop') no-repeat center center / cover; width: 100%; height: 100%;">
+                <div class="cover-grad"></div>
+                <div class="cover-text">
+                  <div class="sub-title">Groundbreaking</div>
+                  <h3>Andor</h3>
+                  <div class="network">Disney+</div>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+        <button class="carousel-btn right">></button>
+      </div>
+    </section>
+    <section class="live">
+      <div class="live-border">
+        <h4>Hulu + Live TV</h4>
+        <div class="text-xl">Live TV Makes It Better</div>
+        <div class="sub-text">
+          Make the switch from cable. Get 75+ top channels with your favorite
+          live sports, news, and events - plus the entire Hulu streaming
+          library.
+        </div>
+        <div class="legal-text">
+          Live TV plan required. Regional restrictions, blackouts and
+          additional terms apply. See details
+        </div>
+        <a href="https://www.hulu.com">View Channels in Your Area</a>
+      </div>
+    </section>
+    <section class="live-sports">
+      <div class="live-sports-content">
+        <div class="text-xl">Live Sports</div>
+        <div class="sub-text">
+          Catch your games at home or on the go. Stream live games from major
+          college and pro leagues including the NCAA®, NBA, NHL, NFL, and more.
+        </div>
+        <div class="live-sports-logos">
+          <div>
+            <img
+              src="https://github.com/bradtraversy/hulu-webpage-clone/blob/main/img/live-sports-logo-1.png?raw=true"
+              alt=""
+            />
+          </div>
+          <div>
+            <img
+              src="https://github.com/bradtraversy/hulu-webpage-clone/blob/main/img/live-sports-logo-2.png?raw=true"
+              alt=""
+            />
+          </div>
+          <div>
+            <img
+              src="https://github.com/bradtraversy/hulu-webpage-clone/blob/main/img/live-sports-logo-3.svg?raw=true"
+              alt=""
+            />
+          </div>
+          <div>
+            <img
+              src="https://github.com/bradtraversy/hulu-webpage-clone/blob/main/img/live-sports-logo-4.png?raw=true"
+              alt=""
+            />
+          </div>
+        </div>
+        <div class="legal-text">
+          Live TV plan required. Regional restrictions, blackouts and
+          additional terms apply. See details
+        </div>
+      </div>
+    </section>
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-lists">
+          <ul>
+            <li class="list-head">BROWSE</li>
+            <li><a href="https://www.hulu.com">Streaming Library</a></li>
+            <li><a href="https://www.hulu.com">Live TV</a></li>
+            <li><a href="https://www.hulu.com">Live News</a></li>
+            <li><a href="https://www.hulu.com">Live Sports</a></li>
+          </ul>
+          <ul>
+            <li><a href="https://www.hulu.com">TV Shows</a></li>
+            <li><a href="https://www.hulu.com">Movies</a></li>
+            <li><a href="https://www.hulu.com">Originals</a></li>
+            <li><a href="https://www.hulu.com">Networks</a></li>
+            <li><a href="https://www.hulu.com">Kids</a></li>
+            <li><a href="https://www.hulu.com">FX on Hulu</a></li>
+          </ul>
+          <ul>
+            <li><a href="https://www.hulu.com">Hulu, Disney+, and ESPN+</a></li>
+            <li><a href="https://www.hulu.com">Disney Bundle</a></li>
+            <li><a href="https://www.hulu.com">HBO Max</a></li>
+            <li><a href="https://www.hulu.com">Cinimax</a></li>
+            <li><a href="https://www.hulu.com">Showtime</a></li>
+            <li><a href="https://www.hulu.com">STARZ</a></li>
+          </ul>
+          <ul>
+            <li class="list-head">HELP</li>
+            <li><a href="https://www.hulu.com">Account & Billing</a></li>
+            <li><a href="https://www.hulu.com">Plans & Pricing</a></li>
+            <li><a href="https://www.hulu.com">Supported Devices</a></li>
+            <li><a href="https://www.hulu.com">Accesibility</a></li>
+          </ul>
+          <ul>
+            <li class="list-head">ABOUT US</li>
+            <li><a href="https://www.hulu.com">Press</a></li>
+            <li><a href="https://www.hulu.com">Jobs</a></li>
+            <li><a href="https://www.hulu.com">Contact</a></li>
+          </ul>
+        </div>
+        <div class="divider"></div>
+        <div class="social-icons">
+          <a href="https://www.hulu.com">
+            <img
+              src="https://github.com/bradtraversy/hulu-webpage-clone/blob/main/img/facebook.svg?raw=true"
+              alt=""
+            />
+          </a>
+          <a href="https://www.hulu.com">
+            <img
+              src="https://github.com/bradtraversy/hulu-webpage-clone/blob/main/img/twitter.svg?raw=true"
+              alt=""
+            />
+          </a>
+          <a href="https://www.hulu.com">
+            <img
+              src="https://github.com/bradtraversy/hulu-webpage-clone/blob/main/img/youtube.svg?raw=true"
+              alt=""
+            />
+          </a>
+          <a href="https://www.hulu.com">
+            <img
+              src="https://github.com/bradtraversy/hulu-webpage-clone/blob/main/img/instagram.svg?raw=true"
+              alt=""
+            />
+          </a>
+        </div>
+      </div>
+    </footer>
+    <div class="modal">
+      <div class="modal-box">
+        <div class="modal-body">
+          <h3>Log In</h3>
+          <form>
+            <div class="form-control">
+              <label for="email">Email</label>
+              <input type="email" id="email" />
+            </div>
+            <div class="form-control">
+              <label for="password">Password</label>
+              <input type="password" id="password" />
+            </div>
+            <p><a href="https://www.hulu.com">Forgot your email or password</a></p>
+            <a href="https://www.hulu.com" class="btn btn-dark">Log In</a>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <p>Don't have an account? <a href="https://www.hulu.com">Start your free trial</a></p>
+        </div>
+        <img
+          class="close"
+          src="https://github.com/bradtraversy/hulu-webpage-clone/blob/main/img/close.svg?raw=true"
+          alt="close"
+        />
+      </div>
+    </div>
+    <script>
+      const modal = document.querySelector(".modal");
+      const loginButton = document.querySelector(".login-btn");
+      const closeButton = document.querySelector(".close");
+      const carousel = document.querySelector(".carousel");
+      const leftBtn = document.querySelector(".carousel-btn.left");
+      const rightBtn = document.querySelector(".carousel-btn.right");
+      const itemWidth = 320; // 300px width + 20px margin-right
+      const totalItems = 15; // Original number of items
+      const cloneCount = 5; // Increased to ensure no blank space (covers visible items)
+      let currentIndex = cloneCount; // Start at the first real item (after clones)
+
+      // Clone the first few items and append them to the end for infinite loop
+      const items = document.querySelectorAll(".carousel-item");
+      for (let i = 0; i < cloneCount; i++) {
+        const clone = items[i].cloneNode(true);
+        carousel.appendChild(clone);
+      }
+
+      // Clone the last few items and prepend them to the start for backward looping
+      for (let i = totalItems - cloneCount; i < totalItems; i++) {
+        const clone = items[i].cloneNode(true);
+        carousel.insertBefore(clone, items[0]);
+      }
+
+      // Total items including clones (clones at start + original + clones at end)
+      const totalItemsWithClones = totalItems + cloneCount * 2;
+
+      // Set initial position to the first real item
+      carousel.style.transform = `translateX(-${currentIndex * itemWidth}px)`;
+
+      const moveCarousel = () => {
+        carousel.style.transition = "transform 0.5s ease-in-out";
+        carousel.style.transform = `translateX(-${currentIndex * itemWidth}px)`;
+        updateButtonsVisibility();
+      };
+
+      const resetPosition = (newIndex) => {
+        carousel.style.transition = "none";
+        currentIndex = newIndex;
+        carousel.style.transform = `translateX(-${currentIndex * itemWidth}px)`;
+        updateButtonsVisibility();
+      };
+
+      const updateButtonsVisibility = () => {
+        // Hide left button when at the first real item (index = cloneCount)
+        leftBtn.style.display = currentIndex === cloneCount ? "none" : "block";
+        // Hide right button when at the last real item (index = totalItems + cloneCount - 1)
+        rightBtn.style.display =
+          currentIndex === totalItems + cloneCount - 1 ? "none" : "block";
+      };
+
+      const nextItem = () => {
+        currentIndex++;
+        moveCarousel();
+
+        // When reaching the cloned items at the end, reset to the real first item
+        if (currentIndex >= totalItems + cloneCount) {
+          setTimeout(() => {
+            resetPosition(cloneCount); // Jump to the first real item
+          }, 500); // Match the transition duration
+        }
+      };
+
+      const prevItem = () => {
+        currentIndex--;
+        moveCarousel();
+
+        // When reaching the cloned items at the start, reset to the real last item
+        if (currentIndex < cloneCount) {
+          setTimeout(() => {
+            resetPosition(totalItems + cloneCount - 1); // Jump to the last real item
+          }, 500); // Match the transition duration
+        }
+      };
+
+      // Auto-move every 2 seconds
+      setInterval(nextItem, 2000);
+
+      // Button controls
+      rightBtn.addEventListener("click", nextItem);
+      leftBtn.addEventListener("click", prevItem);
+
+      // Modal controls
+      const openModal = () => (modal.style.display = "block");
+      const closeModal = () => (modal.style.display = "none");
+      const outsideClick = (e) => {
+        if (e.target == modal) {
+          closeModal();
+        }
+      };
+
+      loginButton.addEventListener("click", openModal);
+      closeButton.addEventListener("click", closeModal);
+      window.addEventListener("click", outsideClick);
+
+      // Initial button visibility
+      updateButtonsVisibility();
+    </script>
+  </body>
+</html>
