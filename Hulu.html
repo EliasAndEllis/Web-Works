@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ztream TV and Movies Live and Online | Hulu</title>
+    <title>Stream TV and Movies Live and Online | Hulu</title>
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;700&display=swap");
 
@@ -113,7 +113,7 @@
 
       /* Header */
       .header {
-        height: 530px; /* Revert to original height */
+        height: 530px;
         position: relative;
         background-color: #000;
       }
@@ -140,15 +140,15 @@
 
       .header nav .login-btn {
         cursor: pointer;
-        background: none; /* No background before hover */
+        background: none;
         border: none;
-        color: #2F343A; /* Grey color for text */
-        font-weight: bold;
+        color: #fff; /* White text before and on hover */
+        font-weight: bold; /* Make text bold */
         text-transform: uppercase;
         letter-spacing: 1px;
         padding: 10px 20px;
         border-radius: 5px;
-        transition: background 0.3s ease, color 0.3s ease; /* Smooth transition for hover */
+        transition: background 0.3s ease; /* Only transition background */
       }
 
       .header nav .login-btn:hover {
@@ -418,11 +418,11 @@
         height: 25px;
         margin-right: 25px;
         transition: filter 0.3s ease;
-        filter: grayscale(100%); /* Start with grayscale for better color control */
+        filter: grayscale(100%) brightness(0); /* Start with black and white to control color */
       }
 
       .social-icons img:hover {
-        filter: grayscale(0%) hue-rotate(150deg) saturate(2); /* Adjusted to match Hulu's green */
+        filter: brightness(0) saturate(100%) hue-rotate(120deg); /* Adjusted to target green (#00ed82) */
       }
 
       /* Modal */
