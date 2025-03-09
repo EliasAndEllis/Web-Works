@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Stream TV and Movies Live and Online | Hulu</title>
+    <title>ztream TV and Movies Live and Online | Hulu</title>
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;700&display=swap");
 
@@ -115,8 +115,8 @@
       .header {
         height: 100vh; /* Full viewport height for parallax effect */
         position: relative;
-        background-color: #000;
-        overflow: hidden;
+        background-color: transparent; /* Remove black background to ensure image shows */
+        overflow: visible; /* Allow content to overflow if needed */
       }
 
       .header::before {
@@ -125,11 +125,11 @@
         top: 0;
         left: 0;
         width: 100%;
-        height: 120%; /* Slightly taller to allow movement */
+        height: 120%; /* Ensure image covers the full height with movement */
         background: url(https://raw.githubusercontent.com/EliasAndEllis/Web-Works/main/tech-daily-cF6Le-0viHY-unsplash.jpg) no-repeat center center / cover;
         opacity: 0.25;
         z-index: -1;
-        transition: transform 0.1s ease-out; /* Smooth transition for parallax */
+        transform-origin: bottom; /* Keep the bottom anchored */
       }
 
       .header nav {
@@ -163,10 +163,10 @@
         flex-direction: column;
         justify-content: flex-start;
         align-items: center;
-        margin-top: 15%; /* Adjusted for better positioning */
+        margin-top: 15%;
         position: relative;
         z-index: 2;
-        transition: transform 0.1s ease-out; /* Smooth transition for parallax */
+        transition: transform 0.1s ease-out;
       }
 
       .header .logo {
@@ -198,6 +198,7 @@
           rgba(0, 0, 0, 0.192) 60.23%,
           rgba(0, 0, 0, 8e-5) 100%
         );
+        transition: transform 0.1s ease-out;
       }
 
       /* Sub Header */
