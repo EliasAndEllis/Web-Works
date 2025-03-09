@@ -1049,7 +1049,7 @@
       let touchStartX = 0;
       let touchMoveX = 0;
       let isDragging = false;
-      let currentTranslate = 0;
+      let currentTranslate = -currentIndex * itemWidth;
 
       // Clone the first few items and append them to the end for infinite loop
       const items = document.querySelectorAll(".carousel-item");
@@ -1068,7 +1068,6 @@
       const totalItemsWithClones = totalItems + cloneCount * 2;
 
       // Set initial position
-      currentTranslate = -currentIndex * itemWidth;
       carousel.style.transform = `translateX(${currentTranslate}px)`;
 
       const moveCarousel = () => {
@@ -1081,7 +1080,7 @@
       const resetPosition = (newIndex) => {
         currentIndex = newIndex;
         currentTranslate = -currentIndex * itemWidth;
-        carousel.style.transition = "none";
+        carousel.style.transition = "none"; // Instant reset
         carousel.style.transform = `translateX(${currentTranslate}px)`;
         updateButtonsVisibility();
       };
@@ -1121,7 +1120,8 @@
         if (!isDragging) return;
         touchMoveX = e.touches[0].clientX;
         const diff = touchMoveX - touchStartX;
-        carousel.style.transform = `translateX(${currentTranslate + diff}px)`;
+        const newTranslate = currentTranslate + diff;
+        carousel.style.transform = `translateX(${newTranslate}px)`;
       };
 
       const handleTouchEnd = () => {
@@ -1129,18 +1129,21 @@
         isDragging = false;
 
         const diff = touchMoveX - touchStartX;
-        const threshold = itemWidth / 4; // Reduced threshold for more responsive swiping
+        const threshold = itemWidth / 4; // Responsive swipe threshold
+        const swipeDistance = Math.abs(diff);
+        const itemsMoved = Math.floor(swipeDistance / itemWidth); // Number of items to move based on swipe
+        const remainder = swipeDistance % itemWidth; // Remaining distance
 
         if (diff < -threshold) {
           // Swipe left (next)
-          currentIndex++;
+          currentIndex += itemsMoved + (remainder > threshold ? 1 : 0);
           moveCarousel();
           if (currentIndex >= totalItems + cloneCount) {
             setTimeout(() => resetPosition(cloneCount), 500);
           }
         } else if (diff > threshold) {
           // Swipe right (prev)
-          currentIndex--;
+          currentIndex -= itemsMoved + (remainder > threshold ? 1 : 0);
           moveCarousel();
           if (currentIndex < cloneCount) {
             setTimeout(() => resetPosition(totalItems + cloneCount - 1), 500);
