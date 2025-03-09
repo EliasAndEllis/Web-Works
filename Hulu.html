@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Stream TV and Movies Live and Online | Hulu</title>
+    <title>ztream TV and Movies Live and Online | Hulu</title>
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;700&display=swap");
 
@@ -417,26 +417,17 @@
       .social-icons {
         display: flex;
         align-items: center;
-        gap: 25px;
       }
 
-      .social-icons a {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 35px;
-        height: 35px;
+      .social-icons img {
+        width: 25px;
+        height: 25px;
+        margin-right: 25px;
+        transition: filter 0.3s ease;
       }
 
-      .social-icons svg {
-        width: 24px;
-        height: 24px;
-        fill: #000;
-        transition: fill 0.3s ease;
-      }
-
-      .social-icons a:hover svg {
-        fill: #00ed82;
+      .social-icons a:hover img {
+        filter: invert(48%) sepia(79%) saturate(2476%) hue-rotate(86deg) brightness(118%) contrast(119%);
       }
 
       /* Modal */
@@ -995,24 +986,16 @@
         <div class="divider"></div>
         <div class="social-icons">
           <a href="https://www.hulu.com">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-              <path d="M22 2H2v20h20V2zM12 18.5c-3.59 0-6.5-2.91-6.5-6.5s2.91-6.5 6.5-6.5 6.5 2.91 6.5 6.5-2.91 6.5-6.5 6.5zm1.53-7.3h-1.17v4.67h1.17v-4.67h1.75v-1.75h-1.75v-1.17c0-.48.23-.7.7-.7h1.05V5.91h-1.05c-1.4 0-1.45.54-1.45 1.68v2.61z"/>
-            </svg>
+            <img src="https://github.com/bradtraversy/hulu-webpage-clone/blob/main/img/facebook.svg?raw=true" alt="Facebook" />
           </a>
           <a href="https://www.hulu.com">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-              <path d="M23 12c0 6.07-4.93 11-11 11S1 18.07 1 12 5.93 1 12 1s11 4.93 11 11zm-3.56-1.56c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05-.79-.86-1.9-1.39-3.16-1.39-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11 1-3.56-.18-6.73-1.89-8.84-4.48-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21-.36.1-.74.16-1.13.16-.28 0-.55-.03-.81-.08.55 1.72 2.14 2.97 4.03 3.01-1.48 1.16-3.34 1.85-5.36 1.85-.35 0-.69-.02-1.03-.06 1.91 1.23 4.18 1.94 6.62 1.94 7.94 0 12.29-6.58 12.29-12.29z"/>
-            </svg>
+            <img src="https://github.com/bradtraversy/hulu-webpage-clone/blob/main/img/twitter.svg?raw=true" alt="Twitter" />
           </a>
           <a href="https://www.hulu.com">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-              <path d="M23 3H1v18h22V3zm-1.42 4.19c-.23-.86-.88-1.51-1.74-1.74C18.37 5 12 5 12 5s-6.37 0-7.84.45c-.86.23-1.51.88-1.74 1.74C2 8.66 2 12 2 12s0 3.34.42 4.81c.23.86.88 1.51 1.74 1.74C5.63 19 12 19 12 19s6.37 0 7.84-.45c.86-.23 1.51-.88 1.74-1.74C22 15.34 22 12 22 12s0-3.34-.42-4.81zM10 15.5v-7l5.5 3.5-5.5 3.5z"/>
-            </svg>
+            <img src="https://github.com/bradtraversy/hulu-webpage-clone/blob/main/img/youtube.svg?raw=true" alt="YouTube" />
           </a>
           <a href="https://www.hulu.com">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-              <path d="M12 2c5.51 0 10 4.49 10 10s-4.49 10-10 10S2 17.51 2 12 6.49 2 12 2zm0 2.25c-4.28 0-7.75 3.47-7.75 7.75s3.47 7.75 7.75 7.75 7.75-3.47 7.75-7.75S16.28 4.25 12 4.25zm0 2.74c2.76 0 5 2.24 5 5s-2.24 5-5 5-5-2.24-5-5 2.24-5 5-5zm6.19-1.19c0 .48-.39.87-.87.87s-.87-.39-.87-.87.39-.87.87-.87.87.39.87.87z"/>
-            </svg>
+            <img src="https://github.com/bradtraversy/hulu-webpage-clone/blob/main/img/instagram.svg?raw=true" alt="Instagram" />
           </a>
         </div>
       </div>
@@ -1045,7 +1028,6 @@
       </div>
     </div>
     <script>
-      // Carousel Script
       const modal = document.querySelector(".modal");
       const loginButton = document.querySelector(".login-btn");
       const closeButton = document.querySelector(".close");
