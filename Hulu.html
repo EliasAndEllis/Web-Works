@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ztream TV and Movies Live and Online | Hulu</title>
+    <title>Stream TV and Movies Live and Online | Hulu</title>
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;700&display=swap");
 
@@ -1034,7 +1034,11 @@
       const carousel = document.querySelector(".carousel");
       const leftBtn = document.querySelector(".carousel-btn.left");
       const rightBtn = document.querySelector(".carousel-btn.right");
-      const itemWidth = 320; // 300px width + 20px margin-right
+      
+      // Dynamically calculate itemWidth (width + margin-right)
+      const firstItem = document.querySelector(".carousel-item");
+      const itemWidth = firstItem.offsetWidth + parseInt(window.getComputedStyle(firstItem).marginRight, 10);
+      
       const totalItems = 15; // Original number of items
       const cloneCount = 5; // Ensures no blank space
       let currentIndex = cloneCount; // Start at the first real item (after clones)
@@ -1079,20 +1083,25 @@
 
       const nextItem = () => {
         currentIndex++;
-        moveCarousel();
-
         if (currentIndex >= totalItems + cloneCount) {
-          setTimeout(() => resetPosition(cloneCount), 500);
+          currentIndex = cloneCount; // Reset to the first real item
+          carousel.style.transition = "none"; // Instant reset
+          carousel.style.transform = `translateX(${-currentIndex * itemWidth}px)`;
+          // Trigger a reflow to ensure the transition applies on the next move
+          carousel.offsetHeight; // Accessing offsetHeight forces a reflow
         }
+        moveCarousel();
       };
 
       const prevItem = () => {
         currentIndex--;
-        moveCarousel();
-
         if (currentIndex < cloneCount) {
-          setTimeout(() => resetPosition(totalItems + cloneCount - 1), 500);
+          currentIndex = totalItems + cloneCount - 1; // Reset to the last real item
+          carousel.style.transition = "none"; // Instant reset
+          carousel.style.transform = `translateX(${-currentIndex * itemWidth}px)`;
+          carousel.offsetHeight; // Force reflow
         }
+        moveCarousel();
       };
 
       // Auto-move every 2 seconds
