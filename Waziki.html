@@ -2,9 +2,9 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <!-- Initial viewport meta tag, will be adjusted by JavaScript -->
-    <meta name="viewport" id="viewport" content="width=1200, initial-scale=1.0, user-scalable=yes">
-    <title>El Waziki Jobs - Offres d'Emploi</title>
+    <!-- Simplified viewport meta tag to match moncallcenter.ma behavior -->
+    <meta name="viewport" content="width=1200, user-scalable=yes">
+    <title>LE Waziki Jobs - Offres d'Emploi</title>
     <meta name="description" content="Trouvez votre emploi idéal avec El Waziki Jobs. Consultez les offres d'emploi dans les centres d'appels au Maroc.">
     <meta name="keywords" content="emploi, centre d'appels, Maroc, téléconseiller, job">
     <style>
@@ -110,7 +110,8 @@
             max-width: 1000px;
             margin: 0 auto;
         }
-        .search-form select {
+        .search-form select,
+        .search-form input[type="text"] {
             padding: 0.5rem;
             border: 1px solid #ccc;
             border-radius: 4px;
@@ -285,6 +286,25 @@
             <section class="search-section">
                 <h2>Votre Emploi Idéal</h2>
                 <form class="search-form" id="searchForm">
+                    <select name="centre">
+                        <option value="">Centre</option>
+                        <option value="intelcia">Intelcia</option>
+                        <option value="konecta">Konecta</option>
+                        <option value="teleperformance">Teleperformance</option>
+                        <option value="outsourcia">Outsourcia</option>
+                    </select>
+                    <select name="ville">
+                        <option value="">Ville</option>
+                        <option value="casablanca">Casablanca</option>
+                        <option value="rabat">Rabat</option>
+                        <option value="marrakech">Marrakech</option>
+                        <option value="fes">Fès</option>
+                    </select>
+                    <select name="style">
+                        <option value="">Style</option>
+                        <option value="full-time">Temps Plein</option>
+                        <option value="part-time">Temps Partiel</option>
+                    </select>
                     <select name="type">
                         <option value="">Type</option>
                         <option value="emission">Émission</option>
@@ -297,6 +317,7 @@
                         <option value="anglais">Anglais</option>
                         <option value="espagnol">Espagnol</option>
                     </select>
+                    <input type="text" name="recherche" placeholder="Recherche par mot-clé">
                     <button type="submit">Rechercher</button>
                 </form>
             </section>
@@ -305,68 +326,68 @@
             <section class="job-listings" id="jobs">
                 <h2>Offres en Vedette</h2>
                 <div class="carousel" id="jobCarousel">
-                    <a href="#apply1" class="job-card" data-city="casablanca" data-type="emission" data-language="francais">
+                    <a href="#apply1" class="job-card" data-centre="intelcia" data-city="casablanca" data-type="emission" data-language="francais" data-style="full-time">
                         <h3>Téléconseiller Assurance (Intelcia)</h3>
                         <p><strong>Date:</strong> 19-03-2025<br><strong>Type:</strong> Émission<br><strong>Ville:</strong> Casablanca<br><strong>Langue:</strong> Français<br>Vente de produits d'assurance. Expérience appréciée.</p>
                         <div class="apply-btn">Postuler</div>
                     </a>
-                    <a href="#apply2" class="job-card" data-city="rabat" data-type="reception" data-language="francais">
+                    <a href="#apply2" class="job-card" data-centre="intelcia" data-city="rabat" data-type="reception" data-language="francais" data-style="part-time">
                         <h3>Support Client (Intelcia)</h3>
                         <p><strong>Date:</strong> 19-03-2025<br><strong>Type:</strong> Réception<br><strong>Ville:</strong> Rabat<br><strong>Langue:</strong> Français<br>Assistance clientèle. Formation assurée.</p>
                         <div class="apply-btn">Postuler</div>
                     </a>
-                    <a href="#apply3" class="job-card" data-city="marrakech" data-type="backoffice" data-language="anglais">
+                    <a href="#apply3" class="job-card" data-centre="intelcia" data-city="marrakech" data-type="backoffice" data-language="anglais" data-style="full-time">
                         <h3>Gestion Admin (Intelcia)</h3>
                         <p><strong>Date:</strong> 19-03-2025<br><strong>Type:</strong> Backoffice<br><strong>Ville:</strong> Marrakech<br><strong>Langue:</strong> Anglais<br>Gestion de données bilingue. Anglais requis.</p>
                         <div class="apply-btn">Postuler</div>
                     </a>
-                    <a href="#apply4" class="job-card" data-city="marrakech" data-type="reception" data-language="francais">
+                    <a href="#apply4" class="job-card" data-centre="konecta" data-city="marrakech" data-type="reception" data-language="francais" data-style="part-time">
                         <h3>Conseiller (Konecta)</h3>
                         <p><strong>Date:</strong> 19-03-2025<br><strong>Type:</strong> Réception<br><strong>Ville:</strong> Marrakech<br><strong>Langue:</strong> Français<br>Conseil en français.</p>
                         <div class="apply-btn">Postuler</div>
                     </a>
-                    <a href="#apply5" class="job-card" data-city="casablanca" data-type="backoffice" data-language="francais">
+                    <a href="#apply5" class="job-card" data-centre="teleperformance" data-city="casablanca" data-type="backoffice" data-language="francais" data-style="full-time">
                         <h3>Gestionnaire Admin (Teleperformance)</h3>
                         <p><strong>Date:</strong> 19-03-2025<br><strong>Type:</strong> Backoffice<br><strong>Ville:</strong> Casablanca<br><strong>Langue:</strong> Français<br>Gestion administrative en français.</p>
                         <div class="apply-btn">Postuler</div>
                     </a>
-                    <a href="#apply6" class="job-card" data-city="casablanca" data-type="backoffice" data-language="francais">
+                    <a href="#apply6" class="job-card" data-centre="teleperformance" data-city="casablanca" data-type="backoffice" data-language="francais" data-style="part-time">
                         <h3>Assistant Backoffice (Teleperformance)</h3>
                         <p><strong>Date:</strong> 19-03-2025<br><strong>Type:</strong> Backoffice<br><strong>Ville:</strong> Casablanca<br><strong>Langue:</strong> Français<br>Support administratif en français.</p>
                         <div class="apply-btn">Postuler</div>
                     </a>
-                    <a href="#apply7" class="job-card" data-city="casablanca" data-type="emission" data-language="francais">
+                    <a href="#apply7" class="job-card" data-centre="intelcia" data-city="casablanca" data-type="emission" data-language="francais" data-style="full-time">
                         <h3>Vendeur Énergie (Intelcia)</h3>
                         <p><strong>Date:</strong> 19-03-2025<br><strong>Type:</strong> Émission<br><strong>Ville:</strong> Casablanca<br><strong>Langue:</strong> Français<br>Vente d’énergie en français.</p>
                         <div class="apply-btn">Postuler</div>
                     </a>
-                    <a href="#apply8" class="job-card" data-city="rabat" data-type="emission" data-language="anglais">
+                    <a href="#apply8" class="job-card" data-centre="intelcia" data-city="rabat" data-type="emission" data-language="anglais" data-style="full-time">
                         <h3>Sales Rep (Intelcia)</h3>
                         <p><strong>Date:</strong> 19-03-2025<br><strong>Type:</strong> Émission<br><strong>Ville:</strong> Rabat<br><strong>Langue:</strong> Anglais<br>Vente en anglais.</p>
                         <div class="apply-btn">Postuler</div>
                     </a>
-                    <a href="#apply9" class="job-card" data-city="fes" data-type="reception" data-language="espagnol">
+                    <a href="#apply9" class="job-card" data-centre="intelcia" data-city="fes" data-type="reception" data-language="espagnol" data-style="part-time">
                         <h3>Support Client (Intelcia)</h3>
                         <p><strong>Date:</strong> 19-03-2025<br><strong>Type:</strong> Réception<br><strong>Ville:</strong> Fès<br><strong>Langue:</strong> Espagnol<br>Service en espagnol.</p>
                         <div class="apply-btn">Postuler</div>
                     </a>
-                    <a href="#apply10" class="job-card" data-city="fes" data-type="reception" data-language="espagnol">
+                    <a href="#apply10" class="job-card" data-centre="teleperformance" data-city="fes" data-type="reception" data-language="espagnol" data-style="full-time">
                         <h3>Agent Réception (Teleperformance)</h3>
                         <p><strong>Date:</strong> 19-03-2025<br><strong>Type:</strong> Réception<br><strong>Ville:</strong> Fès<br><strong>Langue:</strong> Espagnol<br>Assistance en espagnol.</p>
                         <div class="apply-btn">Postuler</div>
                     </a>
                     <!-- Duplicates for Infinite Loop -->
-                    <a href="#apply1" class="job-card" data-city="casablanca" data-type="emission" data-language="francais">
+                    <a href="#apply1" class="job-card" data-centre="intelcia" data-city="casablanca" data-type="emission" data-language="francais" data-style="full-time">
                         <h3>Téléconseiller Assurance (Intelcia)</h3>
                         <p><strong>Date:</strong> 19-03-2025<br><strong>Type:</strong> Émission<br><strong>Ville:</strong> Casablanca<br><strong>Langue:</strong> Français<br>Vente de produits d'assurance. Expérience appréciée.</p>
                         <div class="apply-btn">Postuler</div>
                     </a>
-                    <a href="#apply2" class="job-card" data-city="rabat" data-type="reception" data-language="francais">
+                    <a href="#apply2" class="job-card" data-centre="intelcia" data-city="rabat" data-type="reception" data-language="francais" data-style="part-time">
                         <h3>Support Client (Intelcia)</h3>
                         <p><strong>Date:</strong> 19-03-2025<br><strong>Type:</strong> Réception<br><strong>Ville:</strong> Rabat<br><strong>Langue:</strong> Français<br>Assistance clientèle. Formation assurée.</p>
                         <div class="apply-btn">Postuler</div>
                     </a>
-                    <a href="#apply3" class="job-card" data-city="marrakech" data-type="backoffice" data-language="anglais">
+                    <a href="#apply3" class="job-card" data-centre="intelcia" data-city="marrakech" data-type="backoffice" data-language="anglais" data-style="full-time">
                         <h3>Gestion Admin (Intelcia)</h3>
                         <p><strong>Date:</strong> 19-03-2025<br><strong>Type:</strong> Backoffice<br><strong>Ville:</strong> Marrakech<br><strong>Langue:</strong> Anglais<br>Gestion de données bilingue. Anglais requis.</p>
                         <div class="apply-btn">Postuler</div>
@@ -378,7 +399,7 @@
             <section class="featured-jobs">
                 <h2>Offres d'Emploi Centre d'Appels</h2>
                 <div class="featured-list">
-                    <a href="#apply1" class="featured-card" data-city="casablanca" data-type="emission" data-language="francais">
+                    <a href="#apply1" class="featured-card" data-centre="intelcia" data-city="casablanca" data-type="emission" data-language="francais" data-style="full-time">
                         <img src="https://dummyimage.com/100x100/cccccc/000&text=Job+Image" alt="Job Image">
                         <div class="job-info">
                             <h3>Téléconseiller Assurance (Intelcia)</h3>
@@ -387,7 +408,7 @@
                             <div class="apply-btn">Postuler</div>
                         </div>
                     </a>
-                    <a href="#apply2" class="featured-card" data-city="rabat" data-type="reception" data-language="francais">
+                    <a href="#apply2" class="featured-card" data-centre="intelcia" data-city="rabat" data-type="reception" data-language="francais" data-style="part-time">
                         <img src="https://dummyimage.com/100x100/cccccc/000&text=Job+Image" alt="Job Image">
                         <div class="job-info">
                             <h3>Support Client (Intelcia)</h3>
@@ -396,7 +417,7 @@
                             <div class="apply-btn">Postuler</div>
                         </div>
                     </a>
-                    <a href="#apply3" class="featured-card" data-city="marrakech" data-type="backoffice" data-language="anglais">
+                    <a href="#apply3" class="featured-card" data-centre="intelcia" data-city="marrakech" data-type="backoffice" data-language="anglais" data-style="full-time">
                         <img src="https://dummyimage.com/100x100/cccccc/000&text=Job+Image" alt="Job Image">
                         <div class="job-info">
                             <h3>Gestion Admin (Intelcia)</h3>
@@ -405,7 +426,7 @@
                             <div class="apply-btn">Postuler</div>
                         </div>
                     </a>
-                    <a href="#apply4" class="featured-card" data-city="marrakech" data-type="reception" data-language="francais">
+                    <a href="#apply4" class="featured-card" data-centre="konecta" data-city="marrakech" data-type="reception" data-language="francais" data-style="part-time">
                         <img src="https://dummyimage.com/100x100/cccccc/000&text=Job+Image" alt="Job Image">
                         <div class="job-info">
                             <h3>Conseiller (Konecta)</h3>
@@ -414,7 +435,7 @@
                             <div class="apply-btn">Postuler</div>
                         </div>
                     </a>
-                    <a href="#apply5" class="featured-card" data-city="casablanca" data-type="backoffice" data-language="francais">
+                    <a href="#apply5" class="featured-card" data-centre="teleperformance" data-city="casablanca" data-type="backoffice" data-language="francais" data-style="full-time">
                         <img src="https://dummyimage.com/100x100/cccccc/000&text=Job+Image" alt="Job Image">
                         <div class="job-info">
                             <h3>Gestionnaire Admin (Teleperformance)</h3>
@@ -423,7 +444,7 @@
                             <div class="apply-btn">Postuler</div>
                         </div>
                     </a>
-                    <a href="#apply6" class="featured-card" data-city="casablanca" data-type="backoffice" data-language="francais">
+                    <a href="#apply6" class="featured-card" data-centre="teleperformance" data-city="casablanca" data-type="backoffice" data-language="francais" data-style="part-time">
                         <img src="https://dummyimage.com/100x100/cccccc/000&text=Job+Image" alt="Job Image">
                         <div class="job-info">
                             <h3>Assistant Backoffice (Teleperformance)</h3>
@@ -432,7 +453,7 @@
                             <div class="apply-btn">Postuler</div>
                         </div>
                     </a>
-                    <a href="#apply7" class="featured-card" data-city="casablanca" data-type="emission" data-language="francais">
+                    <a href="#apply7" class="featured-card" data-centre="intelcia" data-city="casablanca" data-type="emission" data-language="francais" data-style="full-time">
                         <img src="https://dummyimage.com/100x100/cccccc/000&text=Job+Image" alt="Job Image">
                         <div class="job-info">
                             <h3>Vendeur Énergie (Intelcia)</h3>
@@ -441,7 +462,7 @@
                             <div class="apply-btn">Postuler</div>
                         </div>
                     </a>
-                    <a href="#apply8" class="featured-card" data-city="rabat" data-type="emission" data-language="anglais">
+                    <a href="#apply8" class="featured-card" data-centre="intelcia" data-city="rabat" data-type="emission" data-language="anglais" data-style="full-time">
                         <img src="https://dummyimage.com/100x100/cccccc/000&text=Job+Image" alt="Job Image">
                         <div class="job-info">
                             <h3>Sales Rep (Intelcia)</h3>
@@ -450,7 +471,7 @@
                             <div class="apply-btn">Postuler</div>
                         </div>
                     </a>
-                    <a href="#apply9" class="featured-card" data-city="fes" data-type="reception" data-language="espagnol">
+                    <a href="#apply9" class="featured-card" data-centre="intelcia" data-city="fes" data-type="reception" data-language="espagnol" data-style="part-time">
                         <img src="https://dummyimage.com/100x100/cccccc/000&text=Job+Image" alt="Job Image">
                         <div class="job-info">
                             <h3>Support Client (Intelcia)</h3>
@@ -459,7 +480,7 @@
                             <div class="apply-btn">Postuler</div>
                         </div>
                     </a>
-                    <a href="#apply10" class="featured-card" data-city="fes" data-type="reception" data-language="espagnol">
+                    <a href="#apply10" class="featured-card" data-centre="teleperformance" data-city="fes" data-type="reception" data-language="espagnol" data-style="full-time">
                         <img src="https://dummyimage.com/100x100/cccccc/000&text=Job+Image" alt="Job Image">
                         <div class="job-info">
                             <h3>Agent Réception (Teleperformance)</h3>
@@ -468,7 +489,7 @@
                             <div class="apply-btn">Postuler</div>
                         </div>
                     </a>
-                    <a href="#apply11" class="featured-card" data-city="casablanca" data-type="emission" data-language="francais">
+                    <a href="#apply11" class="featured-card" data-centre="outsourcia" data-city="casablanca" data-type="emission" data-language="francais" data-style="full-time">
                         <img src="https://dummyimage.com/100x100/cccccc/000&text=Job+Image" alt="Job Image">
                         <div class="job-info">
                             <h3>Téléconseiller Énergie (Outsourcia)</h3>
@@ -477,7 +498,7 @@
                             <div class="apply-btn">Postuler</div>
                         </div>
                     </a>
-                    <a href="#apply12" class="featured-card" data-city="fes" data-type="emission" data-language="anglais">
+                    <a href="#apply12" class="featured-card" data-centre="outsourcia" data-city="fes" data-type="emission" data-language="anglais" data-style="part-time">
                         <img src="https://dummyimage.com/100x100/cccccc/000&text=Job+Image" alt="Job Image">
                         <div class="job-info">
                             <h3>Sales Agent (Outsourcia)</h3>
@@ -486,7 +507,7 @@
                             <div class="apply-btn">Postuler</div>
                         </div>
                     </a>
-                    <a href="#apply13" class="featured-card" data-city="rabat" data-type="reception" data-language="francais">
+                    <a href="#apply13" class="featured-card" data-centre="konecta" data-city="rabat" data-type="reception" data-language="francais" data-style="full-time">
                         <img src="https://dummyimage.com/100x100/cccccc/000&text=Job+Image" alt="Job Image">
                         <div class="job-info">
                             <h3>Agent Support (Konecta)</h3>
@@ -495,7 +516,7 @@
                             <div class="apply-btn">Postuler</div>
                         </div>
                     </a>
-                    <a href="#apply14" class="featured-card" data-city="marrakech" data-type="backoffice" data-language="espagnol">
+                    <a href="#apply14" class="featured-card" data-centre="konecta" data-city="marrakech" data-type="backoffice" data-language="espagnol" data-style="part-time">
                         <img src="https://dummyimage.com/100x100/cccccc/000&text=Job+Image" alt="Job Image">
                         <div class="job-info">
                             <h3>Backoffice Agent (Konecta)</h3>
@@ -504,7 +525,7 @@
                             <div class="apply-btn">Postuler</div>
                         </div>
                     </a>
-                    <a href="#apply15" class="featured-card" data-city="casablanca" data-type="emission" data-language="anglais">
+                    <a href="#apply15" class="featured-card" data-centre="teleperformance" data-city="casablanca" data-type="emission" data-language="anglais" data-style="full-time">
                         <img src="https://dummyimage.com/100x100/cccccc/000&text=Job+Image" alt="Job Image">
                         <div class="job-info">
                             <h3>Energy Sales Rep (Teleperformance)</h3>
@@ -524,19 +545,6 @@
     </footer>
 
     <script>
-        // Dynamically adjust the viewport initial-scale to fit the 1200px layout on mobile/tablet
-        (function() {
-            const layoutWidth = 1200; // The fixed width of the layout
-            const viewport = document.querySelector('meta[name="viewport"]');
-            const screenWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
-
-            // Calculate the initial scale to fit the 1200px layout within the screen width
-            const initialScale = screenWidth / layoutWidth;
-
-            // Update the viewport meta tag with the calculated initial scale
-            viewport.setAttribute('content', `width=${layoutWidth}, initial-scale=${initialScale}, user-scalable=yes`);
-        })();
-
         // Ad Rotation
         const adImages = document.querySelectorAll('.ad-image');
         let currentAdIndex = 0;
@@ -559,37 +567,59 @@
         // Filter Functionality
         document.getElementById('searchForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            const city = this.querySelector('select[name="city"]')?.value || '';
+            const centre = this.querySelector('select[name="centre"]').value;
+            const city = this.querySelector('select[name="ville"]').value;
+            const style = this.querySelector('select[name="style"]').value;
             const type = this.querySelector('select[name="type"]').value;
             const language = this.querySelector('select[name="language"]').value;
+            const keyword = this.querySelector('input[name="recherche"]').value.toLowerCase();
             const jobCards = document.querySelectorAll('.job-card');
             const featuredCards = document.querySelectorAll('.featured-card');
+
             jobCards.forEach(card => {
+                const cardCentre = card.getAttribute('data-centre');
                 const cardCity = card.getAttribute('data-city');
+                const cardStyle = card.getAttribute('data-style');
                 const cardType = card.getAttribute('data-type');
                 const cardLanguage = card.getAttribute('data-language');
+                const cardText = card.textContent.toLowerCase();
+
+                const centreMatch = !centre || cardCentre === centre;
                 const cityMatch = !city || cardCity === city;
+                const styleMatch = !style || cardStyle === style;
                 const typeMatch = !type || cardType === type;
                 const languageMatch = !language || cardLanguage === language;
-                if (cityMatch && typeMatch && languageMatch) {
+                const keywordMatch = !keyword || cardText.includes(keyword);
+
+                if (centreMatch && cityMatch && styleMatch && typeMatch && languageMatch && keywordMatch) {
                     card.classList.remove('hidden');
                 } else {
                     card.classList.add('hidden');
                 }
             });
+
             featuredCards.forEach(card => {
+                const cardCentre = card.getAttribute('data-centre');
                 const cardCity = card.getAttribute('data-city');
+                const cardStyle = card.getAttribute('data-style');
                 const cardType = card.getAttribute('data-type');
                 const cardLanguage = card.getAttribute('data-language');
+                const cardText = card.textContent.toLowerCase();
+
+                const centreMatch = !centre || cardCentre === centre;
                 const cityMatch = !city || cardCity === city;
+                const styleMatch = !style || cardStyle === style;
                 const typeMatch = !type || cardType === type;
                 const languageMatch = !language || cardLanguage === language;
-                if (cityMatch && typeMatch && languageMatch) {
+                const keywordMatch = !keyword || cardText.includes(keyword);
+
+                if (centreMatch && cityMatch && styleMatch && typeMatch && languageMatch && keywordMatch) {
                     card.classList.remove('hidden');
                 } else {
                     card.classList.add('hidden');
                 }
             });
+
             resetCarousel();
         });
 
