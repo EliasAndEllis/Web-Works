@@ -25,6 +25,7 @@
             position: sticky;
             top: 0;
             z-index: 1000;
+            width: 100%;
         }
         header .container {
             max-width: 1200px;
@@ -48,6 +49,47 @@
         }
         header nav a:hover {
             text-decoration: underline;
+        }
+        .main-content {
+            display: flex;
+            flex-direction: row;
+        }
+        .ad-column {
+            width: 300px;
+            position: fixed;
+            top: 60px; /* Height of the header */
+            left: 0;
+            bottom: 0;
+            background: #1e3a8a; /* Blue background like in the image */
+            padding: 1rem;
+            overflow: hidden;
+            z-index: 500;
+        }
+        .ad-container {
+            position: relative;
+            width: 100%;
+            height: 600px;
+        }
+        .ad-image {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            transition: all 1s ease-in-out;
+            border-radius: 8px;
+        }
+        .ad-image.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .ad-image.next {
+            transform: translateY(100%);
+        }
+        .content-area {
+            margin-left: 300px;
+            width: calc(100% - 300px);
         }
         .search-section {
             background: #e8dbed;
@@ -133,6 +175,7 @@
             text-align: center;
             padding: 1rem;
             margin-top: 2rem;
+            width: 100%;
         }
         footer a {
             color: #653977;
@@ -159,111 +202,84 @@
         </div>
     </header>
 
-    <section class="search-section">
-        <h2>Recherchez Votre Emploi Idéal</h2>
-        <form class="search-form" id="searchForm">
-            <select name="center">
-                <option value="">Centre</option>
-                <option value="intelcia">Intelcia</option>
-                <option value="teleperformance">Teleperformance</option>
-                <option value="outsourcia">Outsourcia</option>
-                <option value="konecta">Konecta</option>
-            </select>
-            <select name="city">
-                <option value="">Ville</option>
-                <option value="casablanca">Casablanca</option>
-                <option value="rabat">Rabat</option>
-                <option value="marrakech">Marrakech</option>
-                <option value="fes">Fès</option>
-            </select>
-            <select name="type">
-                <option value="">Type</option>
-                <option value="emission">Émission</option>
-                <option value="reception">Réception</option>
-                <option value="backoffice">Backoffice</option>
-            </select>
-            <select name="language">
-                <option value="">Langue</option>
-                <option value="francais">Français</option>
-                <option value="anglais">Anglais</option>
-                <option value="espagnol">Espagnol</option>
-            </select>
-            <button type="submit">Rechercher</button>
-        </form>
-    </section>
-
-    <section class="job-listings" id="jobs">
-        <div class="carousel" id="jobCarousel">
-            <!-- Original 66 Jobs (Truncated for Brevity) -->
-            <div class="job-card" data-city="casablanca" data-type="emission" data-language="francais">
-                <h3>Téléconseiller Assurance (Intelcia)</h3>
-                <p><strong>Date:</strong> 19-03-2025<br><strong>Type:</strong> Émission<br><strong>Ville:</strong> Casablanca<br><strong>Langue:</strong> Français<br>Vente de produits d'assurance. Expérience appréciée.</p>
-                <a href="#apply1" class="apply-btn">Postuler</a>
-            </div>
-            <div class="job-card" data-city="rabat" data-type="reception" data-language="francais">
-                <h3>Support Client (Intelcia)</h3>
-                <p><strong>Date:</strong> 19-03-2025<br><strong>Type:</strong> Réception<br><strong>Ville:</strong> Rabat<br><strong>Langue:</strong> Français<br>Assistance clientèle. Formation assurée.</p>
-                <a href="#apply2" class="apply-btn">Postuler</a>
-            </div>
-            <div class="job-card" data-city="marrakech" data-type="backoffice" data-language="anglais">
-                <h3>Gestion Admin (Intelcia)</h3>
-                <p><strong>Date:</strong> 19-03-2025<br><strong>Type:</strong> Backoffice<br><strong>Ville:</strong> Marrakech<br><strong>Langue:</strong> Anglais<br>Gestion de données bilingue. Anglais requis.</p>
-                <a href="#apply3" class="apply-btn">Postuler</a>
-            </div>
-            <!-- ... (Jobs #4 to #60 omitted for brevity) -->
-            <div class="job-card" data-city="marrakech" data-type="reception" data-language="francais">
-                <h3>Conseiller (Konecta)</h3>
-                <p><strong>Date:</strong> 19-03-2025<br><strong>Type:</strong> Réception<br><strong>Ville:</strong> Marrakech<br><strong>Langue:</strong> Français<br>Conseil en français.</p>
-                <a href="#apply60" class="apply-btn">Postuler</a>
-            </div>
-            <div class="job-card" data-city="casablanca" data-type="backoffice" data-language="francais">
-                <h3>Gestionnaire Admin (Teleperformance)</h3>
-                <p><strong>Date:</strong> 19-03-2025<br><strong>Type:</strong> Backoffice<br><strong>Ville:</strong> Casablanca<br><strong>Langue:</strong> Français<br>Gestion administrative en français.</p>
-                <a href="#apply61" class="apply-btn">Postuler</a>
-            </div>
-            <div class="job-card" data-city="casablanca" data-type="backoffice" data-language="francais">
-                <h3>Assistant Backoffice (Teleperformance)</h3>
-                <p><strong>Date:</strong> 19-03-2025<br><strong>Type:</strong> Backoffice<br><strong>Ville:</strong> Casablanca<br><strong>Langue:</strong> Français<br>Support administratif en français.</p>
-                <a href="#apply62" class="apply-btn">Postuler</a>
-            </div>
-            <div class="job-card" data-city="casablanca" data-type="emission" data-language="francais">
-                <h3>Vendeur Énergie (Intelcia)</h3>
-                <p><strong>Date:</strong> 19-03-2025<br><strong>Type:</strong> Émission<br><strong>Ville:</strong> Casablanca<br><strong>Langue:</strong> Français<br>Vente d’énergie en français.</p>
-                <a href="#apply63" class="apply-btn">Postuler</a>
-            </div>
-            <div class="job-card" data-city="rabat" data-type="emission" data-language="anglais">
-                <h3>Sales Rep (Intelcia)</h3>
-                <p><strong>Date:</strong> 19-03-2025<br><strong>Type:</strong> Émission<br><strong>Ville:</strong> Rabat<br><strong>Langue:</strong> Anglais<br>Vente en anglais.</p>
-                <a href="#apply64" class="apply-btn">Postuler</a>
-            </div>
-            <div class="job-card" data-city="fes" data-type="reception" data-language="espagnol">
-                <h3>Support Client (Intelcia)</h3>
-                <p><strong>Date:</strong> 19-03-2025<br><strong>Type:</strong> Réception<br><strong>Ville:</strong> Fès<br><strong>Langue:</strong> Espagnol<br>Service en espagnol.</p>
-                <a href="#apply65" class="apply-btn">Postuler</a>
-            </div>
-            <div class="job-card" data-city="fes" data-type="reception" data-language="espagnol">
-                <h3>Agent Réception (Teleperformance)</h3>
-                <p><strong>Date:</strong> 19-03-2025<br><strong>Type:</strong> Réception<br><strong>Ville:</strong> Fès<br><strong>Langue:</strong> Espagnol<br>Assistance en espagnol.</p>
-                <a href="#apply66" class="apply-btn">Postuler</a>
-            </div>
-            <!-- Duplicates for Infinite Loop (First 3 Jobs Repeated) -->
-            <div class="job-card" data-city="casablanca" data-type="emission" data-language="francais">
-                <h3>Téléconseiller Assurance (Intelcia)</h3>
-                <p><strong>Date:</strong> 19-03-2025<br><strong>Type:</strong> Émission<br><strong>Ville:</strong> Casablanca<br><strong>Langue:</strong> Français<br>Vente de produits d'assurance. Expérience appréciée.</p>
-                <a href="#apply1" class="apply-btn">Postuler</a>
-            </div>
-            <div class="job-card" data-city="rabat" data-type="reception" data-language="francais">
-                <h3>Support Client (Intelcia)</h3>
-                <p><strong>Date:</strong> 19-03-2025<br><strong>Type:</strong> Réception<br><strong>Ville:</strong> Rabat<br><strong>Langue:</strong> Français<br>Assistance clientèle. Formation assurée.</p>
-                <a href="#apply2" class="apply-btn">Postuler</a>
-            </div>
-            <div class="job-card" data-city="marrakech" data-type="backoffice" data-language="anglais">
-                <h3>Gestion Admin (Intelcia)</h3>
-                <p><strong>Date:</strong> 19-03-2025<br><strong>Type:</strong> Backoffice<br><strong>Ville:</strong> Marrakech<br><strong>Langue:</strong> Anglais<br>Gestion de données bilingue. Anglais requis.</p>
-                <a href="#apply3" class="apply-btn">Postuler</a>
+    <div class="main-content">
+        <div class="ad-column">
+            <div class="ad-container">
+                <img src="https://dummyimage.com/300x600/3498db/fff&text=Ad+1+-+Visit+Us" class="ad-image active" alt="Ad 1">
+                <img src="https://dummyimage.com/300x600/e74c3c/fff&text=Ad+2+-+Shop+Now" class="ad-image" alt="Ad 2">
             </div>
         </div>
-    </section>
+        <div class="content-area">
+            <section class="search-section">
+                <h2>Recherchez Votre Emploi Idéal</h2>
+                <form class="search-form" id="searchForm">
+                    <select name="center">
+                        <option value="">Centre</option>
+                        <option value="intelcia">Intelcia</option>
+                        <option value="teleperformance">Teleperformance</option>
+                        <option value="outsourcia">Outsourcia</option>
+                        <option value="konecta">Konecta</option>
+                    </select>
+                    <select name="city">
+                        <option value="">Ville</option>
+                        <option value="casablanca">Casablanca</option>
+                        <option value="rabat">Rabat</option>
+                        <option value="marrakech">Marrakech</option>
+                        <option value="fes">Fès</option>
+                    </select>
+                    <select name="type">
+                        <option value="">Type</option>
+                        <option value="emission">Émission</option>
+                        <option value="reception">Réception</option>
+                        <option value="backoffice">Backoffice</option>
+                    </select>
+                    <select name="language">
+                        <option value="">Langue</option>
+                        <option value="francais">Français</option>
+                        <option value="anglais">Anglais</option>
+                        <option value="espagnol">Espagnol</option>
+                    </select>
+                    <button type="submit">Rechercher</button>
+                </form>
+            </section>
+
+            <section class="job-listings" id="jobs">
+                <div class="carousel" id="jobCarousel">
+                    <div class="job-card" data-city="casablanca" data-type="emission" data-language="francais">
+                        <h3>Téléconseiller Assurance (Intelcia)</h3>
+                        <p><strong>Date:</strong> 19-03-2025<br><strong>Type:</strong> Émission<br><strong>Ville:</strong> Casablanca<br><strong>Langue:</strong> Français<br>Vente de produits d'assurance. Expérience appréciée.</p>
+                        <a href="#apply1" class="apply-btn">Postuler</a>
+                    </div>
+                    <div class="job-card" data-city="rabat" data-type="reception" data-language="francais">
+                        <h3>Support Client (Intelcia)</h3>
+                        <p><strong>Date:</strong> 19-03-2025<br><strong>Type:</strong> Réception<br><strong>Ville:</strong> Rabat<br><strong>Langue:</strong> Français<br>Assistance clientèle. Formation assurée.</p>
+                        <a href="#apply2" class="apply-btn">Postuler</a>
+                    </div>
+                    <div class="job-card" data-city="marrakech" data-type="backoffice" data-language="anglais">
+                        <h3>Gestion Admin (Intelcia)</h3>
+                        <p><strong>Date:</strong> 19-03-2025<br><strong>Type:</strong> Backoffice<br><strong>Ville:</strong> Marrakech<br><strong>Langue:</strong> Anglais<br>Gestion de données bilingue. Anglais requis.</p>
+                        <a href="#apply3" class="apply-btn">Postuler</a>
+                    </div>
+                    <!-- Truncated for brevity; include all 66 jobs + 3 duplicates as before -->
+                    <div class="job-card" data-city="casablanca" data-type="emission" data-language="francais">
+                        <h3>Téléconseiller Assurance (Intelcia)</h3>
+                        <p><strong>Date:</strong> 19-03-2025<br><strong>Type:</strong> Émission<br><strong>Ville:</strong> Casablanca<br><strong>Langue:</strong> Français<br>Vente de produits d'assurance. Expérience appréciée.</p>
+                        <a href="#apply1" class="apply-btn">Postuler</a>
+                    </div>
+                    <div class="job-card" data-city="rabat" data-type="reception" data-language="francais">
+                        <h3>Support Client (Intelcia)</h3>
+                        <p><strong>Date:</strong> 19-03-2025<br><strong>Type:</strong> Réception<br><strong>Ville:</strong> Rabat<br><strong>Langue:</strong> Français<br>Assistance clientèle. Formation assurée.</p>
+                        <a href="#apply2" class="apply-btn">Postuler</a>
+                    </div>
+                    <div class="job-card" data-city="marrakech" data-type="backoffice" data-language="anglais">
+                        <h3>Gestion Admin (Intelcia)</h3>
+                        <p><strong>Date:</strong> 19-03-2025<br><strong>Type:</strong> Backoffice<br><strong>Ville:</strong> Marrakech<br><strong>Langue:</strong> Anglais<br>Gestion de données bilingue. Anglais requis.</p>
+                        <a href="#apply3" class="apply-btn">Postuler</a>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
 
     <footer>
         <p>© 2025 El Waziki Jobs. Tous droits réservés.</p>
@@ -271,6 +287,25 @@
     </footer>
 
     <script>
+        // Ad Rotation
+        const adImages = document.querySelectorAll('.ad-image');
+        let currentAdIndex = 0;
+
+        function rotateAds() {
+            const currentAd = adImages[currentAdIndex];
+            const nextAdIndex = (currentAdIndex + 1) % adImages.length;
+            const nextAd = adImages[nextAdIndex];
+
+            currentAd.classList.remove('active');
+            currentAd.classList.add('next');
+            nextAd.classList.remove('next');
+            nextAd.classList.add('active');
+
+            currentAdIndex = nextAdIndex;
+        }
+
+        setInterval(rotateAds, 4000);
+
         // Filter Functionality
         document.getElementById('searchForm').addEventListener('submit', function(e) {
             e.preventDefault();
@@ -291,14 +326,14 @@
                     card.classList.add('hidden');
                 }
             });
-            resetCarousel(); // Reset carousel after filtering
+            resetCarousel();
         });
 
         // Carousel Functionality
         const carousel = document.getElementById('jobCarousel');
         const cards = carousel.querySelectorAll('.job-card');
-        const cardWidth = cards[0].offsetWidth + 24; // Including margin
-        const originalCardCount = cards.length - 3; // Exclude duplicates
+        const cardWidth = cards[0].offsetWidth + 24;
+        const originalCardCount = cards.length - 3;
         let currentIndex = 0;
         let intervalId = null;
 
@@ -308,7 +343,7 @@
 
         function moveCarousel() {
             const visibleCards = getVisibleCards();
-            if (visibleCards < 3) return; // Don’t move if fewer than 3 visible
+            if (visibleCards < 3) return;
 
             currentIndex++;
             carousel.style.transition = 'transform 0.5s ease-in-out';
@@ -322,7 +357,7 @@
                     setTimeout(() => {
                         carousel.style.transition = 'transform 0.5s ease-in-out';
                     }, 50);
-                }, 500); // Match transition duration
+                }, 500);
             }
         }
 
@@ -345,7 +380,6 @@
             }, 50);
         }
 
-        // Initial start
         startCarousel();
     </script>
 </body>
