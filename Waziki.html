@@ -2,8 +2,9 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>El Waziki Jobs - Offres d'Emploi</title>
+    <!-- Adjusted viewport to allow zooming and set initial scale -->
+    <meta name="viewport" content="width=1200, initial-scale=1.0, user-scalable=yes">
+    <title>LE Waziki Jobs - Offres d'Emploi</title>
     <meta name="description" content="Trouvez votre emploi idéal avec El Waziki Jobs. Consultez les offres d'emploi dans les centres d'appels au Maroc.">
     <meta name="keywords" content="emploi, centre d'appels, Maroc, téléconseiller, job">
     <style>
@@ -17,7 +18,7 @@
             background: #f4f4f9;
             color: #333;
             line-height: 1.6;
-            overflow-x: hidden;
+            overflow-x: hidden; /* Prevent horizontal scrolling */
         }
         header {
             background: #653977;
@@ -254,132 +255,6 @@
         }
         footer a:hover {
             text-decoration: underline;
-        }
-
-        /* Tablet (601px - 1024px) */
-        @media (max-width: 1024px) {
-            .ad-column {
-                width: 200px;
-            }
-            .content-area {
-                margin-left: 200px;
-                width: calc(100% - 200px);
-            }
-            header .container {
-                flex-direction: column;
-                gap: 1rem;
-            }
-            header nav ul {
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 1rem;
-            }
-            .search-form select {
-                width: 180px;
-            }
-            .job-card {
-                min-width: 250px;
-            }
-            .featured-card {
-                flex-direction: row;
-                align-items: center;
-            }
-            .featured-card img {
-                width: 80px;
-                height: 80px;
-            }
-            .featured-card h3 {
-                font-size: 1rem;
-            }
-            .featured-card .tags, .featured-card .description {
-                font-size: 0.85rem;
-            }
-        }
-
-        /* Mobile (≤600px) */
-        @media (max-width: 600px) {
-            .ad-column {
-                display: none; /* Hide ad column on mobile */
-            }
-            .content-area {
-                margin-left: 0;
-                width: 100%;
-            }
-            header .container {
-                flex-direction: column;
-                gap: 0.5rem;
-            }
-            header h1 {
-                font-size: 1.2rem;
-            }
-            header nav ul {
-                flex-direction: column;
-                gap: 0.5rem;
-            }
-            .search-section {
-                padding: 1rem;
-            }
-            .search-section h2 {
-                font-size: 1.2rem;
-            }
-            .search-form {
-                flex-direction: column;
-                align-items: center;
-            }
-            .search-form select {
-                width: 100%;
-                max-width: 300px;
-            }
-            .search-form button {
-                width: 100%;
-                max-width: 300px;
-            }
-            .job-listings, .featured-jobs {
-                padding: 0 0.5rem;
-                margin: 1rem auto;
-            }
-            .job-listings h2, .featured-jobs h2 {
-                font-size: 1.2rem;
-            }
-            .job-card {
-                min-width: 100%; /* Full width on mobile */
-                margin-right: 0;
-            }
-            .job-card h3 {
-                font-size: 1rem;
-            }
-            .job-card p {
-                font-size: 0.85rem;
-            }
-            .job-card .apply-btn {
-                width: 100%;
-                text-align: center;
-            }
-            .carousel {
-                width: 100%;
-            }
-            .featured-card {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            .featured-card img {
-                width: 60px;
-                height: 60px;
-            }
-            .featured-card h3 {
-                font-size: 0.95rem;
-            }
-            .featured-card .tags, .featured-card .description {
-                font-size: 0.8rem;
-            }
-            .featured-card .apply-btn {
-                width: 100%;
-                text-align: center;
-            }
-            footer {
-                padding: 0.5rem;
-                font-size: 0.85rem;
-            }
         }
     </style>
 </head>
