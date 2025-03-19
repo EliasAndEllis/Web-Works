@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El Waziki Jobs - Offres d'Emploi</title>
+    <meta name="description" content="Trouvez votre emploi idéal avec El Waziki Jobs. Consultez les offres d'emploi dans les centres d'appels au Maroc.">
+    <meta name="keywords" content="emploi, centre d'appels, Maroc, téléconseiller, job">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        body {
+            background: #f4f4f9;
+            color: #333;
+            line-height: 1.6;
+        }
+        /* Header */
+        header {
+            background: #653977;
+            color: white;
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        header .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        header h1 {
+            font-size: 1.5rem;
+        }
+        header nav ul {
+            list-style: none;
+            display: flex;
+            gap: 1.5rem;
+        }
+        header nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        header nav a:hover {
+            text-decoration: underline;
+        }
+        /* Search Section */
+        .search-section {
+            background: #e8dbed;
+            padding: 2rem;
+            text-align: center;
+        }
+        .search-section h2 {
+            margin-bottom: 1rem;
+            color: #653977;
+        }
+        .search-form {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .search-form select, .search-form input {
+            padding: 0.5rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: 200px;
+        }
+        .search-form button {
+            padding: 0.5rem 1rem;
+            background: #653977;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .search-form button:hover {
+            background: #4b2a5a;
+        }
+        /* Job Listings */
+        .job-listings {
+            max-width: 1200px;
+            margin: 2rem auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            padding: 0 1rem;
+        }
+        .job-card {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 1rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .job-card h3 {
+            color: #653977;
+            margin-bottom: 0.5rem;
+        }
+        .job-card p {
+            font-size: 0.9rem;
+            color: #666;
+        }
+        .job-card .apply-btn {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.5rem 1rem;
+            background: #653977;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+        .job-card .apply-btn:hover {
+            background: #4b2a5a;
+        }
+        .job-card.hidden {
+            display: none;
+        }
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            margin-top: 2rem;
+        }
+        footer a {
+            color: #653977;
+            text-decoration: none;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>El Waziki Jobs</h1>
+            <nav>
+                <ul>
+                    <li><a href="#home">Accueil</a></li>
+                    <li><a href="#jobs">Offres d'Emploi</a></li>
+                    <li><a href="#centers">Centres d'Appels</a></li>
+                    <li><a href="#login">Connexion</a></li>
+                    <li><a href="#register">Inscription</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="search-section">
+        <h2>Recherchez Votre Emploi Idéal</h2>
+        <form class="search-form" id="searchForm">
+            <select name="center">
+                <option value="">Centre</option>
+                <option value="intelcia">Intelcia</option>
+                <option value="teleperformance">Teleperformance</option>
+                <option value="outsourcia">Outsourcia</option>
+                <option value="konecta">Konecta</option>
+            </select>
+            <select name="city">
+                <option value="">Ville</option>
+                <option value="casablanca">Casablanca</option>
+                <option value="rabat">Rabat</option>
+                <option value="marrakech">Marrakech</option>
+                <option value="fes">Fès</option>
+            </select>
+            <select name="type">
+                <option value="">Type</option>
+                <option value="emission">Émission</option>
+                <option value="reception">Réception</option>
+                <option value="backoffice">Backoffice</option>
+            </select>
+            <select name="language">
+                <option value="">Langue</option>
+                <option value="francais">Français</option>
+                <option value="anglais">Anglais</option>
+                <option value="espagnol">Espagnol</option>
+            </select>
+            <button type="submit">Rechercher</button>
+        </form>
+    </section>
+
+    <section class="job-listings" id="jobs">
+        <div class="job-card" data-city="casablanca" data-type="emission" data-language="francais">
+            <h3>Téléconseiller en Émission</h3>
+            <p><strong>Date:</strong> 19-03-2025 | <strong>Type:</strong> Émission | <strong>Ville:</strong> Casablanca | <strong>Langue:</strong> Français</p>
+            <p>Intelcia recrute pour la vente de produits d'assurance. Expérience appréciée.</p>
+            <a href="#apply1" class="apply-btn">Postuler</a>
+        </div>
+        <div class="job-card" data-city="rabat" data-type="reception" data-language="francais">
+            <h3>Conseiller Client Réception</h3>
+            <p><strong>Date:</strong> 19-03-2025 | <strong>Type:</strong> Réception | <strong>Ville:</strong> Rabat | <strong>Langue:</strong> Français</p>
+            <p>Teleperformance cherche des agents pour le support client. Débutants acceptés.</p>
+            <a href="#apply2" class="apply-btn">Postuler</a>
+        </div>
+        <div class="job-card" data-city="marrakech" data-type="backoffice" data-language="anglais">
+            <h3>Agent Backoffice Bilingue</h3>
+            <p><strong>Date:</strong> 19-03-2025 | <strong>Type:</strong> Backoffice | <strong>Ville:</strong> Marrakech | <strong>Langue:</strong> Anglais</p>
+            <p>Outsourcia recrute pour la gestion administrative. Maîtrise de l'anglais requise.</p>
+            <a href="#apply3" class="apply-btn">Postuler</a>
+        </div>
+        <div class="job-card" data-city="fes" data-type="emission" data-language="espagnol">
+            <h3>Télévendeur Hispanophone</h3>
+            <p><strong>Date:</strong> 19-03-2025 | <strong>Type:</strong> Émission | <strong>Ville:</strong> Fès | <strong>Langue:</strong> Espagnol</p>
+            <p>Konecta recherche des télévendeurs pour le marché espagnol. Primes attractives.</p>
+            <a href="#apply4" class="apply-btn">Postuler</a>
+        </div>
+        <div class="job-card" data-city="casablanca" data-type="reception" data-language="francais">
+            <h3>Support Client Francophone</h3>
+            <p><strong>Date:</strong> 19-03-2025 | <strong>Type:</strong> Réception | <strong>Ville:</strong> Casablanca | <strong>Langue:</strong> Français</p>
+            <p>Outsourcia recrute pour son service client. Formation fournie.</p>
+            <a href="#apply5" class="apply-btn">Postuler</a>
+        </div>
+        <div class="job-card" data-city="rabat" data-type="emission" data-language="anglais">
+            <h3>Téléconseiller B2B Anglais</h3>
+            <p><strong>Date:</strong> 19-03-2025 | <strong>Type:</strong> Émission | <strong>Ville:</strong> Rabat | <strong>Langue:</strong> Anglais</p>
+            <p>Intelcia cherche des agents pour la prise de rendez-vous B2B. Expérience requise.</p>
+            <a href="#apply6" class="apply-btn">Postuler</a>
+        </div>
+        <div class="job-card" data-city="marrakech" data-type="reception" data-language="francais">
+            <h3>Agent Réception Téléphonique</h3>
+            <p><strong>Date:</strong> 19-03-2025 | <strong>Type:</strong> Réception | <strong>Ville:</strong> Marrakech | <strong>Langue:</strong> Français</p>
+            <p>Teleperformance recrute pour son centre à Marrakech. Bonne élocution exigée.</p>
+            <a href="#apply7" class="apply-btn">Postuler</a>
+        </div>
+        <div class="job-card" data-city="fes" data-type="backoffice" data-language="francais">
+            <h3>Assistant Backoffice</h3>
+            <p><strong>Date:</strong> 19-03-2025 | <strong>Type:</strong> Backoffice | <strong>Ville:</strong> Fès | <strong>Langue:</strong> Français</p>
+            <p>Konecta recherche des assistants pour la gestion de données. Débutants bienvenus.</p>
+            <a href="#apply8" class="apply-btn">Postuler</a>
+        </div>
+        <div class="job-card" data-city="casablanca" data-type="emission" data-language="espagnol">
+            <h3>Vendeur Hispanophone</h3>
+            <p><strong>Date:</strong> 19-03-2025 | <strong>Type:</strong> Émission | <strong>Ville:</strong> Casablanca | <strong>Langue:</strong> Espagnol</p>
+            <p>Intelcia recrute pour la vente de produits espagnols. Salaire compétitif.</p>
+            <a href="#apply9" class="apply-btn">Postuler</a>
+        </div>
+        <div class="job-card" data-city="rabat" data-type="backoffice" data-language="anglais">
+            <h3>Coordinateur Backoffice</h3>
+            <p><strong>Date:</strong> 19-03-2025 | <strong>Type:</strong> Backoffice | <strong>Ville:</strong> Rabat | <strong>Langue:</strong> Anglais</p>
+            <p>Outsourcia cherche un coordinateur bilingue. Expérience en gestion d’équipe un plus.</p>
+            <a href="#apply10" class="apply-btn">Postuler</a>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2025 El Waziki Jobs. Tous droits réservés.</p>
+        <p><a href="https://www.elwaziki.ma">ElWaziki.ma</a></p>
+    </footer>
+
+    <script>
+        document.getElementById('searchForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const city = this.querySelector('select[name="city"]').value;
+            const type = this.querySelector('select[name="type"]').value;
+            const language = this.querySelector('select[name="language"]').value;
+            
+            const jobCards = document.querySelectorAll('.job-card');
+            
+            jobCards.forEach(card => {
+                const cardCity = card.getAttribute('data-city');
+                const cardType = card.getAttribute('data-type');
+                const cardLanguage = card.getAttribute('data-language');
+                
+                const cityMatch = !city || cardCity === city;
+                const typeMatch = !type || cardType === type;
+                const languageMatch = !language || cardLanguage === language;
+                
+                if (cityMatch && typeMatch && languageMatch) {
+                    card.classList.remove('hidden');
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
