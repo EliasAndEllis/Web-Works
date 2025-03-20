@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <!-- Simplified viewport meta tag to match moncallcenter.ma behavior -->
     <meta name="viewport" content="width=1200, user-scalable=yes">
-    <title>LE Waziki Jobs - Offres d'Emploi</title>
+    <title>El Waziki Jobs - Offres d'Emploi</title>
     <meta name="description" content="Trouvez votre emploi idéal avec El Waziki Jobs. Consultez les offres d'emploi dans les centres d'appels au Maroc.">
     <meta name="keywords" content="emploi, centre d'appels, Maroc, téléconseiller, job">
     <style>
@@ -21,35 +21,131 @@
             overflow-x: hidden; /* Prevent horizontal scrolling */
         }
         header {
-            background: #653977;
-            color: white;
-            padding: 1rem;
+            background: #e4e2dd; /* Changed from #ffffff to #e4e2dd */
+            color: #333; /* Adjust text color for visibility */
             position: sticky;
             top: 0;
             z-index: 1000;
             width: 100%;
+            padding: 0; /* Remove padding to prevent white strip */
         }
-        header .container {
+        .header-top {
             max-width: 1200px;
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 0.5rem 1rem; /* Keep padding for spacing */
+            background: #e4e2dd; /* Changed from #ffffff to #e4e2dd */
         }
-        header h1 {
+        .header-top .logo img {
+            width: 200px; /* Match moncallcenter.ma */
+            height: 60px; /* Match moncallcenter.ma */
+        }
+        .header-top .search-bar {
+            flex: 1;
+            max-width: 400px;
+            margin: 0 1rem;
+        }
+        .header-top .search-bar input {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1rem;
+            color: #333; /* Ensure text is visible on white background */
+        }
+        .header-top .user-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .header-top .user-actions .user-dropdown {
+            position: relative;
+        }
+        .header-top .user-actions .user-icon,
+        .header-top .user-actions .bell-icon {
             font-size: 1.5rem;
+            cursor: pointer;
+            color: #333; /* Dark color for visibility on white background */
         }
-        header nav ul {
+        .header-top .user-actions .bell-icon {
+            position: relative; /* Ensure the badge is positioned relative to the bell */
+        }
+        .header-top .user-actions .bell-icon .badge {
+            position: absolute;
+            top: -0.5rem; /* Use rem for relative positioning */
+            right: -0.5rem; /* Use rem for relative positioning */
+            background: #c0392b;
+            color: white;
+            border-radius: 50%;
+            padding: 2px 6px;
+            font-size: 0.7rem;
+        }
+        /* Media query for tablets (e.g., iPad, 768px to 1024px) */
+        @media (max-width: 1024px) {
+            .header-top .user-actions .bell-icon .badge {
+                top: -0.4rem; /* Slightly adjust for smaller screens */
+                right: -0.4rem;
+            }
+        }
+        /* Media query for smaller tablets or large phones (e.g., 600px to 767px) */
+        @media (max-width: 767px) {
+            .header-top .user-actions .bell-icon .badge {
+                top: -0.3rem; /* Further adjust for smaller screens */
+                right: -0.3rem;
+            }
+        }
+        .header-top .user-actions .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: white;
+            color: #333;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+        }
+        .header-top .user-actions .dropdown-menu.active {
+            display: block;
+        }
+        .header-top .user-actions .dropdown-menu a {
+            display: block;
+            padding: 0.5rem 1rem;
+            color: #333;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+        .header-top .user-actions .dropdown-menu a:hover {
+            background: #f0f0f0;
+        }
+        .main-menu {
+            background: #1150ab; /* Changed from #a72a5e to #1150ab */
+            padding: 0.5rem 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1); /* Subtle separator */
+        }
+        .main-menu .menu-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center; /* Center the menu items */
+            align-items: center;
+            padding: 0 1rem;
+        }
+        .main-menu .menu-center ul {
             list-style: none;
             display: flex;
             gap: 1.5rem;
         }
-        header nav a {
-            color: white;
+        .main-menu .menu-center a {
+            color: white; /* White text for visibility on blue background */
             text-decoration: none;
             font-weight: bold;
+            font-size: 1rem;
         }
-        header nav a:hover {
+        .main-menu .menu-center a:hover {
             text-decoration: underline;
         }
         .main-content {
@@ -81,6 +177,8 @@
             opacity: 0;
             transition: all 1s ease-in-out;
             border-radius: 8px;
+            object-fit: contain; /* Maintain aspect ratio, scale to fit */
+            object-position: center; /* Center the image within the container */
         }
         .ad-image.active {
             opacity: 1;
@@ -94,39 +192,59 @@
             width: calc(100% - 300px);
         }
         .search-section {
-            background: #e8dbed;
-            padding: 2rem;
+            background: #1150ab; /* Changed from linear-gradient(to right, #4b1c46, #7b2d6e) to #1150ab */
+            padding: 1rem;
             text-align: center;
-        }
-        .search-section h2 {
-            margin-bottom: 1rem;
-            color: #653977;
         }
         .search-form {
             display: flex;
             flex-wrap: wrap;
-            gap: 1rem;
+            gap: 0.5rem;
             justify-content: center;
             max-width: 1000px;
             margin: 0 auto;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 0.5rem;
+            border-radius: 4px;
         }
         .search-form select,
         .search-form input[type="text"] {
             padding: 0.5rem;
             border: 1px solid #ccc;
             border-radius: 4px;
-            width: 200px;
+            width: 150px;
+            font-size: 0.9rem;
         }
         .search-form button {
             padding: 0.5rem 1rem;
-            background: #653977;
+            background: #c0392b;
             color: white;
             border: none;
             border-radius: 4px;
             cursor: pointer;
+            font-size: 0.9rem;
         }
         .search-form button:hover {
-            background: #4b2a5a;
+            background: #a53024;
+        }
+        .city-links {
+            margin-top: 0.5rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+        }
+        .city-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+        .city-links a:hover {
+            text-decoration: underline;
+        }
+        .city-links a::before {
+            content: "📍";
+            margin-right: 0.3rem;
         }
         .job-listings, .featured-jobs {
             max-width: 1200px;
@@ -261,30 +379,52 @@
 </head>
 <body>
     <header>
-        <div class="container">
-            <h1>El Waziki Jobs</h1>
-            <nav>
-                <ul>
-                    <li><a href="#home">Accueil</a></li>
-                    <li><a href="#jobs">Offres d'Emploi</a></li>
-                    <li><a href="#centers">Centres d'Appels</a></li>
-                    <li><a href="#login">Connexion</a></li>
-                    <li><a href="#register">Inscription</a></li>
-                </ul>
-            </nav>
+        <div class="header-top">
+            <div class="logo">
+                <!-- Replace with your redesigned logo (400px x 120px or similar 10:3 aspect ratio) -->
+                <img src="https://raw.githubusercontent.com/EliasAndEllis/Web-Works/refs/heads/main/Minimalist%20Simple%20Typography%20Milk%20Creative%20Studio%20Logo%20(5).png" alt="El Waziki Jobs Logo">
+            </div>
+            <div class="search-bar">
+                <input type="text" placeholder="Rechercher">
+            </div>
+            <div class="user-actions">
+                <div class="user-dropdown">
+                    <span class="user-icon">👤</span>
+                    <div class="dropdown-menu">
+                        <a href="#account">Account</a>
+                        <a href="#login">Login/Out</a>
+                    </div>
+                </div>
+                <div class="bell-icon">
+                    🔔
+                    <span class="badge">0</span>
+                </div>
+            </div>
         </div>
+        <nav class="main-menu">
+            <div class="menu-container">
+                <div class="menu-center">
+                    <ul>
+                        <li><a href="#call-centers">Centres d’appels</a></li>
+                        <li><a href="#offers">Offres d’emploi</a></li>
+                        <li><a href="#news">Actualités</a></li>
+                        <li><a href="#quiz">Quiz</a></li>
+                        <li><a href="#guides">Guides</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
     </header>
 
     <div class="main-content">
         <div class="ad-column">
             <div class="ad-container">
-                <img src="https://dummyimage.com/300x600/3498db/fff&text=Ad+1+-+Visit+Us" class="ad-image active" alt="Ad 1">
-                <img src="https://dummyimage.com/300x600/e74c3c/fff&text=Ad+2+-+Shop+Now" class="ad-image" alt="Ad 2">
+                <img src="https://raw.githubusercontent.com/EliasAndEllis/Web-Works/refs/heads/main/library-of-congress-3ujfoSnBcI4-unsplash.jpg" class="ad-image active" alt="Ad 1">
+                <img src="https://raw.githubusercontent.com/EliasAndEllis/Web-Works/refs/heads/main/museums-victoria-RCuDCstVPvw-unsplash.jpg" class="ad-image" alt="Ad 2">
             </div>
         </div>
         <div class="content-area">
             <section class="search-section">
-                <h2>Votre Emploi Idéal</h2>
                 <form class="search-form" id="searchForm">
                     <select name="centre">
                         <option value="">Centre</option>
@@ -300,11 +440,6 @@
                         <option value="marrakech">Marrakech</option>
                         <option value="fes">Fès</option>
                     </select>
-                    <select name="style">
-                        <option value="">Style</option>
-                        <option value="full-time">Temps Plein</option>
-                        <option value="part-time">Temps Partiel</option>
-                    </select>
                     <select name="type">
                         <option value="">Type</option>
                         <option value="emission">Émission</option>
@@ -317,9 +452,18 @@
                         <option value="anglais">Anglais</option>
                         <option value="espagnol">Espagnol</option>
                     </select>
-                    <input type="text" name="recherche" placeholder="Recherche par mot-clé">
+                    <input type="text" name="recherche" placeholder="Mot clé: Activité…">
                     <button type="submit">Rechercher</button>
                 </form>
+                <div class="city-links">
+                    <a href="#agadir">Agadir</a>
+                    <a href="#casablanca">Casablanca</a>
+                    <a href="#eljadida">El Jadida</a>
+                    <a href="#fes">Fès</a>
+                    <a href="#kenitra">Kenitra</a>
+                    <a href="#marrakech">Marrakech</a>
+                    <a href="#meknes">Meknès</a>
+                </div>
             </section>
 
             <!-- Carousel Section -->
@@ -400,7 +544,7 @@
                 <h2>Offres d'Emploi Centre d'Appels</h2>
                 <div class="featured-list">
                     <a href="#apply1" class="featured-card" data-centre="intelcia" data-city="casablanca" data-type="emission" data-language="francais" data-style="full-time">
-                        <img src="https://dummyimage.com/100x100/cccccc/000&text=Job+Image" alt="Job Image">
+                        <img src="https://www.moncallcenter.ma/images/300/ca-5xwysy4htuy2b716f8pi6e2igkaqgu03062013032507.jpg" alt="Job Image">
                         <div class="job-info">
                             <h3>Téléconseiller Assurance (Intelcia)</h3>
                             <p class="tags">19-03-2025 | Émission | Casablanca</p>
@@ -409,7 +553,7 @@
                         </div>
                     </a>
                     <a href="#apply2" class="featured-card" data-centre="intelcia" data-city="rabat" data-type="reception" data-language="francais" data-style="part-time">
-                        <img src="https://dummyimage.com/100x100/cccccc/000&text=Job+Image" alt="Job Image">
+                        <img src="https://www.moncallcenter.ma/images/300/ca-uj4v3xmpr085r5brpvaeh61uls80al31072024010345.jpg" alt="Job Image">
                         <div class="job-info">
                             <h3>Support Client (Intelcia)</h3>
                             <p class="tags">19-03-2025 | Réception | Rabat</p>
@@ -418,7 +562,7 @@
                         </div>
                     </a>
                     <a href="#apply3" class="featured-card" data-centre="intelcia" data-city="marrakech" data-type="backoffice" data-language="anglais" data-style="full-time">
-                        <img src="https://dummyimage.com/100x100/cccccc/000&text=Job+Image" alt="Job Image">
+                        <img src="https://www.moncallcenter.ma/images/300/ca-8058ypbph63hqaxqb62q935rc3c8la03102023084846.jpg" alt="Job Image">
                         <div class="job-info">
                             <h3>Gestion Admin (Intelcia)</h3>
                             <p class="tags">19-03-2025 | Backoffice | Marrakech</p>
@@ -427,7 +571,7 @@
                         </div>
                     </a>
                     <a href="#apply4" class="featured-card" data-centre="konecta" data-city="marrakech" data-type="reception" data-language="francais" data-style="part-time">
-                        <img src="https://dummyimage.com/100x100/cccccc/000&text=Job+Image" alt="Job Image">
+                        <img src="https://www.moncallcenter.ma/images/300/ca-723ftvaar6uh4vjyavv9cytb1jvkca09122014023048.jpg" alt="Job Image">
                         <div class="job-info">
                             <h3>Conseiller (Konecta)</h3>
                             <p class="tags">19-03-2025 | Réception | Marrakech</p>
@@ -436,7 +580,7 @@
                         </div>
                     </a>
                     <a href="#apply5" class="featured-card" data-centre="teleperformance" data-city="casablanca" data-type="backoffice" data-language="francais" data-style="full-time">
-                        <img src="https://dummyimage.com/100x100/cccccc/000&text=Job+Image" alt="Job Image">
+                        <img src="https://www.moncallcenter.ma/images/300/ca-mhn1jr4e7h3sljpdq8p5y482isf46605112019101641.jpg" alt="Job Image">
                         <div class="job-info">
                             <h3>Gestionnaire Admin (Teleperformance)</h3>
                             <p class="tags">19-03-2025 | Backoffice | Casablanca</p>
@@ -445,7 +589,7 @@
                         </div>
                     </a>
                     <a href="#apply6" class="featured-card" data-centre="teleperformance" data-city="casablanca" data-type="backoffice" data-language="francais" data-style="part-time">
-                        <img src="https://dummyimage.com/100x100/cccccc/000&text=Job+Image" alt="Job Image">
+                        <img src="https://www.moncallcenter.ma/images/300/ca-8dfbegf4jp0n9hc64wr17c7qrhuxux17032023014440.jpg" alt="Job Image">
                         <div class="job-info">
                             <h3>Assistant Backoffice (Teleperformance)</h3>
                             <p class="tags">19-03-2025 | Backoffice | Casablanca</p>
@@ -454,7 +598,7 @@
                         </div>
                     </a>
                     <a href="#apply7" class="featured-card" data-centre="intelcia" data-city="casablanca" data-type="emission" data-language="francais" data-style="full-time">
-                        <img src="https://dummyimage.com/100x100/cccccc/000&text=Job+Image" alt="Job Image">
+                        <img src="https://www.moncallcenter.ma/images/300/ca-dxwphk4n6eiutf56t7bbsr99ta0a7r15012025022130.jpg" alt="Job Image">
                         <div class="job-info">
                             <h3>Vendeur Énergie (Intelcia)</h3>
                             <p class="tags">19-03-2025 | Émission | Casablanca</p>
@@ -463,7 +607,7 @@
                         </div>
                     </a>
                     <a href="#apply8" class="featured-card" data-centre="intelcia" data-city="rabat" data-type="emission" data-language="anglais" data-style="full-time">
-                        <img src="https://dummyimage.com/100x100/cccccc/000&text=Job+Image" alt="Job Image">
+                        <img src="https://www.moncallcenter.ma/images/300/ca-2e0sbi07arlircfnalty0187r5i51912032025092051.jpg" alt="Job Image">
                         <div class="job-info">
                             <h3>Sales Rep (Intelcia)</h3>
                             <p class="tags">19-03-2025 | Émission | Rabat</p>
@@ -472,7 +616,7 @@
                         </div>
                     </a>
                     <a href="#apply9" class="featured-card" data-centre="intelcia" data-city="fes" data-type="reception" data-language="espagnol" data-style="part-time">
-                        <img src="https://dummyimage.com/100x100/cccccc/000&text=Job+Image" alt="Job Image">
+                        <img src="https://www.moncallcenter.ma/images/300/ca-ffm9y8agyu7ly0xb23nf2lp2gnle9s24092013124753.jpg" alt="Job Image">
                         <div class="job-info">
                             <h3>Support Client (Intelcia)</h3>
                             <p class="tags">19-03-2025 | Réception | Fès</p>
@@ -481,7 +625,7 @@
                         </div>
                     </a>
                     <a href="#apply10" class="featured-card" data-centre="teleperformance" data-city="fes" data-type="reception" data-language="espagnol" data-style="full-time">
-                        <img src="https://dummyimage.com/100x100/cccccc/000&text=Job+Image" alt="Job Image">
+                        <img src="https://www.moncallcenter.ma/images/300/ca-il2kuprmsq9n37qct2mnrr5jksk7af01082019044446.jpg" alt="Job Image">
                         <div class="job-info">
                             <h3>Agent Réception (Teleperformance)</h3>
                             <p class="tags">19-03-2025 | Réception | Fès</p>
@@ -490,7 +634,7 @@
                         </div>
                     </a>
                     <a href="#apply11" class="featured-card" data-centre="outsourcia" data-city="casablanca" data-type="emission" data-language="francais" data-style="full-time">
-                        <img src="https://dummyimage.com/100x100/cccccc/000&text=Job+Image" alt="Job Image">
+                        <img src="https://www.moncallcenter.ma/images/300/ca-ykfkyd8ml8uipy9fx61lqecs7ldpg913022019124802.jpg" alt="Job Image">
                         <div class="job-info">
                             <h3>Téléconseiller Énergie (Outsourcia)</h3>
                             <p class="tags">19-03-2025 | Émission | Casablanca</p>
@@ -499,7 +643,7 @@
                         </div>
                     </a>
                     <a href="#apply12" class="featured-card" data-centre="outsourcia" data-city="fes" data-type="emission" data-language="anglais" data-style="part-time">
-                        <img src="https://dummyimage.com/100x100/cccccc/000&text=Job+Image" alt="Job Image">
+                        <img src="https://www.moncallcenter.ma/images/300/ca-2rlf01xwc5ujexwt1khhs4wivw36gt29122019102419.jpg" alt="Job Image">
                         <div class="job-info">
                             <h3>Sales Agent (Outsourcia)</h3>
                             <p class="tags">19-03-2025 | Émission | Fès</p>
@@ -508,7 +652,7 @@
                         </div>
                     </a>
                     <a href="#apply13" class="featured-card" data-centre="konecta" data-city="rabat" data-type="reception" data-language="francais" data-style="full-time">
-                        <img src="https://dummyimage.com/100x100/cccccc/000&text=Job+Image" alt="Job Image">
+                        <img src="https://www.moncallcenter.ma/images/300/ca-xexi85kjspfp44mnrmwqc1jc6ybehl02042024060403.jpg" alt="Job Image">
                         <div class="job-info">
                             <h3>Agent Support (Konecta)</h3>
                             <p class="tags">19-03-2025 | Réception | Rabat</p>
@@ -517,7 +661,7 @@
                         </div>
                     </a>
                     <a href="#apply14" class="featured-card" data-centre="konecta" data-city="marrakech" data-type="backoffice" data-language="espagnol" data-style="part-time">
-                        <img src="https://dummyimage.com/100x100/cccccc/000&text=Job+Image" alt="Job Image">
+                        <img src="https://www.moncallcenter.ma/images/300/ca-2gtrjp5cc60ieuwigl57lnp8wwrqbq07052021030744.jpg" alt="Job Image">
                         <div class="job-info">
                             <h3>Backoffice Agent (Konecta)</h3>
                             <p class="tags">19-03-2025 | Backoffice | Marrakech</p>
@@ -526,7 +670,7 @@
                         </div>
                     </a>
                     <a href="#apply15" class="featured-card" data-centre="teleperformance" data-city="casablanca" data-type="emission" data-language="anglais" data-style="full-time">
-                        <img src="https://dummyimage.com/100x100/cccccc/000&text=Job+Image" alt="Job Image">
+                        <img src="https://www.moncallcenter.ma/images/300/ca-w87hhwtkd88vmm4nakxtxf1dqwic2i27042021073058.jpg" alt="Job Image">
                         <div class="job-info">
                             <h3>Energy Sales Rep (Teleperformance)</h3>
                             <p class="tags">19-03-2025 | Émission | Casablanca</p>
@@ -564,12 +708,32 @@
 
         setInterval(rotateAds, 4000);
 
+        // User Dropdown Toggle
+        const userIcon = document.querySelector('.user-icon');
+        const dropdownMenu = document.querySelector('.dropdown-menu');
+
+        userIcon.addEventListener('click', () => {
+            dropdownMenu.classList.toggle('active');
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!userIcon.contains(e.target) && !dropdownMenu.contains(e.target)) {
+                dropdownMenu.classList.remove('active');
+            }
+        });
+
+        // Bell Icon Reminder (Placeholder)
+        const bellIcon = document.querySelector('.bell-icon');
+        bellIcon.addEventListener('click', () => {
+            alert('No reminders available.'); // Placeholder for reminder functionality
+        });
+
         // Filter Functionality
         document.getElementById('searchForm').addEventListener('submit', function(e) {
             e.preventDefault();
             const centre = this.querySelector('select[name="centre"]').value;
             const city = this.querySelector('select[name="ville"]').value;
-            const style = this.querySelector('select[name="style"]').value;
             const type = this.querySelector('select[name="type"]').value;
             const language = this.querySelector('select[name="language"]').value;
             const keyword = this.querySelector('input[name="recherche"]').value.toLowerCase();
@@ -579,19 +743,17 @@
             jobCards.forEach(card => {
                 const cardCentre = card.getAttribute('data-centre');
                 const cardCity = card.getAttribute('data-city');
-                const cardStyle = card.getAttribute('data-style');
                 const cardType = card.getAttribute('data-type');
                 const cardLanguage = card.getAttribute('data-language');
                 const cardText = card.textContent.toLowerCase();
 
                 const centreMatch = !centre || cardCentre === centre;
                 const cityMatch = !city || cardCity === city;
-                const styleMatch = !style || cardStyle === style;
                 const typeMatch = !type || cardType === type;
                 const languageMatch = !language || cardLanguage === language;
                 const keywordMatch = !keyword || cardText.includes(keyword);
 
-                if (centreMatch && cityMatch && styleMatch && typeMatch && languageMatch && keywordMatch) {
+                if (centreMatch && cityMatch && typeMatch && languageMatch && keywordMatch) {
                     card.classList.remove('hidden');
                 } else {
                     card.classList.add('hidden');
@@ -601,19 +763,17 @@
             featuredCards.forEach(card => {
                 const cardCentre = card.getAttribute('data-centre');
                 const cardCity = card.getAttribute('data-city');
-                const cardStyle = card.getAttribute('data-style');
                 const cardType = card.getAttribute('data-type');
                 const cardLanguage = card.getAttribute('data-language');
                 const cardText = card.textContent.toLowerCase();
 
                 const centreMatch = !centre || cardCentre === centre;
                 const cityMatch = !city || cardCity === city;
-                const styleMatch = !style || cardStyle === style;
                 const typeMatch = !type || cardType === type;
                 const languageMatch = !language || cardLanguage === language;
                 const keywordMatch = !keyword || cardText.includes(keyword);
 
-                if (centreMatch && cityMatch && styleMatch && typeMatch && languageMatch && keywordMatch) {
+                if (centreMatch && cityMatch && typeMatch && languageMatch && keywordMatch) {
                     card.classList.remove('hidden');
                 } else {
                     card.classList.add('hidden');
@@ -621,6 +781,36 @@
             });
 
             resetCarousel();
+        });
+
+        // City Links Filter
+        document.querySelectorAll('.city-links a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const city = this.getAttribute('href').replace('#', '');
+                const jobCards = document.querySelectorAll('.job-card');
+                const featuredCards = document.querySelectorAll('.featured-card');
+
+                jobCards.forEach(card => {
+                    const cardCity = card.getAttribute('data-city');
+                    if (!city || cardCity === city) {
+                        card.classList.remove('hidden');
+                    } else {
+                        card.classList.add('hidden');
+                    }
+                });
+
+                featuredCards.forEach(card => {
+                    const cardCity = card.getAttribute('data-city');
+                    if (!city || cardCity === city) {
+                        card.classList.remove('hidden');
+                    } else {
+                        card.classList.add('hidden');
+                    }
+                });
+
+                resetCarousel();
+            });
         });
 
         // Carousel Functionality
