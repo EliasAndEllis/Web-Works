@@ -9424,6 +9424,50 @@
       }
     }
 
+  
+    /* v87: calculator shows individual options first, combinations below. */
+    .individual-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .combo-title {
+      margin-top: 6px;
+    }
+
+    .combo-results {
+      margin-top: 0;
+    }
+
+    .combo-card.best {
+      background: var(--black);
+    }
+
+    .individual-card small {
+      min-height: 30px;
+    }
+
+    @media (max-width: 960px) and (min-width: 761px) {
+      .individual-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 760px) {
+      .individual-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+      }
+
+      .combo-title {
+        margin-top: 0 !important;
+      }
+    }
+
+    @media (max-width: 380px) {
+      .individual-grid {
+        grid-template-columns: 1fr !important;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -9476,13 +9520,13 @@
       <section class="home-panel screen-hidden" id="calculatorPanel">
         <div class="library-head">
           <h2>Calculate a <span class="orange-text">business portfolio</span></h2>
-          <p>Type your available capital and the system will build smart combinations from the business/investment data already inside this file.</p>
+          <p>Type your available capital and see every business you can start individually, then see which businesses can be combined together under the same budget.</p>
         </div>
 
         <section class="investment-calculator-panel" aria-label="Investment portfolio calculator">
           <div class="calculator-title">
             <h3>Investment <span class="orange-text">calculator</span></h3>
-            <p>Example: if you type $30,000, the calculator checks which ideas can fit together, how much capital is used, expected conservative yearly net, break-even, risk, and multiplier.</p>
+            <p>First it shows every business/investment you can start with that amount. Under that, it shows combinations that can run at the same time without passing your budget.</p>
           </div>
 
           <div class="calculator-input-grid">
@@ -11704,6 +11748,247 @@
           </div>`;
         results.innerHTML = '';
         eligible.innerHTML = '';
+      }
+    }
+
+
+    /*
+      v87 INVESTMENT CALCULATOR FINAL LOGIC
+      1) Show every individual business/investment with required capital <= typed amount.
+      2) Under that, show combinations of businesses that can run together under the same budget.
+    */
+    function calcSortEligibleIndividuals(items) {
+      return [...items].sort((a, b) => {
+        if (b.multiplier !== a.multiplier) return b.multiplier - a.multiplier;
+        if (a.capital !== b.capital) return a.capital - b.capital;
+        return b.yearlyNet - a.yearlyNet;
+      });
+    }
+
+    function calcCombinationScore(combo, budget) {
+      const totals = calcPortfolioTotals(combo, budget);
+      const usePct = budget > 0 ? totals.capitalUsed / budget : 0;
+      const multiplier = totals.multiplier || 0;
+      const speed = Number.isFinite(totals.breakEvenYears) ? Math.max(0, 2 - totals.breakEvenYears) : 0;
+      const sizeBonus = combo.length >= 2 ? Math.min(combo.length, 5) * .15 : 0;
+      return (usePct * 4) + (multiplier * 2.5) + speed + sizeBonus + (totals.yearlyNet / 20000);
+    }
+
+    function calcBestCombinations(budget, limit = 8) {
+      const candidates = getCalculatorCandidates(budget)
+        .filter(item => item.capital > 0 && item.capital <= budget)
+        .sort((a, b) => a.capital - b.capital || b.multiplier - a.multiplier)
+        .slice(0, 22);
+
+      const combos = [];
+      const seen = new Set();
+
+      function addCombo(combo) {
+        if (!combo || combo.length < 2) return;
+        const capitalUsed = combo.reduce((sum, item) => sum + item.capital, 0);
+        if (capitalUsed > budget) return;
+
+        const key = combo.map(item => item.id).sort().join('|');
+        if (seen.has(key)) return;
+        seen.add(key);
+
+        combos.push({
+          items: [...combo],
+          totals: calcPortfolioTotals(combo, budget),
+          score: calcCombinationScore(combo, budget)
+        });
+      }
+
+      function search(start, combo, used) {
+        if (combo.length >= 2) addCombo(combo);
+        if (combo.length >= 5) return;
+
+        for (let i = start; i < candidates.length; i++) {
+          const item = candidates[i];
+          const nextUsed = used + item.capital;
+          if (nextUsed > budget) continue;
+          combo.push(item);
+          search(i + 1, combo, nextUsed);
+          combo.pop();
+        }
+      }
+
+      search(0, [], 0);
+
+      return combos
+        .sort((a, b) => {
+          if (b.totals.capitalUsed !== a.totals.capitalUsed) return b.totals.capitalUsed - a.totals.capitalUsed;
+          return b.score - a.score;
+        })
+        .slice(0, limit);
+    }
+
+    function renderIndividualIdeas(budget) {
+      const ideas = calcSortEligibleIndividuals(getCalculatorCandidates(budget));
+
+      if (!ideas.length) return '';
+
+      return `
+        <div class="eligible-title">
+          <h3>Businesses you can start with <span class="orange-text">${fmtUSD(budget)}</span></h3>
+          <p>Each card below can be started individually because its required starting capital is less than or equal to your typed budget.</p>
+        </div>
+        <div class="eligible-grid individual-grid">
+          ${ideas.map(item => `
+            <button type="button" class="eligible-card individual-card" data-deck-id="${item.id}">
+              <strong>${orangeLastWord(item.name)}</strong>
+              <div><span>${fmtUSD(item.capital)}</span><span>${multiplierLabel(item.multiplier)}</span></div>
+              <small>${fmtUSD(item.yearlyNet)} net / yr · ${Number.isFinite(item.breakEvenYears) ? `${oneDecimal.format(item.breakEvenYears)} yr BE` : 'N/A'} · ${item.saturation}</small>
+            </button>`).join('')}
+        </div>`;
+    }
+
+    function renderComboCard(combo, index, budget) {
+      const t = combo.totals;
+      const usedPct = budget > 0 ? Math.min(100, Math.round((t.capitalUsed / budget) * 100)) : 0;
+      return `
+        <article class="portfolio-card combo-card ${index === 0 ? 'best' : ''}">
+          <div class="portfolio-card-head">
+            <div>
+              <span class="portfolio-rank">${String(index + 1).padStart(2, '0')}</span>
+              <h3>${combo.items.length} businesses together</h3>
+              <p>You can start all listed ideas together under the same typed budget.</p>
+            </div>
+            <div class="portfolio-badge">${usedPct}% used</div>
+          </div>
+
+          <div class="portfolio-money-grid">
+            <div><strong>${fmtUSD(t.capitalUsed)}</strong><span>capital used</span></div>
+            <div><strong>${fmtUSD(t.remaining)}</strong><span>cash left</span></div>
+            <div><strong>${fmtUSD(t.yearlyNet)}</strong><span>combined net / yr</span></div>
+            <div><strong>${multiplierLabel(t.multiplier)}</strong><span>combined multiplier</span></div>
+          </div>
+
+          <div class="portfolio-bar"><i style="width:${usedPct}%"></i></div>
+
+          <div class="portfolio-ideas">
+            ${combo.items.map(item => `
+              <button type="button" class="portfolio-idea" data-deck-id="${item.id}">
+                <div>
+                  <strong>${orangeLastWord(item.name)}</strong>
+                  <span>${item.category}</span>
+                </div>
+                <div>
+                  <b>${fmtUSD(item.capital)}</b>
+                  <em>${multiplierLabel(item.multiplier)}</em>
+                </div>
+              </button>`).join('')}
+          </div>
+
+          <div class="portfolio-footer">
+            <span>Break-even: <b>${Number.isFinite(t.breakEvenYears) ? `${oneDecimal.format(t.breakEvenYears)} yr` : 'N/A'}</b></span>
+            <span>Avg risk: <b>${t.avgRisk}</b></span>
+            <span>Avg success: <b>${t.avgSuccess}%</b></span>
+          </div>
+        </article>`;
+    }
+
+    function renderBusinessCombinations(budget) {
+      const combos = calcBestCombinations(budget, 8);
+
+      if (!combos.length) {
+        return `
+          <div class="eligible-title combo-title">
+            <h3>Businesses you can combine <span class="orange-text">together</span></h3>
+            <p>With ${fmtUSD(budget)}, there is no useful 2-business combination in the current data. You can still choose one of the individual options above.</p>
+          </div>
+          <div class="calculator-empty warning">
+            <strong>No combination fits yet.</strong>
+            <span>Increase your budget or choose one individual business from the list above.</span>
+          </div>`;
+      }
+
+      return `
+        <div class="eligible-title combo-title">
+          <h3>Businesses you can combine <span class="orange-text">together</span></h3>
+          <p>These combinations fit under your budget. They are sorted by capital usage first, then multiplier and conservative net profit.</p>
+        </div>
+        <div class="portfolio-results combo-results">
+          ${combos.map((combo, index) => renderComboCard(combo, index, budget)).join('')}
+        </div>`;
+    }
+
+    function renderInvestmentCalculator() {
+      const { budget, strategy, summary, results, eligible } = calculatorElements();
+      if (!budget || !summary || !results || !eligible) return;
+
+      try {
+        const amount = cleanBudgetValue();
+
+        if (!amount) {
+          summary.innerHTML = `
+            <div class="calculator-empty">
+              <strong>Type your available capital.</strong>
+              <span>Example: type 10000, 12k, or $30,000. Businesses will appear automatically while you type.</span>
+            </div>`;
+          eligible.innerHTML = '';
+          results.innerHTML = '';
+          return;
+        }
+
+        const individuals = calcSortEligibleIndividuals(getCalculatorCandidates(amount));
+        const cheapest = safeArray(businessDecks, [])
+          .map(safeBusinessMetric)
+          .filter(item => item.yearlyNet > 0 && item.capital > 0)
+          .sort((a, b) => a.capital - b.capital)[0];
+
+        if (!individuals.length) {
+          summary.innerHTML = `
+            <div class="calculator-empty warning">
+              <strong>No idea fits under ${fmtUSD(amount)}.</strong>
+              <span>The cheapest positive-cash-flow idea in this file needs around ${cheapest ? fmtUSD(cheapest.capital) : 'more capital'}.</span>
+            </div>`;
+          eligible.innerHTML = '';
+          results.innerHTML = '';
+          return;
+        }
+
+        const combos = calcBestCombinations(amount, 8);
+        const bestCombo = combos[0] || null;
+        const bestIndividual = individuals[0];
+
+        summary.innerHTML = `
+          <div class="calculator-summary-card dark">
+            <span>Available capital</span>
+            <strong>${fmtUSD(amount)}</strong>
+            <small>${individuals.length} individual ideas fit</small>
+          </div>
+          <div class="calculator-summary-card orange">
+            <span>Best individual multiplier</span>
+            <strong>${multiplierLabel(bestIndividual.multiplier)}</strong>
+            <small>${bestIndividual.name} · ${fmtUSD(bestIndividual.capital)}</small>
+          </div>
+          <div class="calculator-summary-card">
+            <span>Best combination</span>
+            <strong>${bestCombo ? `${bestCombo.items.length} ideas` : 'None'}</strong>
+            <small>${bestCombo ? `${fmtUSD(bestCombo.totals.capitalUsed)} used · ${fmtUSD(bestCombo.totals.remaining)} left` : 'Only one-at-a-time options fit'}</small>
+          </div>
+          <div class="calculator-summary-card">
+            <span>Combined yearly net</span>
+            <strong>${bestCombo ? fmtUSD(bestCombo.totals.yearlyNet) : fmtUSD(bestIndividual.yearlyNet)}</strong>
+            <small>${bestCombo ? `${multiplierLabel(bestCombo.totals.multiplier)} combined` : `${bestIndividual.name} only`}</small>
+          </div>`;
+
+        eligible.innerHTML = renderIndividualIdeas(amount);
+        results.innerHTML = renderBusinessCombinations(amount);
+
+        [...eligible.querySelectorAll('[data-deck-id]'), ...results.querySelectorAll('[data-deck-id]')].forEach(button => {
+          button.addEventListener('click', () => openDeck(button.dataset.deckId));
+        });
+      } catch (error) {
+        console.error('Investment calculator error:', error);
+        summary.innerHTML = `
+          <div class="calculator-empty warning">
+            <strong>Calculator error.</strong>
+            <span>${String(error && error.message ? error.message : error)}</span>
+          </div>`;
+        eligible.innerHTML = '';
+        results.innerHTML = '';
       }
     }
 
