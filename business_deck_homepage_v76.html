@@ -8690,6 +8690,596 @@
       }
     }
 
+  
+    /* v81: Investment Calculator feature. */
+    .strategy-tab[data-tab="calculator"] {
+      background: linear-gradient(135deg, #fff3ed, var(--white));
+      border-color: rgba(255,75,11,.22);
+    }
+
+    @media (min-width: 761px) {
+      .strategy-tabs {
+        grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+      }
+
+      .strategy-tab[data-tab="calculator"] strong {
+        font-size: clamp(20px, 2.15vw, 31px) !important;
+      }
+    }
+
+    .investment-calculator-panel,
+    .eligible-ideas-panel {
+      background: var(--paper);
+      border-radius: 28px;
+      padding: 28px;
+      border-top: 6px solid var(--orange);
+      box-shadow: 0 20px 58px rgba(0,0,0,.13);
+    }
+
+    .calculator-title,
+    .eligible-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 22px;
+      margin-bottom: 22px;
+    }
+
+    .calculator-title h3,
+    .eligible-title h3 {
+      margin: 0;
+      font-size: clamp(28px, 3.5vw, 48px);
+      line-height: .86;
+      letter-spacing: -.078em;
+      font-weight: 950;
+    }
+
+    .calculator-title p,
+    .eligible-title p {
+      margin: 0;
+      max-width: 440px;
+      color: var(--grey-dark);
+      font-size: 12px;
+      line-height: 1.25;
+      font-weight: 800;
+      text-align: right;
+    }
+
+    .calculator-input-grid {
+      display: grid;
+      grid-template-columns: minmax(280px, 1.3fr) minmax(220px, .75fr) auto;
+      gap: 16px;
+      align-items: end;
+    }
+
+    .calculator-control {
+      display: grid;
+      gap: 9px;
+    }
+
+    .calculator-control label {
+      font-size: 9px;
+      text-transform: uppercase;
+      color: var(--grey-dark);
+      font-weight: 950;
+      letter-spacing: -.01em;
+    }
+
+    .calculator-main-input input {
+      font-size: 16px;
+      font-weight: 950;
+    }
+
+    .calculator-button {
+      min-height: 52px;
+      padding: 13px 20px;
+      border-radius: 999px;
+      border: 0;
+      background: var(--black);
+      color: var(--white);
+      font-weight: 950;
+      font-size: 13px;
+      cursor: pointer;
+      box-shadow: 0 14px 30px rgba(0,0,0,.16);
+    }
+
+    .calculator-summary {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 20px;
+    }
+
+    .calculator-summary-card {
+      background: var(--grey-pale);
+      border-radius: 20px;
+      padding: 18px 16px;
+      min-height: 104px;
+      display: grid;
+      align-content: center;
+      gap: 7px;
+    }
+
+    .calculator-summary-card.dark {
+      background: var(--black);
+      color: var(--white);
+    }
+
+    .calculator-summary-card.orange {
+      background: var(--orange);
+      color: var(--white);
+    }
+
+    .calculator-summary-card span,
+    .calculator-summary-card small {
+      font-size: 10px;
+      line-height: 1.12;
+      font-weight: 900;
+      text-transform: uppercase;
+      opacity: .78;
+    }
+
+    .calculator-summary-card strong {
+      font-size: clamp(24px, 3.2vw, 38px);
+      line-height: .9;
+      font-weight: 950;
+      letter-spacing: -.07em;
+    }
+
+    .calculator-empty {
+      grid-column: 1 / -1;
+      background: var(--black);
+      color: var(--white);
+      border-radius: 22px;
+      padding: 24px;
+      display: grid;
+      gap: 8px;
+    }
+
+    .calculator-empty.warning {
+      background: #fff1eb;
+      color: var(--black);
+      border-left: 6px solid var(--orange);
+    }
+
+    .calculator-empty strong {
+      font-size: 24px;
+      line-height: 1;
+      font-weight: 950;
+      letter-spacing: -.05em;
+    }
+
+    .calculator-empty span {
+      font-size: 13px;
+      line-height: 1.24;
+      font-weight: 800;
+      opacity: .82;
+    }
+
+    .portfolio-results {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .portfolio-card {
+      background: var(--paper);
+      border-radius: 26px;
+      padding: 24px;
+      border-top: 6px solid var(--orange);
+      box-shadow: 0 18px 46px rgba(0,0,0,.13);
+      display: grid;
+      gap: 18px;
+    }
+
+    .portfolio-card.best {
+      background: var(--black);
+      color: var(--white);
+    }
+
+    .portfolio-card-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 18px;
+    }
+
+    .portfolio-rank {
+      display: block;
+      color: var(--orange);
+      font-size: 18px;
+      line-height: 1;
+      font-weight: 950;
+      margin-bottom: 10px;
+    }
+
+    .portfolio-card h3 {
+      margin: 0;
+      font-size: clamp(24px, 3vw, 38px);
+      line-height: .86;
+      letter-spacing: -.075em;
+      font-weight: 950;
+    }
+
+    .portfolio-card p {
+      margin: 8px 0 0;
+      font-size: 11px;
+      line-height: 1.2;
+      font-weight: 800;
+      color: var(--grey-dark);
+    }
+
+    .portfolio-card.best p {
+      color: rgba(255,255,255,.72);
+    }
+
+    .portfolio-badge {
+      flex: 0 0 auto;
+      background: var(--orange);
+      color: var(--white);
+      border-radius: 999px;
+      padding: 9px 11px;
+      font-size: 14px;
+      line-height: 1;
+      font-weight: 950;
+    }
+
+    .portfolio-money-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .portfolio-money-grid div {
+      background: var(--grey-pale);
+      border-radius: 16px;
+      padding: 13px 12px;
+      display: grid;
+      gap: 5px;
+      min-height: 72px;
+    }
+
+    .portfolio-card.best .portfolio-money-grid div {
+      background: rgba(255,255,255,.10);
+    }
+
+    .portfolio-money-grid strong {
+      font-size: 18px;
+      line-height: .95;
+      letter-spacing: -.055em;
+      font-weight: 950;
+    }
+
+    .portfolio-money-grid span {
+      font-size: 8px;
+      line-height: 1.05;
+      text-transform: uppercase;
+      font-weight: 900;
+      opacity: .70;
+    }
+
+    .portfolio-bar {
+      height: 12px;
+      border-radius: 999px;
+      background: var(--grey-pale);
+      overflow: hidden;
+    }
+
+    .portfolio-card.best .portfolio-bar {
+      background: rgba(255,255,255,.12);
+    }
+
+    .portfolio-bar i {
+      display: block;
+      height: 100%;
+      border-radius: inherit;
+      background: var(--orange);
+    }
+
+    .portfolio-ideas {
+      display: grid;
+      gap: 10px;
+    }
+
+    .portfolio-idea,
+    .eligible-card {
+      width: 100%;
+      border: 0;
+      text-align: left;
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .portfolio-idea {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      align-items: center;
+      padding: 13px 14px;
+      border-radius: 16px;
+      background: var(--grey-pale);
+      color: var(--black);
+    }
+
+    .portfolio-card.best .portfolio-idea {
+      background: rgba(255,255,255,.92);
+      color: var(--black);
+    }
+
+    .portfolio-idea strong {
+      display: block;
+      font-size: 15px;
+      line-height: .95;
+      letter-spacing: -.055em;
+      font-weight: 950;
+    }
+
+    .portfolio-idea strong span,
+    .eligible-card strong span {
+      color: var(--orange);
+    }
+
+    .portfolio-idea span {
+      display: block;
+      margin-top: 5px;
+      font-size: 8px;
+      text-transform: uppercase;
+      font-weight: 950;
+      color: var(--grey-dark);
+    }
+
+    .portfolio-idea b,
+    .portfolio-idea em {
+      display: block;
+      text-align: right;
+      font-style: normal;
+      font-weight: 950;
+      line-height: 1;
+      white-space: nowrap;
+    }
+
+    .portfolio-idea b { font-size: 14px; }
+    .portfolio-idea em { margin-top: 5px; color: var(--orange); font-size: 12px; }
+
+    .portfolio-footer {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      font-size: 10px;
+      font-weight: 900;
+      text-transform: uppercase;
+      opacity: .78;
+    }
+
+    .eligible-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .eligible-card {
+      background: var(--paper);
+      border-radius: 20px;
+      border-top: 5px solid var(--orange);
+      padding: 16px 15px;
+      box-shadow: 0 12px 30px rgba(0,0,0,.10);
+      display: grid;
+      gap: 12px;
+      color: var(--black);
+    }
+
+    .eligible-card strong {
+      font-size: 18px;
+      line-height: .92;
+      letter-spacing: -.06em;
+      font-weight: 950;
+    }
+
+    .eligible-card div {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    .eligible-card div span {
+      background: var(--grey-pale);
+      border-radius: 999px;
+      padding: 8px;
+      font-size: 11px;
+      line-height: 1;
+      font-weight: 950;
+      text-align: center;
+    }
+
+    .eligible-card small {
+      font-size: 9px;
+      line-height: 1.2;
+      font-weight: 850;
+      color: var(--grey-dark);
+    }
+
+    @media (max-width: 960px) and (min-width: 761px) {
+      .portfolio-results { grid-template-columns: 1fr; }
+      .eligible-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .calculator-input-grid { grid-template-columns: 1fr 1fr; }
+      .calculator-button { grid-column: 1 / -1; }
+    }
+
+    @media (max-width: 760px) {
+      .strategy-tabs {
+        grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+        gap: 7px !important;
+        padding: 10px !important;
+      }
+
+      .strategy-tab {
+        min-height: 76px !important;
+        border-radius: 22px !important;
+        padding: 9px 6px 8px !important;
+        gap: 6px !important;
+      }
+
+      .strategy-tab::before {
+        width: 36px !important;
+        height: 36px !important;
+        font-size: 17px !important;
+      }
+
+      .strategy-tab[data-tab="calculator"]::before {
+        content: "∑" !important;
+      }
+
+      .strategy-tab strong {
+        font-size: 8.5px !important;
+        line-height: 1.05 !important;
+      }
+
+      #calculatorPanel {
+        gap: 16px !important;
+      }
+
+      .investment-calculator-panel,
+      .eligible-ideas-panel {
+        border-radius: 26px !important;
+        padding: 20px 18px !important;
+      }
+
+      .calculator-title,
+      .eligible-title {
+        display: grid !important;
+        gap: 12px !important;
+        margin-bottom: 18px !important;
+      }
+
+      .calculator-title h3,
+      .eligible-title h3 {
+        font-size: 34px !important;
+        line-height: .86 !important;
+      }
+
+      .calculator-title p,
+      .eligible-title p {
+        max-width: none !important;
+        text-align: left !important;
+        font-size: 10px !important;
+      }
+
+      .calculator-input-grid {
+        grid-template-columns: 1fr !important;
+        gap: 12px !important;
+      }
+
+      .calculator-button {
+        min-height: 50px !important;
+        font-size: 12px !important;
+      }
+
+      .calculator-summary {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 10px !important;
+      }
+
+      .calculator-summary-card {
+        min-height: 86px !important;
+        padding: 14px 12px !important;
+        border-radius: 18px !important;
+      }
+
+      .calculator-summary-card span,
+      .calculator-summary-card small {
+        font-size: 8px !important;
+      }
+
+      .calculator-summary-card strong {
+        font-size: 22px !important;
+      }
+
+      .portfolio-results {
+        grid-template-columns: 1fr !important;
+        gap: 16px !important;
+      }
+
+      .portfolio-card {
+        border-radius: 26px !important;
+        padding: 20px 16px !important;
+        gap: 15px !important;
+      }
+
+      .portfolio-card-head {
+        align-items: flex-start !important;
+      }
+
+      .portfolio-card h3 {
+        font-size: 29px !important;
+      }
+
+      .portfolio-card p {
+        font-size: 9.5px !important;
+      }
+
+      .portfolio-money-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+      }
+
+      .portfolio-money-grid div {
+        min-height: 66px !important;
+        padding: 12px 10px !important;
+      }
+
+      .portfolio-idea {
+        padding: 12px !important;
+        border-radius: 15px !important;
+      }
+
+      .portfolio-idea strong {
+        font-size: 15px !important;
+      }
+
+      .eligible-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 12px !important;
+      }
+
+      .eligible-card {
+        padding: 14px 12px !important;
+        border-radius: 18px !important;
+      }
+
+      .eligible-card strong {
+        font-size: 17px !important;
+      }
+
+      .eligible-card div {
+        grid-template-columns: 1fr !important;
+        gap: 6px !important;
+      }
+
+      .eligible-card small {
+        font-size: 8px !important;
+      }
+    }
+
+    @media (max-width: 380px) {
+      .strategy-tab strong {
+        font-size: 7.6px !important;
+      }
+
+      .strategy-tab::before {
+        width: 32px !important;
+        height: 32px !important;
+        font-size: 15px !important;
+      }
+
+      .calculator-summary {
+        grid-template-columns: 1fr !important;
+      }
+
+      .eligible-grid {
+        grid-template-columns: 1fr !important;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -8697,7 +9287,7 @@
     <section class="home-shell">
       <div class="home-hero">
         <div class="home-brand-row">
-          <div class="insight">STRATEGY HUB <span>03/03</span></div>
+          <div class="insight">STRATEGY HUB <span>04/04</span></div>
         </div>
 
         <h1 class="home-title">Business <span>Strategy</span> Library</h1>
@@ -8708,6 +9298,7 @@
 
         <div class="strategy-tabs" role="tablist" aria-label="Homepage views">
           <button class="strategy-tab active" id="businessTab" data-tab="business" type="button"><strong>Business Decks</strong><span>Compare investment, risk, profit speed, and yearly cash flow</span></button>
+          <button class="strategy-tab" id="calculatorTab" data-tab="calculator" type="button"><strong>Investment Calculator</strong><span>Type capital and get smart business combinations</span></button>
           <button class="strategy-tab" id="jobsTab" data-tab="jobs" type="button"><strong>Job Opportunities</strong><span>Compare current EF role against wealth-management opportunity</span></button>
           <button class="strategy-tab" id="timelineTab" data-tab="timeline" type="button"><strong>Life Timeline</strong><span>Compare UAE, Spain, Canada, Morocco, and USA strategy paths</span></button>
         </div>
@@ -8740,6 +9331,43 @@
         </section>
 
         <section class="business-grid" id="businessGrid" aria-label="Business deck library"></section>
+      </section>
+
+      <section class="home-panel screen-hidden" id="calculatorPanel">
+        <div class="library-head">
+          <h2>Calculate a <span class="orange-text">business portfolio</span></h2>
+          <p>Type your available capital and the system will build smart combinations from the business/investment data already inside this file.</p>
+        </div>
+
+        <section class="investment-calculator-panel" aria-label="Investment portfolio calculator">
+          <div class="calculator-title">
+            <h3>Investment <span class="orange-text">calculator</span></h3>
+            <p>Example: if you type $30,000, the calculator checks which ideas can fit together, how much capital is used, expected conservative yearly net, break-even, risk, and multiplier.</p>
+          </div>
+
+          <div class="calculator-input-grid">
+            <div class="calculator-control calculator-main-input">
+              <label for="portfolioBudget">Available investment capital</label>
+              <input id="portfolioBudget" type="number" min="0" step="1000" inputmode="numeric" placeholder="Type amount in USD, e.g. 30000" />
+            </div>
+            <div class="calculator-control">
+              <label for="portfolioStrategy">Portfolio logic</label>
+              <select id="portfolioStrategy">
+                <option value="balanced" selected>Balanced smart mix</option>
+                <option value="multiplier">Highest multiplier first</option>
+                <option value="cashflow">Highest yearly cash flow</option>
+                <option value="fast">Fastest break-even</option>
+                <option value="safer">Lower-risk mix</option>
+              </select>
+            </div>
+            <button class="calculator-button" id="calculatePortfolio" type="button">Calculate portfolio</button>
+          </div>
+
+          <div class="calculator-summary" id="portfolioSummary"></div>
+        </section>
+
+        <section class="portfolio-results" id="portfolioResults" aria-label="Recommended business combinations"></section>
+        <section class="eligible-ideas-panel" id="eligibleIdeasPanel" aria-label="Eligible businesses under budget"></section>
       </section>
 
       <section class="home-panel screen-hidden" id="jobsPanel">
@@ -10335,16 +10963,296 @@
         </article>`).join('');
     }
 
+
+    function calculatorElements() {
+      return {
+        budget: document.getElementById('portfolioBudget'),
+        strategy: document.getElementById('portfolioStrategy'),
+        summary: document.getElementById('portfolioSummary'),
+        results: document.getElementById('portfolioResults'),
+        eligible: document.getElementById('eligibleIdeasPanel')
+      };
+    }
+
+    function cleanBudgetValue() {
+      const { budget } = calculatorElements();
+      const raw = Number(budget && budget.value ? budget.value : 0);
+      return Number.isFinite(raw) && raw > 0 ? raw : 0;
+    }
+
+    function investmentMetric(deck) {
+      const stats = deckStats(deck);
+      return {
+        deck,
+        capital: stats.openingCapital,
+        yearlyNet: stats.yearlyNet,
+        yearlyRevenue: stats.yearlyRevenue,
+        breakEvenYears: stats.breakEvenYears,
+        multiplier: stats.multiplier,
+        success: stats.success,
+        risk: stats.risk,
+        speed: stats.speed,
+        researchScore: stats.researchScore,
+        profitEfficiency: stats.profitEfficiency
+      };
+    }
+
+    function portfolioScore(item, strategy) {
+      const safeBreakEven = Number.isFinite(item.breakEvenYears) ? item.breakEvenYears : 99;
+      const riskPenalty = item.risk * .55;
+      const multiplierBoost = Math.min(item.multiplier, 5) * 22;
+      const cashBoost = Math.max(item.yearlyNet, 0) / 850;
+      const speedBoost = Math.max(0, 100 - safeBreakEven * 38);
+      const successBoost = item.success * .9;
+
+      if (strategy === 'multiplier') return multiplierBoost * 2.4 + speedBoost * .7 + successBoost - riskPenalty;
+      if (strategy === 'cashflow') return cashBoost * 2.4 + successBoost + multiplierBoost * .7 - riskPenalty;
+      if (strategy === 'fast') return speedBoost * 2 + multiplierBoost + successBoost * .7 - riskPenalty;
+      if (strategy === 'safer') return successBoost * 1.6 + speedBoost * .7 + multiplierBoost * .55 - item.risk;
+      return item.researchScore + multiplierBoost + cashBoost + speedBoost * .45 - riskPenalty;
+    }
+
+    function buildPortfolio(budget, strategy, maxItems = 6) {
+      const candidates = businessDecks
+        .map(investmentMetric)
+        .filter(item => item.capital > 0 && item.capital <= budget && item.yearlyNet > 0)
+        .sort((a, b) => {
+          const scoreA = portfolioScore(a, strategy) / Math.pow(Math.max(a.capital, 1), .68);
+          const scoreB = portfolioScore(b, strategy) / Math.pow(Math.max(b.capital, 1), .68);
+          return scoreB - scoreA;
+        });
+
+      const selected = [];
+      let used = 0;
+      const categoryCount = {};
+
+      for (const item of candidates) {
+        if (selected.length >= maxItems) break;
+        if (used + item.capital > budget) continue;
+
+        const category = item.deck.category || 'Other';
+        const alreadyCategory = categoryCount[category] || 0;
+        const allowDuplicateCategory = strategy === 'cashflow' || strategy === 'multiplier';
+        if (!allowDuplicateCategory && alreadyCategory >= 2) continue;
+
+        selected.push(item);
+        used += item.capital;
+        categoryCount[category] = alreadyCategory + 1;
+      }
+
+      // Try to use remaining cash with the best small idea that still fits.
+      const remaining = budget - used;
+      const filler = candidates
+        .filter(item => !selected.some(existing => existing.deck.id === item.deck.id) && item.capital <= remaining)
+        .sort((a, b) => portfolioScore(b, strategy) - portfolioScore(a, strategy))[0];
+      if (filler && selected.length < maxItems) {
+        selected.push(filler);
+        used += filler.capital;
+      }
+
+      return selected;
+    }
+
+    function portfolioTotals(items, budget) {
+      const capitalUsed = items.reduce((sum, item) => sum + item.capital, 0);
+      const yearlyNet = items.reduce((sum, item) => sum + item.yearlyNet, 0);
+      const yearlyRevenue = items.reduce((sum, item) => sum + item.yearlyRevenue, 0);
+      const avgRisk = items.length ? Math.round(items.reduce((sum, item) => sum + item.risk, 0) / items.length) : 0;
+      const avgSuccess = items.length ? Math.round(items.reduce((sum, item) => sum + item.success, 0) / items.length) : 0;
+      const multiplier = capitalUsed > 0 ? yearlyNet / capitalUsed : 0;
+      const breakEvenYears = yearlyNet > 0 ? capitalUsed / yearlyNet : Infinity;
+      return {
+        capitalUsed,
+        remaining: Math.max(0, budget - capitalUsed),
+        yearlyNet,
+        yearlyRevenue,
+        avgRisk,
+        avgSuccess,
+        multiplier,
+        breakEvenYears
+      };
+    }
+
+    function portfolioKey(items) {
+      return items.map(item => item.deck.id).sort().join('|');
+    }
+
+    function portfolioName(strategy) {
+      return {
+        balanced: 'Balanced smart mix',
+        multiplier: 'Highest multiplier mix',
+        cashflow: 'Highest cash-flow mix',
+        fast: 'Fastest break-even mix',
+        safer: 'Lower-risk mix'
+      }[strategy] || 'Smart mix';
+    }
+
+    function recommendedPortfolios(budget, selectedStrategy) {
+      const strategies = [selectedStrategy, 'multiplier', 'cashflow', 'fast', 'safer', 'balanced'];
+      const seen = new Set();
+      const portfolios = [];
+
+      for (const strategy of strategies) {
+        const items = buildPortfolio(budget, strategy, 6);
+        if (!items.length) continue;
+        const key = portfolioKey(items);
+        if (seen.has(key)) continue;
+        seen.add(key);
+        portfolios.push({ strategy, items, totals: portfolioTotals(items, budget) });
+        if (portfolios.length >= 4) break;
+      }
+
+      return portfolios;
+    }
+
+    function renderPortfolioCard(portfolio, index, budget) {
+      const t = portfolio.totals;
+      const isBest = index === 0;
+      const usedPct = budget > 0 ? Math.min(100, Math.round((t.capitalUsed / budget) * 100)) : 0;
+      return `
+        <article class="portfolio-card ${isBest ? 'best' : ''}">
+          <div class="portfolio-card-head">
+            <div>
+              <span class="portfolio-rank">${String(index + 1).padStart(2, '0')}</span>
+              <h3>${portfolioName(portfolio.strategy)}</h3>
+              <p>${portfolio.items.length} ideas can run together under the typed capital.</p>
+            </div>
+            <div class="portfolio-badge">${multiplierLabel(t.multiplier)}</div>
+          </div>
+
+          <div class="portfolio-money-grid">
+            <div><strong>${fmtMoney(t.capitalUsed)}</strong><span>capital used</span></div>
+            <div><strong>${fmtMoney(t.remaining)}</strong><span>cash left</span></div>
+            <div><strong>${fmtMoney(t.yearlyNet)}</strong><span>conservative net / yr</span></div>
+            <div><strong>${Number.isFinite(t.breakEvenYears) ? `${oneDecimal.format(t.breakEvenYears)} yr` : 'N/A'}</strong><span>portfolio break-even</span></div>
+          </div>
+
+          <div class="portfolio-bar"><i style="width:${usedPct}%"></i></div>
+
+          <div class="portfolio-ideas">
+            ${portfolio.items.map(item => `
+              <button type="button" class="portfolio-idea" data-deck-id="${item.deck.id}">
+                <div>
+                  <strong>${orangeLastWord(item.deck.shortName)}</strong>
+                  <span>${item.deck.category}</span>
+                </div>
+                <div>
+                  <b>${fmtMoney(item.capital)}</b>
+                  <em>${multiplierLabel(item.multiplier)}</em>
+                </div>
+              </button>`).join('')}
+          </div>
+
+          <div class="portfolio-footer">
+            <span>Avg success: <b>${t.avgSuccess}%</b></span>
+            <span>Avg risk score: <b>${t.avgRisk}</b></span>
+          </div>
+        </article>`;
+    }
+
+    function renderEligibleIdeas(budget) {
+      const ideas = businessDecks
+        .map(investmentMetric)
+        .filter(item => item.capital <= budget && item.yearlyNet > 0)
+        .sort((a, b) => b.multiplier - a.multiplier)
+        .slice(0, 12);
+
+      if (!ideas.length) return '';
+
+      return `
+        <div class="eligible-title">
+          <h3>Eligible ideas under <span class="orange-text">${fmtMoney(budget)}</span></h3>
+          <p>Sorted by 1-year multiplier, so you can see which ideas stretch your capital the most.</p>
+        </div>
+        <div class="eligible-grid">
+          ${ideas.map(item => `
+            <button type="button" class="eligible-card" data-deck-id="${item.deck.id}">
+              <strong>${orangeLastWord(item.deck.shortName)}</strong>
+              <div><span>${fmtMoney(item.capital)}</span><span>${multiplierLabel(item.multiplier)}</span></div>
+              <small>${fmtMoney(item.yearlyNet)} net / yr · ${Number.isFinite(item.breakEvenYears) ? `${oneDecimal.format(item.breakEvenYears)} yr BE` : 'N/A'}</small>
+            </button>`).join('')}
+        </div>`;
+    }
+
+    function renderInvestmentCalculator() {
+      const { budget, strategy, summary, results, eligible } = calculatorElements();
+      if (!budget || !strategy || !summary || !results || !eligible) return;
+
+      const amount = cleanBudgetValue();
+      if (!amount) {
+        summary.innerHTML = `
+          <div class="calculator-empty">
+            <strong>Type your available capital.</strong>
+            <span>Example: type 30000 to see which combinations fit under $30,000.</span>
+          </div>`;
+        results.innerHTML = '';
+        eligible.innerHTML = '';
+        return;
+      }
+
+      const investable = businessDecks.map(investmentMetric).filter(item => item.capital <= amount && item.yearlyNet > 0);
+      const cheapest = businessDecks.map(investmentMetric).filter(item => item.yearlyNet > 0).sort((a, b) => a.capital - b.capital)[0];
+
+      if (!investable.length) {
+        summary.innerHTML = `
+          <div class="calculator-empty warning">
+            <strong>No business fits under ${fmtMoney(amount)}.</strong>
+            <span>The cheapest positive-cash-flow idea in this file needs around ${cheapest ? fmtMoney(cheapest.capital) : 'more capital'}.</span>
+          </div>`;
+        results.innerHTML = '';
+        eligible.innerHTML = '';
+        return;
+      }
+
+      const portfolios = recommendedPortfolios(amount, strategy.value);
+      const best = portfolios[0];
+      const bestTotals = best ? best.totals : portfolioTotals([], amount);
+
+      summary.innerHTML = `
+        <div class="calculator-summary-card dark">
+          <span>Available capital</span>
+          <strong>${fmtMoney(amount)}</strong>
+          <small>${investable.length} eligible ideas found</small>
+        </div>
+        <div class="calculator-summary-card orange">
+          <span>Best capital use</span>
+          <strong>${fmtMoney(bestTotals.capitalUsed)}</strong>
+          <small>${fmtMoney(bestTotals.remaining)} left unused</small>
+        </div>
+        <div class="calculator-summary-card">
+          <span>Best yearly net</span>
+          <strong>${fmtMoney(bestTotals.yearlyNet)}</strong>
+          <small>${multiplierLabel(bestTotals.multiplier)} 1-year multiplier</small>
+        </div>
+        <div class="calculator-summary-card">
+          <span>Portfolio break-even</span>
+          <strong>${Number.isFinite(bestTotals.breakEvenYears) ? `${oneDecimal.format(bestTotals.breakEvenYears)} yr` : 'N/A'}</strong>
+          <small>Conservative blended estimate</small>
+        </div>`;
+
+      results.innerHTML = portfolios.map((portfolio, index) => renderPortfolioCard(portfolio, index, amount)).join('');
+      eligible.innerHTML = renderEligibleIdeas(amount);
+
+      [...results.querySelectorAll('[data-deck-id]'), ...eligible.querySelectorAll('[data-deck-id]')].forEach(button => {
+        button.addEventListener('click', () => openDeck(button.dataset.deckId));
+      });
+    }
+
+
     function switchHomeTab(tab) {
       const showBusiness = tab === 'business';
+      const showCalculator = tab === 'calculator';
       const showJobs = tab === 'jobs';
       const showTimeline = tab === 'timeline';
       businessPanel.classList.toggle('screen-hidden', !showBusiness);
+      calculatorPanel.classList.toggle('screen-hidden', !showCalculator);
       jobsPanel.classList.toggle('screen-hidden', !showJobs);
       timelinePanel.classList.toggle('screen-hidden', !showTimeline);
       businessTab.classList.toggle('active', showBusiness);
+      calculatorTab.classList.toggle('active', showCalculator);
       jobsTab.classList.toggle('active', showJobs);
       timelineTab.classList.toggle('active', showTimeline);
+      if (showCalculator) renderInvestmentCalculator();
       if (showJobs) renderJobs();
       if (showTimeline) {
         renderCountries();
@@ -10983,8 +11891,15 @@
     [scenarioCountry, scenarioMode, scenarioCapital, scenarioRisk].forEach(control => control.addEventListener('change', renderScenarioPlanner));
     businessCheckboxes.addEventListener('change', renderScenarioPlanner);
     businessTab.addEventListener('click', () => switchHomeTab('business'));
+    calculatorTab.addEventListener('click', () => switchHomeTab('calculator'));
     jobsTab.addEventListener('click', () => switchHomeTab('jobs'));
     timelineTab.addEventListener('click', () => switchHomeTab('timeline'));
+
+    [portfolioBudget, portfolioStrategy].forEach(control => {
+      control.addEventListener('input', renderInvestmentCalculator);
+      control.addEventListener('change', renderInvestmentCalculator);
+    });
+    calculatePortfolio.addEventListener('click', renderInvestmentCalculator);
 
 
     // v39 mobile/app-style selection behavior for compact job and life cards.
