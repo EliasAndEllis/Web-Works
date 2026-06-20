@@ -9280,6 +9280,104 @@
       }
     }
 
+  
+    /* v82: mobile-only compact business filter grid.
+       The 6 filter controls now sit as 3 per row instead of one huge item per line. */
+    @media (max-width: 760px) {
+      #businessPanel .filter-panel {
+        padding: 18px 14px 20px !important;
+        border-radius: 26px !important;
+      }
+
+      #businessPanel .filter-title {
+        margin-bottom: 14px !important;
+      }
+
+      #businessPanel .business-action-strip {
+        gap: 8px !important;
+        margin-bottom: 14px !important;
+      }
+
+      #businessPanel .filter-grid {
+        display: grid !important;
+        grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+        gap: 10px 8px !important;
+        align-items: end !important;
+        width: 100% !important;
+      }
+
+      #businessPanel .filter-control {
+        min-width: 0 !important;
+        gap: 6px !important;
+      }
+
+      #businessPanel .filter-control label {
+        font-size: 7.2px !important;
+        line-height: 1 !important;
+        letter-spacing: .01em !important;
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+      }
+
+      #businessPanel .filter-control input,
+      #businessPanel .filter-control select {
+        width: 100% !important;
+        min-width: 0 !important;
+        min-height: 42px !important;
+        height: 42px !important;
+        padding: 8px 22px 8px 9px !important;
+        border-radius: 14px !important;
+        font-size: 9px !important;
+        line-height: 1 !important;
+        font-weight: 900 !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        white-space: nowrap !important;
+        background-position: calc(100% - 8px) center !important;
+        background-size: 10px !important;
+      }
+
+      #businessPanel #investmentFilter::placeholder {
+        font-size: 8px !important;
+      }
+
+      #businessPanel .reset-row {
+        margin-top: 14px !important;
+        justify-content: flex-end !important;
+      }
+
+      #businessPanel .reset-row button {
+        min-height: 40px !important;
+        padding: 10px 15px !important;
+        border-radius: 16px !important;
+        font-size: 10px !important;
+      }
+    }
+
+    @media (max-width: 380px) {
+      #businessPanel .filter-grid {
+        gap: 9px 6px !important;
+      }
+
+      #businessPanel .filter-control label {
+        font-size: 6.5px !important;
+      }
+
+      #businessPanel .filter-control input,
+      #businessPanel .filter-control select {
+        min-height: 38px !important;
+        height: 38px !important;
+        padding: 7px 19px 7px 7px !important;
+        border-radius: 13px !important;
+        font-size: 7.8px !important;
+      }
+
+      #businessPanel #investmentFilter::placeholder {
+        font-size: 7px !important;
+      }
+    }
+
   </style>
 </head>
 <body>
