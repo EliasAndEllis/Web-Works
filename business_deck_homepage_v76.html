@@ -9378,6 +9378,52 @@
       }
     }
 
+  
+    /* v83: removed Currency and Method cards from homepage hero. */
+    @media (min-width: 761px) {
+      .home-title {
+        margin-bottom: 30px !important;
+      }
+
+      .strategy-tabs {
+        margin-top: 0 !important;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .home-title {
+        margin-bottom: 28px !important;
+      }
+
+      .strategy-tabs {
+        margin-top: 0 !important;
+      }
+    }
+
+  
+    /* v84: calculator amount parser fix. */
+    #portfolioBudget {
+      font-variant-numeric: tabular-nums;
+    }
+
+  
+    /* v86: calculator is live while typing, no calculate button. */
+    .calculator-input-grid {
+      grid-template-columns: minmax(280px, 1fr) minmax(220px, .7fr) !important;
+    }
+
+    @media (max-width: 960px) and (min-width: 761px) {
+      .calculator-input-grid {
+        grid-template-columns: 1fr 1fr !important;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .calculator-input-grid {
+        grid-template-columns: 1fr !important;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -9389,10 +9435,6 @@
         </div>
 
         <h1 class="home-title">Business <span>Strategy</span> Library</h1>
-        <div class="home-metrics">
-          <div class="home-metric orange"><div class="label">Currency</div><div class="value">USD</div><div class="small">All financial numbers shown in US dollars</div></div>
-          <div class="home-metric"><div class="label">Method</div><div class="value">Safe</div><div class="small">Conservative scoring only, no best-case assumptions</div></div>
-        </div>
 
         <div class="strategy-tabs" role="tablist" aria-label="Homepage views">
           <button class="strategy-tab active" id="businessTab" data-tab="business" type="button"><strong>Business Decks</strong><span>Compare investment, risk, profit speed, and yearly cash flow</span></button>
@@ -9446,7 +9488,7 @@
           <div class="calculator-input-grid">
             <div class="calculator-control calculator-main-input">
               <label for="portfolioBudget">Available investment capital</label>
-              <input id="portfolioBudget" type="number" min="0" step="1000" inputmode="numeric" placeholder="Type amount in USD, e.g. 30000" />
+              <input id="portfolioBudget" type="text" inputmode="decimal" autocomplete="off" placeholder="Type amount in USD, e.g. 30000 or 40k" />
             </div>
             <div class="calculator-control">
               <label for="portfolioStrategy">Portfolio logic</label>
@@ -9458,7 +9500,7 @@
                 <option value="safer">Lower-risk mix</option>
               </select>
             </div>
-            <button class="calculator-button" id="calculatePortfolio" type="button">Calculate portfolio</button>
+            
           </div>
 
           <div class="calculator-summary" id="portfolioSummary"></div>
@@ -10547,8 +10589,10 @@
     }
     function pctLabel(value) { return `${Math.round(value * 100)}%`; }
     function orangeLastWord(text) {
-      const parts = text.split(' ');
-      if (parts.length < 2) return `<span>${text}</span>`;
+      const safeText = String(text || '').trim();
+      if (!safeText) return '<span>Unnamed</span>';
+      const parts = safeText.split(/\s+/).filter(Boolean);
+      if (parts.length < 2) return `<span>${safeText}</span>`;
       const last = parts.pop();
       return `${parts.join(' ')} <span>${last}</span>`;
     }
@@ -11072,10 +11116,42 @@
       };
     }
 
+    function parseMoneyInput(value) {
+      let text = String(value || '').trim().toLowerCase();
+      if (!text) return 0;
+
+      let multiplier = 1;
+      if (/\bm\b|m$/.test(text)) multiplier = 1000000;
+      else if (/\bk\b|k$/.test(text)) multiplier = 1000;
+
+      text = text.replace(/million|millions|m\b/g, '')
+                 .replace(/thousand|thousands|k\b/g, '')
+                 .replace(/[^0-9.,]/g, '');
+
+      if (!text) return 0;
+
+      const hasComma = text.includes(',');
+      const hasDot = text.includes('.');
+
+      // Treat commas as thousands separators unless the user only typed a decimal comma.
+      if (hasComma && hasDot) {
+        text = text.replace(/,/g, '');
+      } else if (hasComma && !hasDot) {
+        const parts = text.split(',');
+        if (parts.length > 2 || (parts[1] && parts[1].length === 3)) {
+          text = text.replace(/,/g, '');
+        } else {
+          text = text.replace(',', '.');
+        }
+      }
+
+      const raw = Number(text);
+      return Number.isFinite(raw) && raw > 0 ? raw * multiplier : 0;
+    }
+
     function cleanBudgetValue() {
       const { budget } = calculatorElements();
-      const raw = Number(budget && budget.value ? budget.value : 0);
-      return Number.isFinite(raw) && raw > 0 ? raw : 0;
+      return parseMoneyInput(budget ? budget.value : 0);
     }
 
     function investmentMetric(deck) {
@@ -11219,9 +11295,9 @@
           </div>
 
           <div class="portfolio-money-grid">
-            <div><strong>${fmtMoney(t.capitalUsed)}</strong><span>capital used</span></div>
-            <div><strong>${fmtMoney(t.remaining)}</strong><span>cash left</span></div>
-            <div><strong>${fmtMoney(t.yearlyNet)}</strong><span>conservative net / yr</span></div>
+            <div><strong>${fmtUSD(t.capitalUsed)}</strong><span>capital used</span></div>
+            <div><strong>${fmtUSD(t.remaining)}</strong><span>cash left</span></div>
+            <div><strong>${fmtUSD(t.yearlyNet)}</strong><span>conservative net / yr</span></div>
             <div><strong>${Number.isFinite(t.breakEvenYears) ? `${oneDecimal.format(t.breakEvenYears)} yr` : 'N/A'}</strong><span>portfolio break-even</span></div>
           </div>
 
@@ -11235,7 +11311,7 @@
                   <span>${item.deck.category}</span>
                 </div>
                 <div>
-                  <b>${fmtMoney(item.capital)}</b>
+                  <b>${fmtUSD(item.capital)}</b>
                   <em>${multiplierLabel(item.multiplier)}</em>
                 </div>
               </button>`).join('')}
@@ -11259,15 +11335,15 @@
 
       return `
         <div class="eligible-title">
-          <h3>Eligible ideas under <span class="orange-text">${fmtMoney(budget)}</span></h3>
+          <h3>Eligible ideas under <span class="orange-text">${fmtUSD(budget)}</span></h3>
           <p>Sorted by 1-year multiplier, so you can see which ideas stretch your capital the most.</p>
         </div>
         <div class="eligible-grid">
           ${ideas.map(item => `
             <button type="button" class="eligible-card" data-deck-id="${item.deck.id}">
               <strong>${orangeLastWord(item.deck.shortName)}</strong>
-              <div><span>${fmtMoney(item.capital)}</span><span>${multiplierLabel(item.multiplier)}</span></div>
-              <small>${fmtMoney(item.yearlyNet)} net / yr · ${Number.isFinite(item.breakEvenYears) ? `${oneDecimal.format(item.breakEvenYears)} yr BE` : 'N/A'}</small>
+              <div><span>${fmtUSD(item.capital)}</span><span>${multiplierLabel(item.multiplier)}</span></div>
+              <small>${fmtUSD(item.yearlyNet)} net / yr · ${Number.isFinite(item.breakEvenYears) ? `${oneDecimal.format(item.breakEvenYears)} yr BE` : 'N/A'}</small>
             </button>`).join('')}
         </div>`;
     }
@@ -11294,8 +11370,8 @@
       if (!investable.length) {
         summary.innerHTML = `
           <div class="calculator-empty warning">
-            <strong>No business fits under ${fmtMoney(amount)}.</strong>
-            <span>The cheapest positive-cash-flow idea in this file needs around ${cheapest ? fmtMoney(cheapest.capital) : 'more capital'}.</span>
+            <strong>No business fits under ${fmtUSD(amount)}.</strong>
+            <span>The cheapest positive-cash-flow idea in this file needs around ${cheapest ? fmtUSD(cheapest.capital) : 'more capital'}.</span>
           </div>`;
         results.innerHTML = '';
         eligible.innerHTML = '';
@@ -11309,17 +11385,17 @@
       summary.innerHTML = `
         <div class="calculator-summary-card dark">
           <span>Available capital</span>
-          <strong>${fmtMoney(amount)}</strong>
+          <strong>${fmtUSD(amount)}</strong>
           <small>${investable.length} eligible ideas found</small>
         </div>
         <div class="calculator-summary-card orange">
           <span>Best capital use</span>
-          <strong>${fmtMoney(bestTotals.capitalUsed)}</strong>
-          <small>${fmtMoney(bestTotals.remaining)} left unused</small>
+          <strong>${fmtUSD(bestTotals.capitalUsed)}</strong>
+          <small>${fmtUSD(bestTotals.remaining)} left unused</small>
         </div>
         <div class="calculator-summary-card">
           <span>Best yearly net</span>
-          <strong>${fmtMoney(bestTotals.yearlyNet)}</strong>
+          <strong>${fmtUSD(bestTotals.yearlyNet)}</strong>
           <small>${multiplierLabel(bestTotals.multiplier)} 1-year multiplier</small>
         </div>
         <div class="calculator-summary-card">
@@ -11336,6 +11412,300 @@
       });
     }
 
+
+
+    /*
+      v86 SAFE INVESTMENT CALCULATOR OVERRIDE
+      This version is directly connected to businessDecks and avoids undefined .length errors.
+      It uses the same deck data as the Business Decks grid.
+    */
+    function safeArray(value, fallback = []) {
+      return Array.isArray(value) ? value : fallback;
+    }
+
+    function safeNumber(value, fallback = 0) {
+      const number = Number(value);
+      return Number.isFinite(number) ? number : fallback;
+    }
+
+    function safeBusinessMetric(deck) {
+      const occupancies = safeArray(deck.occupancies, [0.30, 0.45, 0.60]);
+      const conservativeOcc = safeNumber(occupancies[1], safeNumber(occupancies[0], 0.45));
+      const capacity = safeNumber(deck.capacity, 0);
+      const contribution = safeNumber(deck.pricePerUnitMonthly, 0);
+      const gross = safeNumber(deck.grossPricePerUnitMonthly || deck.pricePerUnitMonthly, contribution);
+      const recurring = safeNumber(deck.recurringCostYearly, 0);
+      const opening = safeNumber(deck.openingCapital, 0);
+      const marketing = safeNumber(deck.marketingCostYearly, 0);
+
+      // If marketing was already added into recurring by the global marketing logic, this still remains conservative.
+      const annualRevenue = capacity * conservativeOcc * gross * 12;
+      const annualNet = (capacity * conservativeOcc * contribution * 12) - recurring;
+      const positiveNet = Number.isFinite(annualNet) ? annualNet : 0;
+      const breakEvenYears = positiveNet > 0 && opening > 0 ? opening / positiveNet : Infinity;
+      const multiplier = opening > 0 ? positiveNet / opening : 0;
+
+      return {
+        deck,
+        id: String(deck.id || ''),
+        name: String(deck.shortName || deck.name || 'Unnamed business'),
+        category: String(deck.category || 'Business'),
+        capital: opening,
+        yearlyNet: positiveNet,
+        yearlyRevenue: Number.isFinite(annualRevenue) ? annualRevenue : 0,
+        breakEvenYears,
+        multiplier,
+        success: safeNumber(deck.successScore, 40),
+        risk: safeNumber(deck.riskScore, 75),
+        speed: safeNumber(deck.profitSpeedScore, 35),
+        saturation: String(deck.saturationLevel || 'High'),
+        riskLevel: String(deck.riskLevel || 'high')
+      };
+    }
+
+    function investmentMetric(deck) {
+      return safeBusinessMetric(deck);
+    }
+
+    function calcPortfolioScore(item, strategy) {
+      const safeBreakEven = Number.isFinite(item.breakEvenYears) ? item.breakEvenYears : 99;
+      const riskPenalty = item.risk * .50;
+      const multiplierBoost = Math.min(Math.max(item.multiplier, 0), 6) * 24;
+      const cashBoost = Math.max(item.yearlyNet, 0) / 900;
+      const speedBoost = Math.max(0, 100 - safeBreakEven * 42);
+      const successBoost = item.success * .90;
+
+      if (strategy === 'multiplier') return multiplierBoost * 2.5 + speedBoost * .7 + successBoost - riskPenalty;
+      if (strategy === 'cashflow') return cashBoost * 2.6 + multiplierBoost * .8 + successBoost - riskPenalty;
+      if (strategy === 'fast') return speedBoost * 2.2 + multiplierBoost + successBoost * .6 - riskPenalty;
+      if (strategy === 'safer') return successBoost * 1.7 + speedBoost * .8 + multiplierBoost * .5 - item.risk;
+      return multiplierBoost + cashBoost + speedBoost + successBoost - riskPenalty;
+    }
+
+    function getCalculatorCandidates(budget) {
+      const allDecks = safeArray(businessDecks, []);
+      return allDecks
+        .map(safeBusinessMetric)
+        .filter(item => item.id && item.capital > 0 && item.capital <= budget && item.yearlyNet > 0);
+    }
+
+    function calcBuildPortfolio(budget, strategy, maxItems = 6) {
+      const candidates = getCalculatorCandidates(budget)
+        .sort((a, b) => {
+          const scoreA = calcPortfolioScore(a, strategy) / Math.pow(Math.max(a.capital, 1), .62);
+          const scoreB = calcPortfolioScore(b, strategy) / Math.pow(Math.max(b.capital, 1), .62);
+          return scoreB - scoreA;
+        });
+
+      const selected = [];
+      let used = 0;
+      const categoryCount = {};
+
+      for (const item of candidates) {
+        if (selected.length >= maxItems) break;
+        if (used + item.capital > budget) continue;
+
+        const category = item.category || 'Other';
+        const alreadyCategory = categoryCount[category] || 0;
+        const allowDuplicateCategory = strategy === 'cashflow' || strategy === 'multiplier';
+        if (!allowDuplicateCategory && alreadyCategory >= 2) continue;
+
+        selected.push(item);
+        used += item.capital;
+        categoryCount[category] = alreadyCategory + 1;
+      }
+
+      return selected;
+    }
+
+    function calcPortfolioTotals(items, budget) {
+      const list = safeArray(items, []);
+      const capitalUsed = list.reduce((sum, item) => sum + safeNumber(item.capital, 0), 0);
+      const yearlyNet = list.reduce((sum, item) => sum + safeNumber(item.yearlyNet, 0), 0);
+      const yearlyRevenue = list.reduce((sum, item) => sum + safeNumber(item.yearlyRevenue, 0), 0);
+      const avgRisk = list.length ? Math.round(list.reduce((sum, item) => sum + safeNumber(item.risk, 0), 0) / list.length) : 0;
+      const avgSuccess = list.length ? Math.round(list.reduce((sum, item) => sum + safeNumber(item.success, 0), 0) / list.length) : 0;
+      const multiplier = capitalUsed > 0 ? yearlyNet / capitalUsed : 0;
+      const breakEvenYears = yearlyNet > 0 ? capitalUsed / yearlyNet : Infinity;
+      return {
+        capitalUsed,
+        remaining: Math.max(0, budget - capitalUsed),
+        yearlyNet,
+        yearlyRevenue,
+        avgRisk,
+        avgSuccess,
+        multiplier,
+        breakEvenYears
+      };
+    }
+
+    function calcPortfolioKey(items) {
+      return safeArray(items, []).map(item => item.id || item.deck?.id || '').sort().join('|');
+    }
+
+    function calcRecommendedPortfolios(budget, selectedStrategy) {
+      const strategies = [selectedStrategy || 'balanced', 'multiplier', 'cashflow', 'fast', 'safer', 'balanced'];
+      const seen = new Set();
+      const portfolios = [];
+
+      for (const strategy of strategies) {
+        const items = calcBuildPortfolio(budget, strategy, 6);
+        if (!items.length) continue;
+        const key = calcPortfolioKey(items);
+        if (seen.has(key)) continue;
+        seen.add(key);
+        portfolios.push({ strategy, items, totals: calcPortfolioTotals(items, budget) });
+        if (portfolios.length >= 4) break;
+      }
+
+      return portfolios;
+    }
+
+    function calcRenderPortfolioCard(portfolio, index, budget) {
+      const items = safeArray(portfolio && portfolio.items, []);
+      const t = (portfolio && portfolio.totals) ? portfolio.totals : calcPortfolioTotals(items, budget);
+      const isBest = index === 0;
+      const usedPct = budget > 0 ? Math.min(100, Math.round((t.capitalUsed / budget) * 100)) : 0;
+      return `
+        <article class="portfolio-card ${isBest ? 'best' : ''}">
+          <div class="portfolio-card-head">
+            <div>
+              <span class="portfolio-rank">${String(index + 1).padStart(2, '0')}</span>
+              <h3>${portfolioName(portfolio.strategy)}</h3>
+              <p>${items.length} ideas can run together under the typed capital.</p>
+            </div>
+            <div class="portfolio-badge">${multiplierLabel(t.multiplier)}</div>
+          </div>
+
+          <div class="portfolio-money-grid">
+            <div><strong>${fmtUSD(t.capitalUsed)}</strong><span>capital used</span></div>
+            <div><strong>${fmtUSD(t.remaining)}</strong><span>cash left</span></div>
+            <div><strong>${fmtUSD(t.yearlyNet)}</strong><span>conservative net / yr</span></div>
+            <div><strong>${Number.isFinite(t.breakEvenYears) ? `${oneDecimal.format(t.breakEvenYears)} yr` : 'N/A'}</strong><span>portfolio break-even</span></div>
+          </div>
+
+          <div class="portfolio-bar"><i style="width:${usedPct}%"></i></div>
+
+          <div class="portfolio-ideas">
+            ${items.map(item => `
+              <button type="button" class="portfolio-idea" data-deck-id="${item.id}">
+                <div>
+                  <strong>${orangeLastWord(item.name)}</strong>
+                  <span>${item.category}</span>
+                </div>
+                <div>
+                  <b>${fmtUSD(item.capital)}</b>
+                  <em>${multiplierLabel(item.multiplier)}</em>
+                </div>
+              </button>`).join('')}
+          </div>
+
+          <div class="portfolio-footer">
+            <span>Avg success: <b>${t.avgSuccess}%</b></span>
+            <span>Avg risk score: <b>${t.avgRisk}</b></span>
+          </div>
+        </article>`;
+    }
+
+    function renderEligibleIdeas(budget) {
+      const ideas = getCalculatorCandidates(budget)
+        .sort((a, b) => b.multiplier - a.multiplier)
+        .slice(0, 18);
+
+      if (!ideas.length) return '';
+
+      return `
+        <div class="eligible-title">
+          <h3>Eligible ideas under <span class="orange-text">${fmtUSD(budget)}</span></h3>
+          <p>Sorted by 1-year multiplier. Click any idea to open its full deck.</p>
+        </div>
+        <div class="eligible-grid">
+          ${ideas.map(item => `
+            <button type="button" class="eligible-card" data-deck-id="${item.id}">
+              <strong>${orangeLastWord(item.name)}</strong>
+              <div><span>${fmtUSD(item.capital)}</span><span>${multiplierLabel(item.multiplier)}</span></div>
+              <small>${fmtUSD(item.yearlyNet)} net / yr · ${Number.isFinite(item.breakEvenYears) ? `${oneDecimal.format(item.breakEvenYears)} yr BE` : 'N/A'}</small>
+            </button>`).join('')}
+        </div>`;
+    }
+
+    function renderInvestmentCalculator() {
+      const { budget, strategy, summary, results, eligible } = calculatorElements();
+      if (!budget || !strategy || !summary || !results || !eligible) return;
+
+      try {
+        const amount = cleanBudgetValue();
+        if (!amount) {
+          summary.innerHTML = `
+            <div class="calculator-empty">
+              <strong>Type your available capital.</strong>
+              <span>Example: type 30000, 30k, or $30,000 to see which combinations fit.</span>
+            </div>`;
+          results.innerHTML = '';
+          eligible.innerHTML = '';
+          return;
+        }
+
+        const investable = getCalculatorCandidates(amount);
+        const cheapest = safeArray(businessDecks, [])
+          .map(safeBusinessMetric)
+          .filter(item => item.yearlyNet > 0 && item.capital > 0)
+          .sort((a, b) => a.capital - b.capital)[0];
+
+        if (!investable.length) {
+          summary.innerHTML = `
+            <div class="calculator-empty warning">
+              <strong>No idea fits under ${fmtUSD(amount)}.</strong>
+              <span>The cheapest positive-cash-flow idea in this file needs around ${cheapest ? fmtUSD(cheapest.capital) : 'more capital'}.</span>
+            </div>`;
+          results.innerHTML = '';
+          eligible.innerHTML = '';
+          return;
+        }
+
+        const portfolios = calcRecommendedPortfolios(amount, strategy.value || 'balanced');
+        const best = portfolios[0] || { items: [], totals: calcPortfolioTotals([], amount), strategy: 'balanced' };
+        const bestTotals = best.totals;
+
+        summary.innerHTML = `
+          <div class="calculator-summary-card dark">
+            <span>Available capital</span>
+            <strong>${fmtUSD(amount)}</strong>
+            <small>${investable.length} eligible ideas found</small>
+          </div>
+          <div class="calculator-summary-card orange">
+            <span>Best capital use</span>
+            <strong>${fmtUSD(bestTotals.capitalUsed)}</strong>
+            <small>${fmtUSD(bestTotals.remaining)} left unused</small>
+          </div>
+          <div class="calculator-summary-card">
+            <span>Best yearly net</span>
+            <strong>${fmtUSD(bestTotals.yearlyNet)}</strong>
+            <small>${multiplierLabel(bestTotals.multiplier)} 1-year multiplier</small>
+          </div>
+          <div class="calculator-summary-card">
+            <span>Portfolio break-even</span>
+            <strong>${Number.isFinite(bestTotals.breakEvenYears) ? `${oneDecimal.format(bestTotals.breakEvenYears)} yr` : 'N/A'}</strong>
+            <small>Conservative blended estimate</small>
+          </div>`;
+
+        results.innerHTML = portfolios.map((portfolio, index) => calcRenderPortfolioCard(portfolio, index, amount)).join('');
+        eligible.innerHTML = renderEligibleIdeas(amount);
+
+        [...results.querySelectorAll('[data-deck-id]'), ...eligible.querySelectorAll('[data-deck-id]')].forEach(button => {
+          button.addEventListener('click', () => openDeck(button.dataset.deckId));
+        });
+      } catch (error) {
+        console.error('Investment calculator error:', error);
+        summary.innerHTML = `
+          <div class="calculator-empty warning">
+            <strong>Calculator error fixed by safe mode.</strong>
+            <span>${String(error && error.message ? error.message : error)}</span>
+          </div>`;
+        results.innerHTML = '';
+        eligible.innerHTML = '';
+      }
+    }
 
     function switchHomeTab(tab) {
       const showBusiness = tab === 'business';
@@ -11993,11 +12363,12 @@
     jobsTab.addEventListener('click', () => switchHomeTab('jobs'));
     timelineTab.addEventListener('click', () => switchHomeTab('timeline'));
 
-    [portfolioBudget, portfolioStrategy].forEach(control => {
+    [document.getElementById('portfolioBudget'), document.getElementById('portfolioStrategy')].forEach(control => {
+      if (!control) return;
       control.addEventListener('input', renderInvestmentCalculator);
       control.addEventListener('change', renderInvestmentCalculator);
     });
-    calculatePortfolio.addEventListener('click', renderInvestmentCalculator);
+    // Calculator updates live when the user types; no button needed.
 
 
     // v39 mobile/app-style selection behavior for compact job and life cards.
