@@ -10780,467 +10780,132 @@
     }
 
   
-    /* v106: approaches section reorganized.
-       The ads + landing page + demand test workflow is now ONE approach, not six separate approaches. */
-    .approach-method-card {
-      background: var(--white);
-      border: 1px solid rgba(17,17,17,.08);
-      border-radius: 28px;
-      padding: 24px;
-      box-shadow: 0 16px 36px rgba(0,0,0,.08);
-    }
-
-    .approach-method-head {
+    /* v106: approaches section restructured.
+       The ads + website + WhatsApp + demand validation plan is ONE complete approach, not six separate approaches. */
+    .approach-single {
       display: grid;
-      grid-template-columns: 54px minmax(0, 1fr);
-      gap: 18px;
-      align-items: start;
-      margin-bottom: 22px;
+      grid-template-columns: minmax(0, 2fr) minmax(230px, .7fr) minmax(230px, .7fr);
+      gap: 16px;
+      align-items: stretch;
     }
 
-    .approach-method-head .approach-number {
-      width: 54px;
-      height: 54px;
-      font-size: 16px;
-      background: var(--orange);
-      color: var(--white);
+    .approach-main {
+      min-height: 0;
     }
 
-    .approach-method-head h4 {
-      margin: 0;
-      font-size: clamp(26px, 3.6vw, 44px);
-      line-height: .9;
-      letter-spacing: -.075em;
-      font-weight: 950;
-    }
-
-    .approach-method-head p {
-      margin: 9px 0 0;
-      max-width: 820px;
-      color: var(--grey-dark);
-      font-size: 13px;
-      line-height: 1.35;
-      font-weight: 800;
-    }
-
-    .approach-steps-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 14px;
-    }
-
-    .approach-step {
-      min-height: 205px;
-      padding: 20px 18px;
-      border-radius: 22px;
-      background: var(--grey-pale);
-      display: grid;
-      align-content: start;
-      gap: 10px;
-      border: 1px solid rgba(17,17,17,.06);
-    }
-
-    .approach-step.dark {
-      background: var(--black);
-      color: var(--white);
-    }
-
-    .approach-step.orange {
-      background: var(--orange);
-      color: var(--white);
-    }
-
-    .approach-step strong {
-      font-size: 10px;
-      font-weight: 950;
-      color: var(--orange);
-      text-transform: uppercase;
-    }
-
-    .approach-step.dark strong,
-    .approach-step.orange strong {
-      color: rgba(255,255,255,.78);
-    }
-
-    .approach-step h5 {
-      margin: 0;
-      font-size: 20px;
-      line-height: .95;
-      letter-spacing: -.06em;
-      font-weight: 950;
-    }
-
-    .approach-step p {
-      margin: 0;
-      color: var(--grey-dark);
-      font-size: 12.3px;
-      line-height: 1.34;
-      font-weight: 760;
-    }
-
-    .approach-step.dark p,
-    .approach-step.orange p {
-      color: rgba(255,255,255,.84);
-    }
-
-    .approach-decision-bar {
+    .approach-flow {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 12px;
-      margin-top: 16px;
+      gap: 10px;
+      margin-top: 8px;
     }
 
-    .approach-decision-bar div {
-      padding: 16px 18px;
-      border-radius: 20px;
-      background: var(--pale-orange);
-      border: 1px solid rgba(255,75,11,.18);
+    .approach-flow div {
+      background: rgba(255,255,255,.10);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 16px;
+      padding: 12px;
     }
 
-    .approach-decision-bar span {
+    .approach-flow strong {
       display: block;
-      color: var(--orange);
-      font-size: 10px;
-      font-weight: 950;
-      text-transform: uppercase;
+      color: var(--white);
+      font-size: 13px;
+      line-height: 1;
+      letter-spacing: -.035em;
       margin-bottom: 6px;
     }
 
-    .approach-decision-bar strong {
+    .approach-flow span {
       display: block;
-      color: var(--black);
-      font-size: 13px;
-      line-height: 1.25;
-      font-weight: 900;
+      color: rgba(255,255,255,.78);
+      font-size: 11.5px;
+      line-height: 1.28;
+      font-weight: 750;
     }
 
-    .future-approaches-grid {
+    .approach-flow b {
+      color: var(--white);
+      font-weight: 950;
+    }
+
+    .approach-decision {
+      margin-top: 12px;
+      border-radius: 18px;
+      padding: 14px;
+      background: var(--orange);
+      color: var(--white);
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 14px;
-      margin-top: 16px;
+      gap: 5px;
     }
 
-    .future-approaches-grid article {
-      padding: 18px 20px;
-      border-radius: 22px;
-      background: rgba(255,255,255,.66);
-      border: 1px dashed rgba(17,17,17,.20);
-    }
-
-    .future-approaches-grid span {
-      display: inline-block;
-      color: var(--orange);
+    .approach-decision strong {
       font-size: 13px;
-      font-weight: 950;
-      margin-bottom: 8px;
-    }
-
-    .future-approaches-grid h4 {
-      margin: 0 0 6px;
-      font-size: 23px;
-      line-height: .9;
-      letter-spacing: -.065em;
+      line-height: 1;
       font-weight: 950;
     }
 
-    .future-approaches-grid p {
-      margin: 0;
+    .approach-decision span {
+      font-size: 11.5px;
+      line-height: 1.28;
+      font-weight: 800;
+      color: rgba(255,255,255,.88);
+    }
+
+    .approach-placeholder {
+      background: var(--white);
+      border: 1px dashed rgba(17,17,17,.22);
+      box-shadow: none;
+      min-height: 0;
+    }
+
+    .approach-placeholder .approach-number {
+      background: rgba(17,17,17,.07);
       color: var(--grey-dark);
-      font-size: 12.5px;
-      line-height: 1.3;
-      font-weight: 780;
     }
 
-    @media (max-width: 960px) and (min-width: 761px) {
-      .approach-steps-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+    .approach-placeholder h4,
+    .approach-placeholder p {
+      color: rgba(17,17,17,.58);
+    }
+
+    @media (max-width: 1100px) and (min-width: 761px) {
+      .approach-single {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .approach-main {
+        grid-column: 1 / -1;
       }
     }
 
     @media (max-width: 760px) {
-      .approach-method-card {
-        padding: 16px !important;
-        border-radius: 22px !important;
-      }
-
-      .approach-method-head {
-        grid-template-columns: 42px minmax(0, 1fr) !important;
-        gap: 12px !important;
-        margin-bottom: 14px !important;
-      }
-
-      .approach-method-head .approach-number {
-        width: 42px !important;
-        height: 42px !important;
-        font-size: 13px !important;
-      }
-
-      .approach-method-head h4 {
-        font-size: 25px !important;
-        line-height: .9 !important;
-      }
-
-      .approach-method-head p {
-        font-size: 11.8px !important;
-        line-height: 1.32 !important;
-      }
-
-      .approach-steps-grid {
+      .approach-single {
         grid-template-columns: 1fr !important;
-        gap: 9px !important;
+        gap: 10px !important;
       }
 
-      .approach-step {
-        min-height: 0 !important;
-        padding: 15px !important;
-        border-radius: 18px !important;
-        gap: 7px !important;
-      }
-
-      .approach-step h5 {
-        font-size: 18px !important;
-      }
-
-      .approach-step p {
-        font-size: 11.8px !important;
-      }
-
-      .approach-decision-bar,
-      .future-approaches-grid {
+      .approach-flow {
         grid-template-columns: 1fr !important;
-        gap: 9px !important;
-      }
-
-      .approach-decision-bar div,
-      .future-approaches-grid article {
-        padding: 14px !important;
-        border-radius: 17px !important;
-      }
-    }
-
-  
-    /* v107: mobile-only homepage business boxes restored to the large tile design.
-       Desktop remains unchanged. */
-    @media (max-width: 760px) {
-      #businessPanel .business-grid {
-        display: grid !important;
-        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-        gap: 14px !important;
-      }
-
-      #businessPanel .business-card {
-        position: relative !important;
-        min-height: 410px !important;
-        max-height: none !important;
-        padding: 22px 14px 18px !important;
-        border-top: 6px solid var(--orange) !important;
-        border-radius: 28px !important;
-        background: #fff !important;
-        color: var(--black) !important;
-        box-shadow: 0 18px 44px rgba(0,0,0,.14) !important;
-        overflow: hidden !important;
-        display: flex !important;
-        flex-direction: column !important;
-        justify-content: flex-start !important;
-      }
-
-      #businessPanel .business-card.featured {
-        background: var(--black) !important;
-        color: #fff !important;
-      }
-
-      #businessPanel .business-card::after {
-        content: "";
-        display: block;
-        width: 78%;
-        height: 28px;
-        margin: 13px auto 6px;
-        background-repeat: no-repeat;
-        background-position: center;
-        background-size: contain;
-        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 260 38' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8 25 C42 9 77 31 112 18 C144 5 164 29 194 14 C220 4 234 23 252 16' fill='none' stroke='%23ff4b0b' stroke-width='8' stroke-linecap='round'/%3E%3C/svg%3E");
-        opacity: .86;
-        order: 9;
-      }
-
-      #businessPanel .business-card .card-top {
-        display: block !important;
-        margin-bottom: 20px !important;
-      }
-
-      #businessPanel .business-card .card-number {
-        color: var(--orange) !important;
-        font-size: 26px !important;
-        line-height: 1 !important;
-        font-weight: 950 !important;
-        letter-spacing: -.06em !important;
-      }
-
-      #businessPanel .business-card .card-pill,
-      #businessPanel .business-card .card-label,
-      #businessPanel .business-card .card-desc,
-      #businessPanel .business-card .score-line {
-        display: none !important;
-      }
-
-      #businessPanel .business-card .card-title {
-        margin: 0 0 20px !important;
-        font-size: clamp(29px, 8.5vw, 42px) !important;
-        line-height: .88 !important;
-        letter-spacing: -.085em !important;
-        font-weight: 950 !important;
-        max-width: 100% !important;
-      }
-
-      #businessPanel .business-card .card-title span {
-        color: var(--orange) !important;
-      }
-
-      #businessPanel .business-target-flags {
-        margin: 0 0 22px !important;
-        display: block !important;
-      }
-
-      #businessPanel .business-target-flags .target-label {
-        display: none !important;
-      }
-
-      #businessPanel .target-flag-row {
-        display: flex !important;
-        flex-wrap: wrap !important;
         gap: 8px !important;
       }
 
-      #businessPanel .target-flag-item {
-        width: 40px !important;
-        height: 34px !important;
-        padding: 0 !important;
-        display: inline-grid !important;
-        place-items: center !important;
-        border-radius: 13px !important;
-        background: rgba(0,0,0,.08) !important;
-        box-shadow: inset 0 0 0 2px rgba(255,255,255,.54), 0 4px 10px rgba(0,0,0,.10) !important;
-        overflow: hidden !important;
+      .approach-flow div {
+        padding: 11px !important;
+        border-radius: 14px !important;
       }
 
-      #businessPanel .business-card.featured .target-flag-item {
-        background: rgba(255,255,255,.16) !important;
-        box-shadow: inset 0 0 0 2px rgba(255,255,255,.28), 0 4px 12px rgba(0,0,0,.20) !important;
+      .approach-flow strong {
+        font-size: 12.5px !important;
       }
 
-      #businessPanel .target-flag-item > span {
+      .approach-flow span,
+      .approach-decision span {
+        font-size: 11.5px !important;
+      }
+
+      .approach-placeholder {
         display: none !important;
-      }
-
-      #businessPanel .business-flag {
-        width: 28px !important;
-        height: 19px !important;
-        border-radius: 4px !important;
-        box-shadow: 0 0 0 1px rgba(0,0,0,.08) !important;
-      }
-
-      #businessPanel .business-card .card-stats {
-        display: grid !important;
-        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-        gap: 10px !important;
-        margin-top: 0 !important;
-        max-height: none !important;
-        grid-auto-rows: auto !important;
-      }
-
-      #businessPanel .business-card .card-stat {
-        min-height: 59px !important;
-        padding: 11px 10px !important;
-        border-radius: 18px !important;
-        background: rgba(0,0,0,.055) !important;
-        display: grid !important;
-        align-content: center !important;
-      }
-
-      #businessPanel .business-card.featured .card-stat {
-        background: rgba(255,255,255,.13) !important;
-      }
-
-      #businessPanel .business-card .card-stat strong {
-        font-size: clamp(20px, 6.4vw, 30px) !important;
-        line-height: .88 !important;
-        letter-spacing: -.075em !important;
-        font-weight: 950 !important;
-        white-space: nowrap !important;
-      }
-
-      #businessPanel .business-card .card-stat span {
-        margin-top: 5px !important;
-        font-size: 8.5px !important;
-        line-height: 1.05 !important;
-        letter-spacing: -.02em !important;
-        font-weight: 950 !important;
-        text-transform: uppercase !important;
-        opacity: .72 !important;
-      }
-
-      #businessPanel .business-card .desktop-multiplier-card {
-        display: grid !important;
-        visibility: visible !important;
-      }
-
-      #businessPanel .business-card .card-stat:nth-child(n+7) {
-        display: none !important;
-      }
-
-      #businessPanel .business-card .open-card {
-        order: 10 !important;
-        margin-top: auto !important;
-        padding-top: 4px !important;
-        color: var(--orange) !important;
-        font-size: 9.5px !important;
-        line-height: 1.1 !important;
-        letter-spacing: -.01em !important;
-        text-transform: uppercase !important;
-        font-weight: 950 !important;
-        text-align: center !important;
-      }
-    }
-
-    @media (max-width: 390px) {
-      #businessPanel .business-grid {
-        gap: 10px !important;
-      }
-
-      #businessPanel .business-card {
-        min-height: 382px !important;
-        padding: 19px 11px 16px !important;
-        border-radius: 25px !important;
-      }
-
-      #businessPanel .business-card .card-title {
-        font-size: 27px !important;
-      }
-
-      #businessPanel .target-flag-item {
-        width: 35px !important;
-        height: 30px !important;
-        border-radius: 11px !important;
-      }
-
-      #businessPanel .business-flag {
-        width: 24px !important;
-        height: 16px !important;
-      }
-
-      #businessPanel .business-card .card-stat {
-        min-height: 53px !important;
-        padding: 9px 8px !important;
-        border-radius: 16px !important;
-      }
-
-      #businessPanel .business-card .card-stat strong {
-        font-size: 19px !important;
-      }
-
-      #businessPanel .business-card .card-stat span {
-        font-size: 7.6px !important;
       }
     }
 
@@ -11291,81 +10956,53 @@
         </section>
 
         <section class="business-grid" id="businessGrid" aria-label="Business deck library"></section>
+
+
         <section class="approaches-panel" aria-label="Business success approaches">
           <div class="approaches-title">
             <div>
               <span class="eyebrow">Execution playbook</span>
               <h3>Approaches to make it <span class="orange-text">work smoothly</span></h3>
             </div>
-            <p>This section is for different ways to validate and operate the businesses. The first approach below combines ads, landing pages, WhatsApp, request tracking, and demand testing into one complete method.</p>
+            <p>This section is for different operating approaches we can test across the businesses. The first approach below is the full paid-demand validation approach before committing serious capital.</p>
           </div>
 
-          <div class="approach-method-card">
-            <div class="approach-method-head">
+          <div class="approach-single">
+            <article class="approach-card approach-main dark">
               <span class="approach-number">01</span>
-              <div>
-                <h4>Approach 1 — Demand validation before opening</h4>
-                <p>Use a small paid campaign and landing page to prove demand before spending serious money on licenses, staff, rent, equipment, or inventory.</p>
+              <h4>Paid demand validation before launching</h4>
+              <p>This is one complete approach: test demand first with paid ads, a landing page, WhatsApp/contact forms, and real request tracking before opening or fully operating the business.</p>
+
+              <div class="approach-flow">
+                <div><strong>1. Pick one business</strong><span>Example: cleaning, laundry, pest control, Moroccan products, car detailing, or another service from the deck.</span></div>
+                <div><strong>2. Start with Dubai</strong><span>Target UAE residents, but keep the first test focused on Dubai before expanding to Abu Dhabi, Sharjah, or the full UAE.</span></div>
+                <div><strong>3. Run small paid ads</strong><span>Use Meta, TikTok, Google, and other platforms with a small budget of around <b>$5–$50/day</b> for 7–14 days.</span></div>
+                <div><strong>4. Build a landing page</strong><span>Create a simple website with pricing, services, proof, previous client/work examples, FAQs, WhatsApp, and request forms.</span></div>
+                <div><strong>5. Track real demand</strong><span>Measure WhatsApp messages, form submissions, calls, quote requests, booked jobs, lead cost, and close rate. Clicks alone do not prove demand.</span></div>
+                <div><strong>6. Operate only if demand is proven</strong><span>If requests are strong and margins make sense, start operating manually with partners, freelancers, suppliers, or a small team before scaling.</span></div>
               </div>
-            </div>
 
-            <div class="approach-steps-grid">
-              <article class="approach-step dark">
-                <strong>Step 1</strong>
-                <h5>Pick one business and one city</h5>
-                <p>Start with Dubai only. Test one business at a time: cleaning, laundry, pest control, Moroccan products, car detailing, lunch boxes, or another selected idea.</p>
-              </article>
-
-              <article class="approach-step">
-                <strong>Step 2</strong>
-                <h5>Build the landing page</h5>
-                <p>Create a simple website or landing page with service details, pricing, trust proof, previous clients/work examples, FAQs, WhatsApp button, and request form.</p>
-              </article>
-
-              <article class="approach-step orange">
-                <strong>Step 3</strong>
-                <h5>Run small paid ads</h5>
-                <p>Run Meta, TikTok, Google, or other social ads to UAE residents. Start with <b>$5–$50/day</b> for 7–14 days before increasing the budget.</p>
-              </article>
-
-              <article class="approach-step">
-                <strong>Step 4</strong>
-                <h5>Track real demand</h5>
-                <p>Measure WhatsApp messages, form submissions, calls, quote requests, and booked jobs. Clicks alone do not prove demand.</p>
-              </article>
-
-              <article class="approach-step">
-                <strong>Step 5</strong>
-                <h5>Operate manually first</h5>
-                <p>If requests come in, fulfill the first jobs using partners, suppliers, freelancers, or a small team before hiring heavily or locking in big fixed costs.</p>
-              </article>
-
-              <article class="approach-step">
-                <strong>Step 6</strong>
-                <h5>Scale only if the numbers work</h5>
-                <p>Move forward only if lead cost, close rate, margin, delivery quality, repeat demand, and customer feedback are strong enough.</p>
-              </article>
-            </div>
-
-            <div class="approach-decision-bar">
-              <div><span>Green light</span><strong>Many real requests + acceptable lead cost + jobs can be fulfilled profitably</strong></div>
-              <div><span>Stop / revise</span><strong>Clicks with no WhatsApp/form requests, weak margins, or poor fulfillment quality</strong></div>
-            </div>
-          </div>
-
-          <div class="future-approaches-grid">
-            <article>
-              <span>02</span>
-              <h4>Approach 2</h4>
-              <p>Reserved for the next operating method we decide to test.</p>
+              <div class="approach-decision">
+                <strong>Decision rule:</strong>
+                <span>If the campaign creates qualified requests at a reasonable cost, the business becomes a serious candidate. If people click but do not request the service, pause it or test a different angle before spending more capital.</span>
+              </div>
             </article>
-            <article>
-              <span>03</span>
-              <h4>Approach 3</h4>
-              <p>Reserved for another method, such as partnership-first, supplier-first, or direct sales-first validation.</p>
+
+            <article class="approach-card approach-placeholder">
+              <span class="approach-number">02</span>
+              <h4>Next approach</h4>
+              <p>This space is for the next operating approach we add later. It should be a separate strategy, not another step of Approach 1.</p>
+            </article>
+
+            <article class="approach-card approach-placeholder">
+              <span class="approach-number">03</span>
+              <h4>Next approach</h4>
+              <p>Another approach can be added here after we define it: partnerships, pre-sales, B2B outreach, pilot contracts, supplier-first testing, or another method.</p>
             </article>
           </div>
         </section>
+        </section>
+
       </section>
 
       <section class="home-panel screen-hidden" id="calculatorPanel">
@@ -12698,7 +12335,7 @@
                 <div class="score-row"><span>Speed</span><div class="score-track"><i class="score-fill" style="width:${deck.profitSpeedScore}%"></i></div><strong>${deck.profitSpeedScore}</strong></div>
               </div>
             </div>
-            <div class="open-card">Click to see full business deck →</div>
+            <div class="open-card">Open full deck →</div>
           </button>`;
       }).join('') || '<div class="filter-panel"><strong>No business found.</strong><p class="source-note">Reset filters or lower the success threshold.</p></div>';
 
