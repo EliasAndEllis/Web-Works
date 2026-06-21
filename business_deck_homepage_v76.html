@@ -11209,6 +11209,193 @@
       }
     }
 
+  
+    /* v116: desktop homepage selector cards spacing fix */
+    @media (min-width: 761px) {
+      .strategy-tabs {
+        display: grid !important;
+        grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+        gap: 28px !important;
+        align-items: stretch !important;
+        margin-top: 30px !important;
+      }
+
+      .strategy-tab {
+        min-height: 210px !important;
+        height: auto !important;
+        padding: 34px 30px 30px !important;
+        border-radius: 28px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: space-between !important;
+        align-items: flex-start !important;
+        gap: 20px !important;
+        overflow: hidden !important;
+      }
+
+      .strategy-tab strong {
+        display: block !important;
+        font-size: clamp(34px, 3.4vw, 54px) !important;
+        line-height: .82 !important;
+        letter-spacing: -.085em !important;
+        max-width: 100% !important;
+        white-space: normal !important;
+        overflow-wrap: anywhere !important;
+      }
+
+      .strategy-tab span {
+        display: block !important;
+        max-width: 92% !important;
+        font-size: 12px !important;
+        line-height: 1.16 !important;
+        letter-spacing: -.025em !important;
+        font-weight: 900 !important;
+        white-space: normal !important;
+      }
+
+      .home-hero {
+        padding-bottom: 42px !important;
+      }
+    }
+
+    @media (min-width: 1120px) {
+      .strategy-tabs {
+        gap: 32px !important;
+      }
+
+      .strategy-tab {
+        min-height: 230px !important;
+        padding: 38px 34px 32px !important;
+      }
+
+      .strategy-tab strong {
+        font-size: clamp(38px, 3.2vw, 58px) !important;
+      }
+
+      .strategy-tab span {
+        font-size: 12.5px !important;
+        line-height: 1.18 !important;
+      }
+    }
+
+    @media (min-width: 761px) and (max-width: 980px) {
+      .strategy-tabs {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+      }
+
+      .strategy-tab {
+        min-height: 190px !important;
+      }
+    }
+
+  
+    /* v117: mobile business cards less condensed + CTA as simple bottom line, not button */
+    @media (max-width: 760px) {
+      #businessPanel .business-grid {
+        gap: 12px !important;
+        align-items: stretch !important;
+      }
+
+      #businessPanel .business-card {
+        aspect-ratio: auto !important;
+        min-height: 315px !important;
+        max-height: none !important;
+        height: auto !important;
+        padding: 14px 12px 11px !important;
+        border-radius: 24px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: space-between !important;
+        overflow: hidden !important;
+      }
+
+      #businessPanel .business-card > div:first-child {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 8px !important;
+      }
+
+      #businessPanel .business-card .card-top {
+        min-height: 24px !important;
+        padding-right: 0 !important;
+        margin-bottom: 0 !important;
+      }
+
+      #businessPanel .business-card::before {
+        display: none !important;
+        content: none !important;
+      }
+
+      #businessPanel .business-card .card-title {
+        font-size: clamp(19px, 5vw, 24px) !important;
+        line-height: .94 !important;
+        min-height: 48px !important;
+        margin: 2px 0 6px !important;
+        -webkit-line-clamp: 2 !important;
+      }
+
+      #businessPanel .business-card .business-target-flags {
+        margin: 0 0 4px !important;
+      }
+
+      #businessPanel .business-card .card-stats {
+        grid-template-columns: 1fr 1fr !important;
+        gap: 8px !important;
+        margin-top: 8px !important;
+      }
+
+      #businessPanel .business-card .card-stat {
+        min-height: 45px !important;
+        padding: 8px 7px !important;
+        border-radius: 14px !important;
+        overflow: hidden !important;
+      }
+
+      #businessPanel .business-card .card-stat strong {
+        font-size: 15px !important;
+        line-height: .92 !important;
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+      }
+
+      #businessPanel .business-card .card-stat span {
+        font-size: 6.6px !important;
+        line-height: 1.05 !important;
+        margin-top: 4px !important;
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+      }
+
+      #businessPanel .business-card .open-card {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        width: 100% !important;
+        min-height: 0 !important;
+        margin: 10px 0 0 !important;
+        padding: 9px 0 0 !important;
+        border-top: 1.5px solid rgba(255,75,11,.45) !important;
+        border-radius: 0 !important;
+        background: transparent !important;
+        box-shadow: none !important;
+        color: var(--orange) !important;
+        font-size: 9px !important;
+        line-height: 1.1 !important;
+        text-align: left !important;
+        letter-spacing: -.01em !important;
+        text-transform: uppercase !important;
+        font-weight: 950 !important;
+      }
+
+      #businessPanel .business-card.featured .open-card {
+        background: transparent !important;
+        border-top-color: rgba(255,75,11,.75) !important;
+        color: var(--orange) !important;
+      }
+    }
+
   </style>
 </head>
 <body>
