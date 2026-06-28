@@ -11594,6 +11594,462 @@
       }
     }
 
+  
+    /* v124: organize homepage navigation 2-by-2 and add Money Simulator */
+    @media (min-width: 761px) {
+      .home-hero > .strategy-tabs {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 24px !important;
+      }
+
+      .home-hero > .strategy-tabs > .strategy-tab {
+        min-height: 190px !important;
+      }
+
+      #businessTab { order: 1 !important; }
+      #calculatorTab { order: 2 !important; }
+      #jobsTab { order: 3 !important; }
+      #timelineTab { order: 4 !important; }
+      #moneyTab {
+        order: 5 !important;
+        grid-column: 1 / -1 !important;
+        min-height: 170px !important;
+      }
+
+      #moneyTab strong {
+        max-width: 760px !important;
+      }
+
+      #moneyTab span {
+        max-width: 720px !important;
+      }
+    }
+
+    .money-simulator-panel {
+      padding: 34px;
+      border-radius: 30px;
+      background: rgba(255,255,255,.78);
+      border: 1px solid rgba(0,0,0,.08);
+      box-shadow: 0 18px 45px rgba(0,0,0,.08);
+      display: grid;
+      gap: 24px;
+    }
+
+    .money-input-grid {
+      margin-top: 0 !important;
+    }
+
+    .money-duo-note {
+      padding: 15px 16px;
+      border-radius: 18px;
+      background: rgba(255,75,11,.08);
+      border: 1px solid rgba(255,75,11,.18);
+      display: grid;
+      gap: 6px;
+    }
+
+    .money-duo-note strong {
+      color: var(--orange);
+      font-size: 10px;
+      line-height: 1;
+      text-transform: uppercase;
+      letter-spacing: .02em;
+      font-weight: 950;
+    }
+
+    .money-duo-note span {
+      color: var(--grey-dark);
+      font-size: 12px;
+      line-height: 1.34;
+      font-weight: 850;
+    }
+
+    .money-business-list {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .money-business-card {
+      display: grid;
+      grid-template-columns: 24px 1fr;
+      gap: 10px;
+      align-items: start;
+      min-height: 92px;
+      padding: 14px;
+      border-radius: 18px;
+      background: #fff;
+      box-shadow: inset 0 0 0 1px rgba(0,0,0,.07);
+      cursor: pointer;
+    }
+
+    .money-business-card input {
+      width: 18px !important;
+      height: 18px !important;
+      min-height: 18px !important;
+      margin-top: 2px;
+      accent-color: var(--orange);
+    }
+
+    .money-business-card span {
+      display: grid;
+      gap: 7px;
+    }
+
+    .money-business-card strong {
+      color: var(--black);
+      font-size: 15px;
+      line-height: .98;
+      font-weight: 950;
+      letter-spacing: -.045em;
+    }
+
+    .money-business-card em {
+      color: var(--grey-dark);
+      font-size: 10px;
+      line-height: 1.22;
+      font-style: normal;
+      font-weight: 850;
+    }
+
+    .money-output {
+      display: grid;
+      gap: 18px;
+    }
+
+    .money-summary-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .money-selected-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .money-selected-row {
+      border: 0;
+      width: 100%;
+      text-align: left;
+      padding: 14px 16px;
+      border-radius: 18px;
+      background: var(--black);
+      color: #fff;
+      display: grid;
+      gap: 6px;
+      cursor: pointer;
+    }
+
+    .money-selected-row strong {
+      font-size: 16px;
+      line-height: 1;
+      font-weight: 950;
+      letter-spacing: -.04em;
+    }
+
+    .money-selected-row span {
+      font-size: 11px;
+      line-height: 1.28;
+      font-weight: 850;
+      color: rgba(255,255,255,.72);
+    }
+
+    @media (min-width: 761px) and (max-width: 1100px) {
+      .money-business-list,
+      .money-summary-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+      }
+    }
+
+    @media (max-width: 760px) {
+      #moneyTab::before { content: "$" !important; }
+
+      .money-simulator-panel {
+        padding: 20px 16px !important;
+        border-radius: 24px !important;
+        gap: 18px !important;
+      }
+
+      .money-business-list,
+      .money-summary-grid {
+        grid-template-columns: 1fr !important;
+        gap: 10px !important;
+      }
+
+      .money-business-card {
+        min-height: 78px !important;
+        padding: 12px !important;
+        border-radius: 16px !important;
+      }
+
+      .money-business-card strong {
+        font-size: 13px !important;
+      }
+
+      .money-business-card em {
+        font-size: 9px !important;
+      }
+
+      .money-selected-row {
+        padding: 12px 13px !important;
+        border-radius: 15px !important;
+      }
+
+      .money-selected-row strong {
+        font-size: 14px !important;
+      }
+
+      .money-selected-row span {
+        font-size: 9.5px !important;
+      }
+    }
+
+  
+    /* v124 mobile bottom nav: allow five tabs */
+    @media (max-width: 760px) {
+      .strategy-tabs {
+        grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+      }
+
+      .strategy-tab::after {
+        font-size: 8px !important;
+      }
+    }
+
+    @media (max-width: 390px) {
+      .strategy-tabs {
+        gap: 4px !important;
+        padding: 7px !important;
+      }
+
+      .strategy-tab::after {
+        font-size: 7px !important;
+      }
+    }
+
+  
+    /* v125: responsive five-item mobile bottom menu */
+    @media (max-width: 760px) {
+      body:not(.deck-mode) .home-hero > .strategy-tabs,
+      body:not(.deck-mode) .strategy-tabs {
+        position: fixed !important;
+        left: 50% !important;
+        right: auto !important;
+        bottom: max(8px, env(safe-area-inset-bottom)) !important;
+        transform: translateX(-50%) !important;
+        width: calc(100vw - 16px) !important;
+        max-width: 720px !important;
+        height: auto !important;
+        margin: 0 !important;
+        padding: 7px !important;
+        border-radius: 24px !important;
+        display: grid !important;
+        grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+        gap: 5px !important;
+        background: rgba(255,255,255,.94) !important;
+        border: 1px solid rgba(0,0,0,.08) !important;
+        box-shadow: 0 12px 35px rgba(0,0,0,.18) !important;
+        z-index: 2147482000 !important;
+        overflow: hidden !important;
+        backdrop-filter: blur(18px) !important;
+        -webkit-backdrop-filter: blur(18px) !important;
+      }
+
+      body:not(.deck-mode) .strategy-tab {
+        width: 100% !important;
+        min-width: 0 !important;
+        height: 62px !important;
+        min-height: 62px !important;
+        padding: 6px 3px !important;
+        margin: 0 !important;
+        border-radius: 18px !important;
+        display: grid !important;
+        grid-template-rows: 29px 1fr !important;
+        align-items: center !important;
+        justify-items: center !important;
+        gap: 3px !important;
+        background: rgba(0,0,0,.06) !important;
+        color: var(--black) !important;
+        border: 1px solid rgba(0,0,0,.06) !important;
+        overflow: hidden !important;
+        box-shadow: none !important;
+        transform: none !important;
+      }
+
+      body:not(.deck-mode) .strategy-tab.active {
+        background: var(--orange) !important;
+        color: #fff !important;
+        border-color: var(--orange) !important;
+        box-shadow: 0 8px 20px rgba(255,75,11,.30) !important;
+      }
+
+      body:not(.deck-mode) .strategy-tab strong,
+      body:not(.deck-mode) .strategy-tab span {
+        display: none !important;
+      }
+
+      body:not(.deck-mode) .strategy-tab::before {
+        width: 28px !important;
+        height: 28px !important;
+        min-width: 28px !important;
+        min-height: 28px !important;
+        border-radius: 999px !important;
+        display: grid !important;
+        place-items: center !important;
+        margin: 0 !important;
+        background: rgba(255,255,255,.35) !important;
+        color: currentColor !important;
+        font-size: 15px !important;
+        line-height: 1 !important;
+        font-weight: 950 !important;
+      }
+
+      body:not(.deck-mode) .strategy-tab::after {
+        content: attr(data-mobile-label) !important;
+        display: block !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 0 !important;
+        color: currentColor !important;
+        font-size: 8px !important;
+        line-height: 1 !important;
+        font-weight: 950 !important;
+        letter-spacing: -.02em !important;
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: clip !important;
+        text-align: center !important;
+      }
+
+      #businessTab::before { content: "⌂" !important; }
+      #calculatorTab::before { content: "∑" !important; }
+      #jobsTab::before { content: "$" !important; }
+      #timelineTab::before { content: "⌁" !important; }
+      #moneyTab::before { content: "◈" !important; }
+    }
+
+    @media (max-width: 380px) {
+      body:not(.deck-mode) .home-hero > .strategy-tabs,
+      body:not(.deck-mode) .strategy-tabs {
+        width: calc(100vw - 10px) !important;
+        padding: 6px !important;
+        gap: 4px !important;
+        border-radius: 22px !important;
+      }
+
+      body:not(.deck-mode) .strategy-tab {
+        height: 58px !important;
+        min-height: 58px !important;
+        border-radius: 16px !important;
+        padding: 5px 2px !important;
+      }
+
+      body:not(.deck-mode) .strategy-tab::before {
+        width: 26px !important;
+        height: 26px !important;
+        min-width: 26px !important;
+        min-height: 26px !important;
+        font-size: 13px !important;
+      }
+
+      body:not(.deck-mode) .strategy-tab::after {
+        font-size: 7px !important;
+      }
+    }
+
+  
+    /* v127: Money Simulator reinvestment engine */
+    .reinvestment-engine {
+      display: grid;
+      gap: 16px;
+      margin-top: 4px;
+      padding: 18px;
+      border-radius: 22px;
+      background: rgba(255,75,11,.07);
+      border: 1px solid rgba(255,75,11,.18);
+    }
+
+    .reinvestment-timeline {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .reinvestment-step {
+      padding: 14px;
+      border-radius: 17px;
+      background: #fff;
+      box-shadow: inset 0 0 0 1px rgba(0,0,0,.06);
+      display: grid;
+      gap: 7px;
+    }
+
+    .reinvestment-step strong {
+      color: var(--orange);
+      font-size: 12px;
+      line-height: 1;
+      font-weight: 950;
+      text-transform: uppercase;
+    }
+
+    .reinvestment-step span {
+      color: var(--black);
+      font-size: 15px;
+      line-height: .98;
+      font-weight: 950;
+      letter-spacing: -.04em;
+    }
+
+    .reinvestment-step em {
+      color: var(--grey-dark);
+      font-size: 10px;
+      line-height: 1.25;
+      font-weight: 850;
+      font-style: normal;
+    }
+
+    @media (min-width: 761px) and (max-width: 1100px) {
+      .reinvestment-timeline {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .reinvestment-engine {
+        padding: 13px !important;
+        border-radius: 18px !important;
+      }
+
+      .reinvestment-timeline {
+        grid-template-columns: 1fr !important;
+      }
+
+      .reinvestment-step {
+        padding: 12px !important;
+        border-radius: 15px !important;
+      }
+
+      .reinvestment-step span {
+        font-size: 13px !important;
+      }
+    }
+
+  
+    /* v128: custom business order + long Inside Your Mouth label support */
+    .card-title {
+      overflow-wrap: anywhere;
+      word-break: normal;
+      hyphens: auto;
+    }
+
+    @media (max-width: 760px) {
+      #businessPanel .card-title {
+        font-size: clamp(14px, 4.35vw, 18px) !important;
+        line-height: .95 !important;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -11608,9 +12064,10 @@
 
         <div class="strategy-tabs" role="tablist" aria-label="Homepage views">
           <button class="strategy-tab active" id="businessTab" data-tab="business" data-mobile-label="Decks" type="button"><strong>Business Decks</strong><span>Compare investment, conservative numbers, risk, profit speed, and 3-year valuation</span></button>
-          <button class="strategy-tab" id="calculatorTab" data-tab="calculator" data-mobile-label="Calculator" type="button"><strong>Investment Calculator</strong><span>Type capital and get smart business combinations</span></button>
+          <button class="strategy-tab" id="calculatorTab" data-tab="calculator" data-mobile-label="Calc" type="button"><strong>Investment Calculator</strong><span>Type capital and get smart business combinations</span></button>
           <button class="strategy-tab" id="jobsTab" data-tab="jobs" data-mobile-label="Jobs" type="button"><strong>Job Opportunities</strong><span>Compare current EF role against wealth-management opportunity</span></button>
-          <button class="strategy-tab" id="timelineTab" data-tab="timeline" data-mobile-label="Timeline" type="button"><strong>Life Timeline</strong><span>Compare UAE, Spain, Morocco, and USA strategy paths</span></button>
+          <button class="strategy-tab" id="timelineTab" data-tab="timeline" data-mobile-label="Life" type="button"><strong>Life Timeline</strong><span>Compare UAE, Spain, Morocco, and USA strategy paths</span></button>
+          <button class="strategy-tab" id="moneyTab" data-tab="money" data-mobile-label="Money" type="button"><strong>Money Simulator</strong><span>Test business duos, trios, and multi-business combinations</span></button>
         </div>
       </div>
 
@@ -11641,7 +12098,7 @@
 
           <div class="assumption-note">
             <strong>Numbers logic</strong>
-            <span>Hostel Apartment uses the confirmed numbers provided. Every other business uses conservative-realistic assumptions: low demand, paid acquisition included, cautious EBITDA/profit, and Year 3 exit value based on conservative cash flow.</span>
+            <span>Hostel Apartment uses the confirmed numbers provided. Every other business uses conservative-realistic assumptions: low demand, paid acquisition included, cautious EBITDA/profit, and Year 3 exit value based on conservative cash flow. Risk labels use only Medium risk and High risk.</span>
           </div>
 
         </section>
@@ -11731,6 +12188,62 @@
 
         <section class="portfolio-results" id="portfolioResults" aria-label="Recommended business combinations"></section>
         <section class="eligible-ideas-panel" id="eligibleIdeasPanel" aria-label="Eligible businesses under budget"></section>
+      </section>
+
+      <section class="home-panel screen-hidden" id="moneyPanel">
+        <div class="library-head">
+          <h2>Simulate <span class="orange-text">combined businesses</span></h2>
+          <p>Select any business duo, trio, or bigger mix. The simulator combines capital, revenue, EBITDA/profit, break-even, risk, success, and Year 3 exit value.</p>
+        </div>
+
+        <section class="money-simulator-panel" aria-label="Money simulator for business combinations">
+          <div class="calculator-title">
+            <h3>Money <span class="orange-text">simulator</span></h3>
+            <p>Use this when you want to test a specific combination and reinvest all profit back into the businesses. Example: open Inside Your Mouth + 1 hostel first, then use the profit to open hostel #2, #3, #4, and #5.</p>
+          </div>
+
+          <div class="calculator-input-grid money-input-grid">
+            <div class="calculator-control calculator-main-input">
+              <label for="moneyBudget">Available capital, optional</label>
+              <input id="moneyBudget" type="text" inputmode="decimal" autocomplete="off" placeholder="Example: 50000, 100k, or leave empty" />
+            </div>
+            <div class="calculator-control">
+              <label for="moneyScenario">Scenario</label>
+              <select id="moneyScenario">
+                <option value="1" selected>Conservative</option>
+                <option value="0">Stress</option>
+                <option value="2">Realistic</option>
+              </select>
+            </div>
+            <div class="calculator-control">
+              <label for="moneyStartingHostels">Starting hostels</label>
+              <select id="moneyStartingHostels">
+                <option value="1" selected>Start with 1 hostel</option>
+                <option value="2">Start with 2 hostels</option>
+                <option value="3">Start with 3 hostels</option>
+                <option value="4">Start with 4 hostels</option>
+                <option value="5">Start with 5 hostels</option>
+              </select>
+            </div>
+            <div class="calculator-control">
+              <label for="moneyTargetHostels">Target hostels</label>
+              <select id="moneyTargetHostels">
+                <option value="2">Grow to 2 hostels</option>
+                <option value="3">Grow to 3 hostels</option>
+                <option value="4">Grow to 4 hostels</option>
+                <option value="5" selected>Grow to 5 hostels</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="money-duo-note">
+            <strong>How to use it</strong>
+            <span>Pick 2 businesses for a duo, 3 for a trio, or more. Hostel starts with the number selected above. Default is 1 hostel + Inside Your Mouth, with 100% of profit reinvested and no owner salaries.</span>
+          </div>
+
+          <div class="money-business-list" id="moneyBusinessList" aria-label="Select businesses to combine"></div>
+          <div class="money-output" id="moneyOutput" aria-label="Combined business result"></div>
+        </section>
       </section>
 
       <section class="home-panel screen-hidden" id="jobsPanel">
@@ -11941,7 +12454,7 @@
   </main>
 
   <script>
-    const businessDecks = [{"id":"hostel-apartment","name":"Five-Hostel Apartment Brand","shortName":"5-Hostel Brand","category":"Shared accommodation","brandBase":"hostel","brandAccent":"homes","micro":"HOSTEL<br>HOMES","tag":"5 HOSTEL PORTFOLIO","description":"Build five hostel apartments under one shared-accommodation brand, similar to a lean holiday-homes style operator, with combined portfolio valuation.","unitName":"Hostel","unitPlural":"beds","locationLabel":"hostel apartment","capacity":15,"pricePerUnitMonthly":408.44111640571816,"priceLabel":"$408 per bed monthly","recurringCostYearly":11436.35125936011,"setupCost":0,"openingCapital":21783.52620830497,"displayCurrency":"USD","targetLocations":5,"occupancies":[0.6,0.65,0.7],"scenarioLabels":["Stress","Conservative","Realistic"],"reservePerLocation":4084.411164057182,"activeLabel":"filled","emptyLabel":"empty","source":"User-confirmed hostel apartment model: 5 hostel apartments combined, each based on the confirmed per-apartment economics. Brand concept: shared accommodation / hostel homes operator similar to a lean holiday-homes style portfolio.","mainQuestion":"What is the value of five hostel apartments combined?","safeTitle":"The safe model counts 60% occupancy, not full beds.","breakTitle":"$21.8K can be recovered in roughly 0.5–0.7 years.","scaleTitle":"Hostels can scale to five; every other business starts with one unit.","portfolioTitle":"Five hostel apartments under one brand: combined profit and exit value.","riskTitle":"Why five hostels need brand discipline, not only good apartment numbers.","subtitle1":"The model uses the confirmed hostel apartment economics, but the valuation now treats the plan as five hostels combined under one operating brand.","subtitle2":"The model does not count all beds as full. The safe case is 60% occupancy, the operating case is 65%, and 70% is only the upper realistic case based on the fixed numbers provided.","subtitle3":"Simple break-even uses gross rent collection. Real break-even is stricter because it subtracts recurring monthly costs first. The real payback range is still under one year if the $2.7K–$3.3K monthly net profit holds.","subtitle4":"Hostel scaling is separate from the other businesses. This timeline uses conservative net profit and reinvests only after the opening capital is recovered. The target remains five hostels maximum.","subtitle5":"The exit valuation is based on the combined yearly profit of five hostel apartments. A branded operator can be positioned like a lean holiday-homes / shared-accommodation company if execution is clean.","subtitle6":"The numbers can work, but only if the five apartments are legal, landlord-approved, consistently occupied, and operated under one controlled brand with strict tenant rules.","risks":[["Legal / landlord approval","High risk because a profitable bed-space model can still fail immediately if subletting, sharing, or bed-space operation is not allowed in writing.","high"],["Building rules","High risk because the building, security, neighbors, or management can block the model even if the apartment itself looks suitable.","high"],["Occupancy below 60%","High risk because the model depends on keeping at least the safe 60% occupancy. Empty beds reduce cash collection fast.","high"],["Tenant payment delays","Medium risk because one or two late payers can reduce monthly profit. Deposits and fast replacement rules are mandatory.","medium"],["Damage and utilities","Medium risk because shared living increases AC, water, cleaning, Wi‑Fi, laundry, and furniture damage. Costs must be controlled per bed.","medium"],["Opening too fast","High risk because reinvesting every dollar into the next apartment leaves no cushion for repairs, vacancies, or rent renewal.","high"]],"valuationMultiple":2.5,"grossPricePerUnitMonthly":408.44111640571816,"preferredCountries":["uae","usa","spain"],"countryFit":{"uae":0.92,"usa":0.62,"spain":0.56,"morocco":0.3},"countryStrategy":{"uae":"Best when the business needs local execution, paid ads, WhatsApp sales, and service delivery.","spain":"Good for EU lifestyle, tourism, food, ethnic imports, and portable online business, but local bureaucracy matters.","morocco":"Best as sourcing, low-cost operations, hiring, and export support rather than high-income end market.","usa":"Best for scale, e-commerce, services, and high purchasing power, but immigration/legal setup is the bottleneck."},"riskLevel":"medium"},{"id":"moroccan-import","name":"Moroccan Products Import + Pre-Order Business","shortName":"Moroccan Pre-Order Imports","category":"Import / pre-order distribution","brandBase":"morocco","brandAccent":"ceo","micro":"IMPORT<br>CEO","tag":"LOWER INVENTORY RISK","description":"Start with Moroccan products through pre-orders and lean inventory, then expand only after sell-through proves real demand.","unitName":"Store Channel","unitPlural":"inventory-turnover units","locationLabel":"Moroccan products store","capacity":300,"pricePerUnitMonthly":18,"priceLabel":"$18 average contribution per fulfilled Moroccan product bundle/order after product cost, landing cost, delivery, refunds, expiry buffer, and packaging","recurringCostYearly":8000,"setupCost":2000,"openingCapital":12000,"targetLocations":1,"occupancies":[0.2,0.34,0.48],"scenarioLabels":["Stress","Conservative","Realistic"],"reservePerLocation":3500,"activeLabel":"sold through","emptyLabel":"inventory risk","source":"Merged model: Moroccan import business + pre-order system. Instead of buying a full shop-load of inventory upfront, start with $5K–$8K lean stock, validate demand through paid pre-orders/WhatsApp/community orders, then restock only after sell-through. Updated to conservative-realistic planning: low demand, paid acquisition, cautious EBITDA, and realistic but not inflated exit valuation.","mainQuestion":"Can Moroccan imports turn pre-orders into repeat cash flow?","safeTitle":"The safer model sells demand first, then restocks inventory.","breakTitle":"Break-even depends on repeat orders, not just first-batch sales.","scaleTitle":"Scale categories only after sell-through data proves demand.","portfolioTitle":"One lean import channel first: pre-orders, stock turnover, and valuation.","riskTitle":"Why Moroccan pre-order imports still carry real risk.","subtitle1":"This model combines Moroccan product imports with a pre-order system. The business should not buy a full shop-load of stock at the start. It should validate demand first through WhatsApp, community groups, paid ads, and limited lean stock.","subtitle2":"The middle scenario is conservative-realistic: low demand, paid acquisition included, cautious revenue, and positive EBITDA only if execution is disciplined.","subtitle3":"Opening capital is lower because the first batch is lean: small inventory, landing/shipping buffer, packaging, paid ads, delivery setup, and operating reserve. This reduces dead-stock risk compared with a full physical supermarket model.","subtitle4":"Expansion plan: Year 1 Moroccan products only. Year 2 add high-demand North African products. Year 3 add Egyptian products only if sell-through is proven. Wider MENA and expat products come later, based on real order data.","subtitle5":"Business valuation is based on conservative EBITDA/profit, not revenue. It estimates a possible Year 3 exit value only if the business proves repeatable cash flow.","subtitle6":"Risk is still high because customs, landing cost, expiry dates, delivery reliability, refunds, supplier quality, and community trust decide whether orders repeat.","risks":[["Dead inventory","Lower than a full shop model, but still real. Products can expire, get damaged, or fail to sell after the first hype wave.","high"],["Pre-order trust","Customers need confidence that orders arrive on time and as promised. Bad delivery timing can kill repeat demand.","high"],["Import and landing cost","Customs, freight, labeling, damaged goods, expiry checks, and delays can change the real margin.","high"],["Narrow community demand","Moroccan products have demand, but the first audience is narrower than a general supermarket. Repeat order rate matters more than followers.","medium"],["Delivery economics","Delivery, packaging, refunds, and small orders can destroy margin if not controlled.","medium"],["Over-expansion","Adding Algerian, Tunisian, Egyptian, MENA, Indian, Pakistani, or Filipino products too early can create dead inventory. Add categories only after real sell-through data.","high"]],"valuationMultiple":1.1,"grossPricePerUnitMonthly":45,"grossLabel":"Conservative annual gross sales","portfolioGrossLabel":"One-store conservative gross sales","preferredCountries":["uae","spain","usa","morocco"],"countryFit":{"uae":0.88,"spain":0.74,"usa":0.66,"morocco":0.58},"countryStrategy":{"uae":"Best when the business needs local execution, paid ads, WhatsApp sales, and service delivery.","spain":"Good for EU lifestyle, tourism, food, ethnic imports, and portable online business, but local bureaucracy matters.","morocco":"Best as sourcing, low-cost operations, hiring, and export support rather than high-income end market.","usa":"Best for scale, e-commerce, services, and high purchasing power, but immigration/legal setup is the bottleneck."},"successScore":45,"riskLevel":"medium","riskScore":78,"profitSpeedScore":58,"saturationLevel":"Medium-high","contentPlan":"Paid ads plus 10 daily Arabic/English posts focused on pre-order deadlines, product demos, bundles, and community proof. Restock only after paid demand is proven.","marketingCostYearly":6500,"growthMultipliers":{"1":1,"2":1.35,"3":1.75,"5":2.5}},{"id":"pastry-fast-food","name":"Inside Your Mouth — Fast Food + Pastry Shop","shortName":"Inside Your Mouth","category":"Food retail","brandBase":"inside","brandAccent":"mouth","micro":"INSIDE<br>MOUTH","tag":"FAST FOOD + PASTRY SHOP","description":"Inside Your Mouth is one Dubai shop combining fast food and pastries in the same location: dine-in seating, takeaway, direct website orders, and delivery apps like Talabat, Deliveroo, Careem, Noon Food, and Keeta.","unitName":"Shop","unitPlural":"orders","locationLabel":"fast food and pastry shop","capacity":6000,"pricePerUnitMonthly":2.6,"priceLabel":"$2.60 net contribution per order after ingredients, packaging, delivery-app pressure, waste, and promo discounts","recurringCostYearly":24000,"setupCost":6500,"openingCapital":30000,"targetLocations":1,"occupancies":[0.3,0.42,0.55],"scenarioLabels":["Stress","Conservative","Realistic"],"reservePerLocation":10000,"activeLabel":"paid orders","emptyLabel":"unused kitchen/content capacity","grossLabel":"Conservative annual gross sales","portfolioGrossLabel":"One-shop conservative viral-menu sales","source":"Inside Your Mouth brand concept: one-shop Dubai fast food + pastry model with two sections under one brand: fast food and pastries. Customers can sit inside/outside, take away, order through the cheaper direct website, or order through delivery apps. Growth strategy includes viral recipes and monthly new menu drops, but the business remains the same fast food + pastry shop.","mainQuestion":"Can Inside Your Mouth combine fast food, pastries, dine-in, takeaway, website orders, and delivery apps profitably?","safeTitle":"The model counts one mixed food shop, not a separate new business.","breakTitle":"Break-even depends on daily orders across dine-in, takeaway, website, and delivery apps.","scaleTitle":"Start with fast food + pastries, then add viral menu drops monthly.","portfolioTitle":"Inside Your Mouth: one shop, fast food, pastries, revenue, EBITDA, profit, and exit value.","riskTitle":"Why one mixed fast food + pastry shop still needs strict menu control.","subtitle1":"Inside Your Mouth is the same fast food and pastry shop, not a separate business. The shop has one brand and one location, but the layout combines fast food and pastries: customers can sit, take food home, order from the website, or use delivery platforms.","subtitle2":"The conservative case assumes 2,520 paid orders per month across dine-in, takeaway, direct website orders, and delivery apps. Viral menu items can increase demand, but the model does not assume guaranteed virality.","subtitle3":"The direct website should be cheaper than delivery apps because it avoids heavy platform commissions. Delivery apps remain important for reach, but direct ordering protects margin.","subtitle4":"Inside Your Mouth starts with a tight fast food + pastry menu, then adds one new dish, recipe, or pastry every month based on viral ideas already proven abroad but still rare in UAE.","subtitle5":"Conservative case: about $205.6K yearly revenue, about $36.6K EBITDA/profit after recurring costs and paid content/ads, and a Year 3 exit value around $60K if repeat demand is proven.","subtitle6":"The risk is high because the business mixes dine-in, takeaway, direct website ordering, delivery apps, fast food, pastries, content, and monthly new menu drops. Menu discipline, food cost, reviews, speed, and repeat purchase decide the result.","risks":[["Mixed-menu complexity","Fast food and pastries can work in one shop, but too many items can slow service, increase waste, and confuse staff. Start with a tight menu.","high"],["Delivery-app margin pressure","Talabat, Deliveroo, Careem, Noon Food, Keeta, and similar apps can increase reach, but commissions, refunds, discounts, and packaging reduce profit.","high"],["Direct website adoption","The website can protect margin by offering cheaper prices, but customers need trust, easy payment, clear delivery, and WhatsApp support.","medium"],["Viral does not guarantee sales","Views can be high while paid orders stay low. The model counts conservative order conversion, not guaranteed viral success.","high"],["Food cost and waste","Pastries, cooked food, and new monthly recipes can create expiry, failed batches, portion-control issues, and supplier-cost changes.","high"],["Copycats appear fast","If one product becomes popular, competitors can copy it. The shop needs branding, speed, packaging, reviews, and new monthly drops.","high"],["Repeat purchase risk","A viral item can sell once and then die. The real value comes from customers who order again through the website, dine-in, takeaway, or delivery apps.","high"]],"valuationMultiple":1.35,"grossPricePerUnitMonthly":6.8,"preferredCountries":["uae","spain","usa"],"countryFit":{"uae":0.86,"spain":0.66,"usa":0.68,"morocco":0.58},"countryStrategy":{"uae":"Best fit because Dubai supports dine-in, takeaway, delivery apps, direct ordering, food discovery, and social-media-driven food trials.","spain":"Possible in tourist/student areas, but local taste, regulation, and margins matter.","morocco":"Useful for lower-cost testing of recipes/content, but purchasing power is lower.","usa":"Large food trend upside, but competition, rent, labor, and regulation are harder."},"successScore":42,"riskScore":82,"profitSpeedScore":58,"riskLevel":"high","saturationLevel":"Very high","contentPlan":"10 daily posts across TikTok, Instagram, YouTube Shorts, Facebook, Snapchat, and Google/Maps content. The content promotes Inside Your Mouth as the same fast food + pastry shop, not a separate business. New menu drop every month; viral upside is not counted as guaranteed revenue.","marketingCostYearly":18000,"growthMultipliers":{"1":1,"2":1.18,"3":1.35,"5":1.75}},{"id":"ecommerce-brand-testing","name":"E-commerce Brand Testing Business","shortName":"E-commerce Brand","category":"Online commerce","brandBase":"ecom","brandAccent":"ceo","micro":"ECOM<br>CEO","tag":"CONSERVATIVE MODEL","description":"Test multiple products, kill losers quickly, and only scale a product when CAC, margin, returns, and delivery are proven.","unitName":"Product Line","unitPlural":"orders","locationLabel":"e-commerce product line","capacity":1500,"pricePerUnitMonthly":12,"priceLabel":"conservative contribution profit per order","recurringCostYearly":30000,"setupCost":25000,"openingCapital":95000,"targetLocations":1,"occupancies":[0.15,0.26,0.36],"scenarioLabels":["Stress","Conservative","Realistic"],"reservePerLocation":30000,"activeLabel":"profitable","emptyLabel":"failed test","source":"Conservative model using UAE e-commerce growth, average conversion-rate pressure, ad cost risk, returns, fulfilment, and failed product testing Updated to conservative-realistic planning: low demand, paid acquisition, cautious EBITDA, and realistic but not inflated exit valuation.","mainQuestion":"Can product testing create one profitable e-commerce brand?","safeTitle":"The operating plan assumes most products fail.","breakTitle":"Break-even is not reliable until CAC is proven.","scaleTitle":"Start with one profitable product line before scaling.","portfolioTitle":"One winning product line first: gross revenue, net profit, and business valuation.","riskTitle":"Why e-commerce risk is high.","subtitle1":"E-commerce model focused on testing products, killing losers quickly, then scaling one strong brand. The model uses contribution profit after product and fulfilment, before yearly operating burn.","subtitle2":"The middle scenario is conservative-realistic: low demand, paid acquisition included, cautious revenue, and positive EBITDA only if execution is disciplined.","subtitle3":"Real break-even must include product cost, shipping, returns, payment fees, ads, creatives, influencers, storage, failed tests, and customer support.","subtitle4":"This business should not be treated as five product lines from day one. Test many products, but only one validated product line should be scaled after CAC, returns, fulfilment, and repeat purchase are proven.","subtitle5":"Business valuation is based on conservative EBITDA/profit, not revenue. It estimates a possible Year 3 exit value only if the business proves repeatable cash flow.","subtitle6":"Risk is high because most products fail before finding profitable acquisition. Paid ads, weak creatives, high CAC, refunds, delivery delays, low repeat purchase, and supplier problems can burn cash before a winning product appears.","risks":[["High CAC","High risk because ads can spend money every day while the unit economics stay negative. Revenue growth does not mean profit.","high"],["Weak product-market fit","High risk because most tested products will fail. Losing products must be killed quickly.","high"],["Returns and complaints","Medium risk because refunds, damaged items, late delivery, and customer support can erase contribution profit.","medium"],["Supplier delays","Medium risk because slow or inconsistent fulfillment destroys reviews and repeat purchase.","medium"],["Ad account instability","Medium risk because depending on one platform creates risk if costs rise or the account gets restricted.","medium"],["Scaling too fast","High risk because increasing ad spend before contribution profit is proven can burn cash quickly.","high"]],"valuationMultiple":0.85,"grossPricePerUnitMonthly":35,"grossLabel":"Conservative annual gross sales","portfolioGrossLabel":"One-product-line conservative gross sales","preferredCountries":["usa","spain","uae"],"countryFit":{"usa":0.88,"spain":0.74,"uae":0.7,"morocco":0.62},"countryStrategy":{"uae":"Best when the business needs local execution, paid ads, WhatsApp sales, and service delivery.","spain":"Good for EU lifestyle, tourism, food, ethnic imports, and portable online business, but local bureaucracy matters.","morocco":"Best as sourcing, low-cost operations, hiring, and export support rather than high-income end market.","usa":"Best for scale, e-commerce, services, and high purchasing power, but immigration/legal setup is the bottleneck."},"successScore":34,"riskScore":86,"profitSpeedScore":24,"riskLevel":"high"},{"id":"short-term-rental-management","name":"Short-Term Rental Management Business","shortName":"Rental Management","category":"Property services","brandBase":"rental","brandAccent":"ceo","micro":"RENTAL<br>CEO","tag":"FAST CASH-FLOW MODEL","description":"Manage Airbnb/short-stay units for owners without buying property. Low opening capital, strong upside, but legal and occupancy risk remain high.","unitName":"Managed Unit","unitPlural":"managed units","locationLabel":"short-term rental management operation","capacity":25,"pricePerUnitMonthly":520,"priceLabel":"$520.00 contribution per managed unit after direct cost pressure","recurringCostYearly":24000,"setupCost":2500,"openingCapital":12000,"targetLocations":1,"occupancies":[0.18,0.3,0.42],"scenarioLabels":["Stress","Conservative","Realistic"],"reservePerLocation":6000,"activeLabel":"paid units","emptyLabel":"unused capacity","grossLabel":"Conservative annual gross sales","portfolioGrossLabel":"One-unit conservative gross sales","source":"Conservative Dubai property-service model. Short-term rental management is treated as fee-based service income, not property ownership. Setup cost includes basic license/admin, sales material, software, photography buffer, and owner acquisition. Updated to conservative-realistic planning: low demand, paid acquisition, cautious EBITDA, and realistic but not inflated exit valuation.","mainQuestion":"Can property management beat physical shops on profit speed?","safeTitle":"The model earns from managing units, not owning property.","breakTitle":"$12K opening capital can pay back fast if owner acquisition works.","scaleTitle":"Start with a few owners first. Do not hire a large team until unit count is proven.","portfolioTitle":"One operation first: gross revenue, net profit, and business valuation.","riskTitle":"Why the rental management risk is high.","subtitle1":"This business targets owners who want short-stay income but do not want to manage guests, cleaners, listings, check-ins, pricing, and complaints themselves.","subtitle2":"The middle scenario is conservative-realistic: low demand, paid acquisition included, cautious revenue, and positive EBITDA only if execution is disciplined.","subtitle3":"Break-even depends on signing owners, keeping guests happy, controlling cleaning quality, and collecting management fees without owning the real estate.","subtitle4":"Scale only after cleaning partners, guest reviews, owner reporting, legal compliance, and unit economics are stable for several months.","subtitle5":"Business valuation is based on conservative EBITDA/profit, not revenue. It estimates a possible Year 3 exit value only if the business proves repeatable cash flow.","subtitle6":"Risk is high because you do not control the property, building rules, guest behavior, owner expectations, or platform ratings. One bad unit can damage reputation quickly.","risks":[["Owner acquisition","High risk because owners already have agents and managers pitching them. Trust must be earned before revenue exists.","high"],["Guest reviews","High risk because bad cleaning, check-in problems, or false expectations can damage ratings fast.","high"],["Regulatory/building rules","High risk because short-stay operation depends on permits, building acceptance, and compliance.","high"],["Execution dependency","High risk because the model only works if daily operations, follow-up, customer service, and cash tracking are strict every week.","high"],["Customer acquisition","High risk because Dubai has strong competition; sales cannot be assumed just because the idea is good.","high"],["Cash-flow timing","Medium risk because suppliers, staff, ads, and license costs can be due before customers pay or repeat.","medium"]],"valuationMultiple":1.1,"grossPricePerUnitMonthly":650,"successScore":45,"riskLevel":"medium","riskScore":78,"profitSpeedScore":60,"preferredCountries":["uae","spain","usa"],"countryFit":{"uae":0.86,"spain":0.82,"usa":0.76,"morocco":0.34},"countryStrategy":{"uae":"Best when the business needs local execution, paid ads, WhatsApp sales, and service delivery.","spain":"Good for EU lifestyle, tourism, food, ethnic imports, and portable online business, but local bureaucracy matters.","morocco":"Best as sourcing, low-cost operations, hiring, and export support rather than high-income end market.","usa":"Best for scale, e-commerce, services, and high purchasing power, but immigration/legal setup is the bottleneck."}},{"id":"pest-control-service","name":"Pest Control Service Business","shortName":"Pest Control","category":"Home services","brandBase":"pest","brandAccent":"ceo","micro":"PEST<br>CEO","tag":"PERMIT-BASED SERVICE","description":"Dubai pest control service for apartments, restaurants, villas, small offices, and rental turnovers. Better than generic agencies because it has repeat need and clear local demand.","unitName":"Pest Job","unitPlural":"pest-control jobs","locationLabel":"pest control","capacity":650,"pricePerUnitMonthly":24,"priceLabel":"$24.00 contribution per paid job after direct cost pressure","recurringCostYearly":41000,"setupCost":3500,"openingCapital":15500,"targetLocations":1,"occupancies":[0.22,0.34,0.46],"scenarioLabels":["Stress","Conservative","Realistic"],"reservePerLocation":5000,"activeLabel":"paid jobs","emptyLabel":"unused capacity","grossLabel":"Conservative annual gross sales","portfolioGrossLabel":"One-operation conservative gross sales","source":"Conservative Dubai pest-control model using public setup-cost guidance: license/company setup, Dubai Municipality-related approvals and exams, equipment/chemicals, and marketing. Dubai Municipality has a dedicated Public Health Pest Control section, so compliance matters. Updated to conservative-realistic planning: low demand, paid acquisition, cautious EBITDA, and realistic but not inflated exit valuation.","mainQuestion":"Can pest control create recurring, high-need local service income?","safeTitle":"The model counts paid treatments, not all inquiries.","breakTitle":"Break-even can be fast if repeat jobs and B2B accounts are built.","scaleTitle":"Scale only after technician quality, permits, and reviews are stable.","portfolioTitle":"One operation first: gross revenue, net profit, and business valuation.","riskTitle":"Why pest control risk is high.","subtitle1":"This business targets apartments, villas, restaurants, cafeterias, shared accommodations, and offices that need pest treatment and follow-up visits.","subtitle2":"The middle scenario is conservative-realistic: low demand, paid acquisition included, cautious revenue, and positive EBITDA only if execution is disciplined.","subtitle3":"Break-even depends on contribution after technician wages, chemicals, transport, repeat visits, discounts, and customer acquisition.","subtitle4":"Scale through annual contracts with landlords, restaurants, real estate agents, hostels, and property managers — not only one-time jobs.","subtitle5":"Business valuation is based on conservative EBITDA/profit, not revenue. It estimates a possible Year 3 exit value only if the business proves repeatable cash flow.","subtitle6":"Risk is high because this is a regulated service. Bad treatment quality, missing approvals, chemical misuse, poor staff training, or weak follow-up can kill the business quickly.","risks":[["Regulatory compliance","High risk because pest control needs correct licensing, approvals, trained technicians, and safe chemical handling. Non-compliance can stop the business.","high"],["Technician quality","High risk because poor treatment causes complaints, refunds, repeat visits, and bad reviews.","high"],["Customer acquisition","High risk because Dubai already has many pest-control companies and marketplaces.","high"],["Chemical and safety risk","Medium risk because incorrect handling can create liability and health complaints.","medium"],["Recurring contracts","Medium risk because one-time jobs are weaker than AMCs; the business needs repeat accounts to stabilize.","medium"]],"valuationMultiple":1.0,"grossPricePerUnitMonthly":75,"successScore":45,"riskLevel":"medium","riskScore":78,"profitSpeedScore":58,"preferredCountries":["uae","usa","spain"],"countryFit":{"uae":0.86,"usa":0.78,"spain":0.6,"morocco":0.45},"countryStrategy":{"uae":"Best when the business needs local execution, paid ads, WhatsApp sales, and service delivery.","spain":"Good for EU lifestyle, tourism, food, ethnic imports, and portable online business, but local bureaucracy matters.","morocco":"Best as sourcing, low-cost operations, hiring, and export support rather than high-income end market.","usa":"Best for scale, e-commerce, services, and high purchasing power, but immigration/legal setup is the bottleneck."}},{"id":"handyman-maintenance","name":"Handyman / Move-In Maintenance Business","shortName":"Handyman Maintenance","category":"Home services","brandBase":"repair","brandAccent":"ceo","micro":"FIX<br>CEO","tag":"RECURRING MAINTENANCE","description":"General handyman, move-in/move-out repairs, furniture assembly, small plumbing/electrical coordination, painting touch-ups, and landlord/property-manager work.","unitName":"Maintenance Job","unitPlural":"maintenance jobs","locationLabel":"handyman maintenance","capacity":700,"pricePerUnitMonthly":22,"priceLabel":"$22.00 contribution per paid job after direct cost pressure","recurringCostYearly":40000,"setupCost":4000,"openingCapital":17000,"targetLocations":1,"occupancies":[0.22,0.34,0.46],"scenarioLabels":["Stress","Conservative","Realistic"],"reservePerLocation":5000,"activeLabel":"paid jobs","emptyLabel":"unused capacity","grossLabel":"Conservative annual gross sales","portfolioGrossLabel":"One-operation conservative gross sales","source":"Conservative Dubai handyman/maintenance model supported by public market commentary that Dubai residential and commercial properties need regular maintenance and AMCs. The model stays cautious because labor quality and complaints are major risks. Updated to conservative-realistic planning: low demand, paid acquisition, cautious EBITDA, and realistic but not inflated exit valuation.","mainQuestion":"Can handyman maintenance create repeat property-service income?","safeTitle":"The model counts paid jobs and small AMCs, not every Dubai apartment.","breakTitle":"Break-even can be strong if property managers give repeat jobs.","scaleTitle":"Scale through property managers, landlords, and short-term rental operators.","portfolioTitle":"One operation first: gross revenue, net profit, and business valuation.","riskTitle":"Why handyman maintenance risk is high.","subtitle1":"This business targets tenants, landlords, holiday homes, shared apartments, property managers, and small offices needing fast small repairs.","subtitle2":"The middle scenario is conservative-realistic: low demand, paid acquisition included, cautious revenue, and positive EBITDA only if execution is disciplined.","subtitle3":"Break-even depends on contribution after technician pay, transport, tools, materials, callbacks, damage claims, and marketplace fees.","subtitle4":"Scale through maintenance packages, real estate agents, hostel operators, Airbnb hosts, and property-management relationships.","subtitle5":"Business valuation is based on conservative EBITDA/profit, not revenue. It estimates a possible Year 3 exit value only if the business proves repeatable cash flow.","subtitle6":"Risk is high because service quality must be consistent. Late arrivals, bad repairs, material theft, and complaints can erase profit and reputation.","risks":[["Staff / technician quality","High risk because bad work leads to refunds, repeat visits, damage claims, and lost accounts.","high"],["Liability and damage","High risk because work happens inside customer homes and offices.","high"],["Low-price competition","High risk because Dubai has many maintenance providers and marketplace options.","high"],["Materials control","Medium risk because small parts and materials can leak margin if not tracked.","medium"],["Repeat contracts","Medium risk because one-off jobs are unstable without AMCs or property-manager relationships.","medium"]],"valuationMultiple":1.0,"grossPricePerUnitMonthly":68,"successScore":45,"riskLevel":"medium","riskScore":79,"profitSpeedScore":56,"preferredCountries":["uae","usa","spain"],"countryFit":{"uae":0.84,"usa":0.76,"spain":0.62,"morocco":0.5},"countryStrategy":{"uae":"Best when the business needs local execution, paid ads, WhatsApp sales, and service delivery.","spain":"Good for EU lifestyle, tourism, food, ethnic imports, and portable online business, but local bureaucracy matters.","morocco":"Best as sourcing, low-cost operations, hiring, and export support rather than high-income end market.","usa":"Best for scale, e-commerce, services, and high purchasing power, but immigration/legal setup is the bottleneck."}},{"id":"facilities-management-amc","name":"Facilities Management / AMC Company","shortName":"Facilities AMC","category":"B2B property services","brandBase":"facility","brandAccent":"ceo","micro":"AMC<br>CEO","tag":"MULTI-MILLION POTENTIAL","description":"Annual maintenance contracts for small buildings, villas, offices, holiday homes, and retail units. Bigger than handyman work, but harder because contracts, staff, and service quality must be controlled.","unitName":"AMC Route","unitPlural":"active maintenance contracts","locationLabel":"facilities management route","capacity":40,"pricePerUnitMonthly":600,"priceLabel":"$600 contribution per active contract after technician, transport, and parts pressure","recurringCostYearly":65000,"setupCost":20000,"openingCapital":90000,"targetLocations":1,"occupancies":[0.18,0.32,0.46],"scenarioLabels":["Stress","Conservative","Realistic"],"reservePerLocation":12000,"activeLabel":"active contracts","emptyLabel":"unused route capacity","grossLabel":"Conservative annual contract billing","portfolioGrossLabel":"Multi-route conservative contract billing","source":"Conservative Dubai facilities-management model. Dubai property growth creates demand, but the business is execution-heavy and contract margins can be thin. Updated to conservative-realistic planning: low demand, paid acquisition, cautious EBITDA, and realistic but not inflated exit valuation.","mainQuestion":"Can maintenance contracts become a multi-million property service business?","safeTitle":"The model counts recurring contracts, not random repair calls.","breakTitle":"Break-even depends on contract density and technician utilization.","scaleTitle":"Scale routes only after response time and renewals are proven.","portfolioTitle":"Multi-route potential: gross revenue, net profit, and business valuation.","riskTitle":"Why facilities-management risk is high.","subtitle1":"This model sells recurring annual maintenance contracts for villas, apartments, short-term rentals, small buildings, offices, and retail units. It is bigger than simple handyman work because it depends on repeat contracts.","subtitle2":"The middle scenario is conservative-realistic: low demand, paid acquisition included, cautious revenue, and positive EBITDA only if execution is disciplined.","subtitle3":"Break-even depends on technician utilization, parts cost, emergency callouts, travel time, and contract renewals. Bad pricing can turn recurring work into recurring losses.","subtitle4":"Scale by adding service teams and geographic routes only after SLA control, renewal rate, and complaint handling are proven.","subtitle5":"Business valuation is based on conservative EBITDA/profit, not revenue. It estimates a possible Year 3 exit value only if the business proves repeatable cash flow.","subtitle6":"Risk is high because one bad team can damage reviews, contracts, and renewal rates. Strong supervision is mandatory.","risks":[["Staff execution","High risk because late technicians, poor repairs, and messy service can lose contracts fast.","high"],["Underpriced contracts","High risk because too many emergency visits or parts can erase monthly margin.","high"],["Complaint management","Medium risk because property owners expect fast response and clear updates.","medium"],["Parts and warranty exposure","Medium risk because repeat failures can create free rework and refunds.","medium"],["Scaling too fast","High risk because each new team adds vehicles, tools, supervision, and quality risk.","high"]],"valuationMultiple":1.1,"grossPricePerUnitMonthly":1200,"successScore":40,"riskLevel":"high","riskScore":84,"profitSpeedScore":36,"preferredCountries":["uae","usa","spain"],"countryFit":{"uae":0.9,"usa":0.74,"spain":0.58,"morocco":0.42},"countryStrategy":{"uae":"Best when the business needs local execution, paid ads, WhatsApp sales, and service delivery.","spain":"Good for EU lifestyle, tourism, food, ethnic imports, and portable online business, but local bureaucracy matters.","morocco":"Best as sourcing, low-cost operations, hiring, and export support rather than high-income end market.","usa":"Best for scale, e-commerce, services, and high purchasing power, but immigration/legal setup is the bottleneck."}},{"id":"mobile-car-detailing","name":"Mobile Car Wash / Detailing Micro-Crew","shortName":"Mobile Car Wash","category":"Auto services","brandBase":"car","brandAccent":"ceo","micro":"CAR<br>CEO","tag":"SATURATED BUT PROVEN","description":"Mobile car wash and detailing with one lean crew. Demand is proven in Dubai, but competition is heavy, so the model must win through building access, subscriptions, and repeat customers.","unitName":"Detailing Job","unitPlural":"detailing jobs","locationLabel":"mobile detailing operation","capacity":320,"pricePerUnitMonthly":22,"priceLabel":"$22 contribution per completed wash/detailing order after consumables, worker cost, transport, and platform pressure","recurringCostYearly":12500,"setupCost":4500,"openingCapital":18000,"targetLocations":1,"occupancies":[0.24,0.38,0.52],"scenarioLabels":["Stress","Conservative","Realistic"],"reservePerLocation":6000,"activeLabel":"paid units","emptyLabel":"unused capacity","grossLabel":"Conservative annual gross sales","portfolioGrossLabel":"One-unit conservative gross sales","source":"Proven but crowded model: UAE car-wash demand is supported by dust, heat, vehicle ownership, and existing mobile operators. Conservative case assumes one lean mobile crew, paid ads, building partnerships, and no viral guarantee. Updated to conservative-realistic planning: low demand, paid acquisition, cautious EBITDA, and realistic but not inflated exit valuation.","mainQuestion":"Can mobile detailing work without a fixed expensive location?","safeTitle":"The model counts 315 monthly jobs in the conservative case.","breakTitle":"Break-even is slower than agency models because equipment and labor are needed.","scaleTitle":"Add vans or staff only after repeat locations are proven.","portfolioTitle":"One operation first: gross revenue, net profit, and business valuation.","riskTitle":"Why the car detailing risk is high.","subtitle1":"This is not a luxury detailing studio. It is a mobile wash/detailing route built around repeat building customers, subscriptions, and WhatsApp booking.","subtitle2":"The middle scenario is conservative-realistic: low demand, paid acquisition included, cautious revenue, and positive EBITDA only if execution is disciplined.","subtitle3":"Break-even stays under 1.5 years only if the crew keeps repeat orders and avoids idle time.","subtitle4":"Scale only after one route is filled with repeat customers.","subtitle5":"Business valuation is based on conservative EBITDA/profit, not revenue. It estimates a possible Year 3 exit value only if the business proves repeatable cash flow.","subtitle6":"Risk is high because parking access, building rules, repeat demand, reviews, and labor reliability decide profit.","risks":[["Location permissions","High risk because communities or office towers may not allow washing or detailing without approvals.","high"],["Staff productivity","High risk because profits depend on how many jobs a team completes daily.","high"],["Price competition","Medium risk because basic wash services can be price-sensitive.","medium"],["Execution dependency","High risk because the model only works if daily operations, follow-up, customer service, and cash tracking are strict every week.","high"],["Customer acquisition","High risk because Dubai has strong competition; sales cannot be assumed just because the idea is good.","high"],["Cash-flow timing","Medium risk because suppliers, staff, ads, and license costs can be due before customers pay or repeat.","medium"]],"valuationMultiple":0.95,"grossPricePerUnitMonthly":38,"successScore":43,"riskLevel":"medium","riskScore":77,"profitSpeedScore":55,"preferredCountries":["uae","usa","spain"],"countryFit":{"uae":0.86,"usa":0.72,"spain":0.58,"morocco":0.45},"saturationLevel":"Very high","growthMultipliers":{"1":1,"2":1.15,"3":1.35,"5":1.8}},{"id":"cleaning-services","name":"Home / Deep Cleaning Micro-Crew","shortName":"Cleaning Service","category":"Home services","brandBase":"cleaning","brandAccent":"ceo","micro":"CLEANING<br>CEO","tag":"SATURATED BUT PROVEN","description":"Lean cleaning service for apartments, move-in/move-out jobs, Airbnb turnover cleaning, and deep cleaning. The market is huge but extremely competitive.","unitName":"Cleaning Job","unitPlural":"cleaning jobs","locationLabel":"cleaning service operation","capacity":260,"pricePerUnitMonthly":20,"priceLabel":"$20 contribution per cleaning job after worker pay, supplies, transport, refunds, and booking friction","recurringCostYearly":6000,"setupCost":3500,"openingCapital":14000,"targetLocations":1,"occupancies":[0.24,0.38,0.52],"scenarioLabels":["Stress","Conservative","Realistic"],"reservePerLocation":4500,"activeLabel":"paid units","emptyLabel":"unused capacity","grossLabel":"Conservative annual gross sales","portfolioGrossLabel":"One-unit conservative gross sales","source":"Proven but crowded model: UAE cleaning/home-services demand is large, with established platforms and many providers. Conservative case assumes paid ads, bilingual content, repeat customers, and high price competition. Updated to conservative-realistic planning: low demand, paid acquisition, cautious EBITDA, and realistic but not inflated exit valuation.","mainQuestion":"Can cleaning create stable recurring service income?","safeTitle":"The conservative case counts only 315 paid jobs/month.","breakTitle":"Break-even depends on repeat customers and staff utilization.","scaleTitle":"Scale teams only after one route and review system works.","portfolioTitle":"One operation first: gross revenue, net profit, and business valuation.","riskTitle":"Why the cleaning service risk is high.","subtitle1":"This is a micro-cleaning crew, not a large facilities company. Start with home cleaning, deep cleaning, and move-in/move-out jobs.","subtitle2":"The middle scenario is conservative-realistic: low demand, paid acquisition included, cautious revenue, and positive EBITDA only if execution is disciplined.","subtitle3":"Break-even stays under 1.5 years only with repeat customers, tight scheduling, and low refund/rework rates.","subtitle4":"Scale by adding crews only after one crew has predictable weekly bookings.","subtitle5":"Business valuation is based on conservative EBITDA/profit, not revenue. It estimates a possible Year 3 exit value only if the business proves repeatable cash flow.","subtitle6":"Risk is high because service quality, worker attendance, reviews, and price pressure control profit.","risks":[["Staff reliability","High risk because cleaning businesses fail when staff are late, absent, or inconsistent.","high"],["Damage claims","Medium risk because customer property damage can erase profit.","medium"],["Low-price competition","High risk because many cleaning providers compete on price.","high"],["Execution dependency","High risk because the model only works if daily operations, follow-up, customer service, and cash tracking are strict every week.","high"],["Customer acquisition","High risk because Dubai has strong competition; sales cannot be assumed just because the idea is good.","high"],["Cash-flow timing","Medium risk because suppliers, staff, ads, and license costs can be due before customers pay or repeat.","medium"]],"valuationMultiple":0.95,"grossPricePerUnitMonthly":45,"successScore":45,"riskLevel":"medium","riskScore":77,"profitSpeedScore":52,"preferredCountries":["uae","usa","spain"],"countryFit":{"uae":0.84,"usa":0.7,"spain":0.6,"morocco":0.48},"saturationLevel":"Very high","growthMultipliers":{"1":1,"2":1.15,"3":1.35,"5":1.8}},{"id":"pet-grooming-mobile","name":"Mobile Pet Grooming Micro-Van","shortName":"Mobile Pet Grooming","category":"Pet services","brandBase":"pet","brandAccent":"ceo","micro":"PET<br>CEO","tag":"SATURATED BUT GROWING","description":"Mobile pet grooming for dog/cat owners who pay for convenience. It can work in Dubai, , and the U.S., but the service is already crowded and quality-sensitive.","unitName":"Grooming Booking","unitPlural":"grooming bookings","locationLabel":"mobile pet grooming","capacity":180,"pricePerUnitMonthly":40,"priceLabel":"$40 contribution per grooming booking after groomer pay, transport, products, and customer acquisition","recurringCostYearly":11000,"setupCost":6500,"openingCapital":18000,"targetLocations":1,"occupancies":[0.22,0.34,0.48],"scenarioLabels":["Stress","Conservative","Realistic"],"reservePerLocation":6000,"activeLabel":"paid jobs","emptyLabel":"unused capacity","grossLabel":"Conservative annual gross sales","portfolioGrossLabel":"One-operation conservative gross sales","source":"Proven but competitive model: UAE pet ownership and grooming demand are growing, but grooming quality, reviews, and repeat bookings decide whether the model becomes profitable. Updated to conservative-realistic planning: low demand, paid acquisition, cautious EBITDA, and realistic but not inflated exit valuation.","mainQuestion":"Can mobile pet grooming build repeat monthly bookings?","safeTitle":"The model counts repeatable bookings, not viral pet demand.","breakTitle":"Break-even is moderate because mobile setup and staff quality matter.","scaleTitle":"Scale only after grooming quality and repeat clients are proven.","portfolioTitle":"One operation first: gross revenue, net profit, and business valuation.","riskTitle":"Why mobile pet grooming risk is high.","subtitle1":"This is a mobile convenience service: grooming comes to the customer instead of the customer going to a salon.","subtitle2":"The middle scenario is conservative-realistic: low demand, paid acquisition included, cautious revenue, and positive EBITDA only if execution is disciplined.","subtitle3":"Break-even stays under 1.5 years only if the van/groomer gets repeat monthly customers.","subtitle4":"Scale only after one micro-van or grooming crew has predictable recurring demand.","subtitle5":"Business valuation is based on conservative EBITDA/profit, not revenue. It estimates a possible Year 3 exit value only if the business proves repeatable cash flow.","subtitle6":"Risk is high because pets, customer trust, hygiene, punctuality, and reviews matter heavily.","risks":[["Trust and reviews","High risk because pet owners are emotional buyers and bad grooming experiences spread quickly.","high"],["Equipment / van cost","High risk because mobile grooming can require van conversion, water, power, AC, tools, and maintenance.","high"],["Staff skill","High risk because one weak groomer can damage the brand.","high"],["Cancellations","Medium risk because mobile appointments waste time when customers cancel or are not home.","medium"],["Competition","Medium risk because Dubai already has salons and mobile grooming providers.","medium"]],"valuationMultiple":1.0,"grossPricePerUnitMonthly":75,"successScore":42,"riskLevel":"high","riskScore":80,"profitSpeedScore":50,"preferredCountries":["uae","usa","spain"],"countryFit":{"uae":0.78,"usa":0.76,"spain":0.62,"morocco":0.35},"saturationLevel":"High","growthMultipliers":{"1":1,"2":1.15,"3":1.35,"5":1.8}},{"id":"ac-cleaning-maintenance","name":"AC Duct Cleaning / Light Maintenance Crew","shortName":"AC Duct Cleaning","category":"Home services","brandBase":"ac","brandAccent":"ceo","micro":"AC<br>CEO","tag":"DUBAI NEED, HIGH COMPETITION","description":"AC duct/filter cleaning and light maintenance for apartments, villas, offices, and short-term rental units. Dubai climate makes the need real, but competition is high.","unitName":"Service Job","unitPlural":"service jobs","locationLabel":"AC cleaning service","capacity":160,"pricePerUnitMonthly":42,"priceLabel":"$42 contribution per AC/duct cleaning job after worker pay, tools, consumables, transport, and lead cost","recurringCostYearly":12000,"setupCost":7000,"openingCapital":20000,"targetLocations":1,"occupancies":[0.24,0.36,0.5],"scenarioLabels":["Stress","Conservative","Realistic"],"reservePerLocation":6500,"activeLabel":"paid units","emptyLabel":"unused capacity","grossLabel":"Conservative annual gross sales","portfolioGrossLabel":"One-unit conservative gross sales","source":"Proven but crowded model: Dubai dust, heat, indoor-air concerns, and constant AC use create demand, while many service companies compete on price and reviews. Updated to conservative-realistic planning: low demand, paid acquisition, cautious EBITDA, and realistic but not inflated exit valuation.","mainQuestion":"Can AC service create recurring Dubai demand?","safeTitle":"The model counts only 35% service capacity in the conservative case.","breakTitle":"Break-even is possible within 1–2 years if reviews and repeat service work.","scaleTitle":"Do not buy heavy equipment before job flow is proven.","portfolioTitle":"One operation first: gross revenue, net profit, and business valuation.","riskTitle":"Why the ac maintenance risk is high.","subtitle1":"This is a focused AC cleaning crew, not a full MEP company. Start with apartments, villas, Airbnb units, and small offices.","subtitle2":"The middle scenario is conservative-realistic: low demand, paid acquisition included, cautious revenue, and positive EBITDA only if execution is disciplined.","subtitle3":"Break-even stays under 1.5 years only if the crew avoids idle days and gets repeat annual cleaning customers.","subtitle4":"Scale by adding crews only after one crew has enough weekly bookings.","subtitle5":"Business valuation is based on conservative EBITDA/profit, not revenue. It estimates a possible Year 3 exit value only if the business proves repeatable cash flow.","subtitle6":"Risk is high because tools, training, customer complaints, and price competition can wipe out margin.","risks":[["Technician quality","High risk because bad service can create damage claims, refunds, and negative reviews.","high"],["Lead cost","Medium risk because home-service ads and marketplace leads can become expensive.","medium"],["Seasonality","Medium risk because demand peaks seasonally and must be managed carefully.","medium"],["Execution dependency","High risk because the model only works if daily operations, follow-up, customer service, and cash tracking are strict every week.","high"],["Customer acquisition","High risk because Dubai has strong competition; sales cannot be assumed just because the idea is good.","high"],["Cash-flow timing","Medium risk because suppliers, staff, ads, and license costs can be due before customers pay or repeat.","medium"]],"valuationMultiple":1.0,"grossPricePerUnitMonthly":95,"successScore":43,"riskLevel":"medium","riskScore":78,"profitSpeedScore":50,"preferredCountries":["uae","usa","spain"],"countryFit":{"uae":0.88,"usa":0.66,"spain":0.52,"morocco":0.42},"saturationLevel":"High","growthMultipliers":{"1":1,"2":1.15,"3":1.35,"5":1.8}},{"id":"laundry-pickup-delivery","name":"Laundry Service + Sales Brokerage","shortName":"Laundry Service","category":"Laundry services","brandBase":"laundry","brandAccent":"ceo","micro":"LAUNDRY<br>CEO","tag":"SERVICE + SALES","description":"Operate laundry pickup/delivery as a real service, while salespeople bring customers and broker overflow work to partner laundries when needed.","unitName":"Laundry Order","unitPlural":"laundry orders","locationLabel":"laundry pickup delivery operation","capacity":650,"pricePerUnitMonthly":7.5,"priceLabel":"$7.50 contribution per paid laundry order after partner laundry cost, pickup/delivery, staff, packaging, and failed-order buffer","recurringCostYearly":8000,"setupCost":4500,"openingCapital":16000,"targetLocations":1,"occupancies":[0.22,0.36,0.5],"scenarioLabels":["Stress","Conservative","Realistic"],"reservePerLocation":4500,"activeLabel":"paid units","emptyLabel":"unused capacity","grossLabel":"Conservative annual gross sales","portfolioGrossLabel":"One-unit conservative gross sales","source":"Service-led laundry model: start with pickup/delivery, salespeople, and partner laundries. Brokerage skills are used inside the company to close B2C/B2B accounts and outsource overflow instead of staying as a pure broker. Updated to conservative-realistic planning: low demand, paid acquisition, cautious EBITDA, and realistic but not inflated exit valuation.","mainQuestion":"Can repeat laundry orders create stable local cash flow?","safeTitle":"The model needs repeat orders, not one-time discounts.","breakTitle":"Break-even is possible only if logistics stay efficient.","scaleTitle":"Use partners first; do not build a plant before demand is proven.","portfolioTitle":"One operation first: gross revenue, net profit, and business valuation.","riskTitle":"Why the laundry delivery risk is high.","subtitle1":"This is a laundry service company, not just a broker. Salespeople bring customers, operations collect/deliver, and partner laundries handle overflow until volume is stable.","subtitle2":"The middle scenario is conservative-realistic: low demand, paid acquisition included, cautious revenue, and positive EBITDA only if execution is disciplined.","subtitle3":"Break-even stays under 1.5 years only if salespeople secure repeat customers and routes are efficient.","subtitle4":"Scale by adding routes and partner capacity before buying expensive equipment.","subtitle5":"Business valuation is based on conservative EBITDA/profit, not revenue. It estimates a possible Year 3 exit value only if the business proves repeatable cash flow.","subtitle6":"Risk is high because lost items, late deliveries, partner quality, refunds, and price competition can damage trust fast.","risks":[["Logistics density","High risk because spread-out orders create transport cost and time loss.","high"],["Quality complaints","High risk because lost, damaged, or late clothing creates refunds and bad reviews.","high"],["Partner dependency","Medium risk because outsourced processing quality can damage your brand.","medium"],["Execution dependency","High risk because the model only works if daily operations, follow-up, customer service, and cash tracking are strict every week.","high"],["Customer acquisition","High risk because Dubai has strong competition; sales cannot be assumed just because the idea is good.","high"],["Cash-flow timing","Medium risk because suppliers, staff, ads, and license costs can be due before customers pay or repeat.","medium"]],"valuationMultiple":0.9,"grossPricePerUnitMonthly":15,"successScore":40,"riskLevel":"high","riskScore":82,"profitSpeedScore":43,"preferredCountries":["uae","usa","spain"],"countryFit":{"uae":0.74,"usa":0.7,"spain":0.55,"morocco":0.48},"saturationLevel":"Very high","growthMultipliers":{"1":1,"2":1.15,"3":1.35,"5":1.8},"contentPlan":"Paid ads plus 10 daily bilingual Arabic/English posts. Salespeople target B2C subscriptions and B2B accounts; partner laundries handle overflow.","marketingCostYearly":9000},{"id":"corporate-lunch-boxes","name":"Corporate / Worker Lunch Box Contracts","shortName":"Lunch Box Contracts","category":"Food services","brandBase":"lunch","brandAccent":"ceo","micro":"LUNCH<br>CEO","tag":"PROVEN, LOW MARGIN","description":"Daily lunch boxes for offices, small teams, worker groups, and recurring contracts. It can make money quickly only if production is lean and orders are recurring.","unitName":"Meal Order","unitPlural":"meal orders","locationLabel":"corporate lunch box operation","capacity":5000,"pricePerUnitMonthly":2.0,"priceLabel":"$2 contribution per lunch box after food cost, packaging, delivery, refunds, and platform/lead pressure","recurringCostYearly":9000,"setupCost":4000,"openingCapital":12000,"targetLocations":1,"occupancies":[0.16,0.28,0.4],"scenarioLabels":["Stress","Conservative","Realistic"],"reservePerLocation":4000,"activeLabel":"paid units","emptyLabel":"unused capacity","grossLabel":"Conservative annual gross sales","portfolioGrossLabel":"One-unit conservative gross sales","source":"Proven but low-margin model: UAE food delivery and B2B catering demand are large, but competition, delivery cost, food waste, and price sensitivity make profit difficult. Updated to conservative-realistic planning: low demand, paid acquisition, cautious EBITDA, and realistic but not inflated exit valuation.","mainQuestion":"Can focused lunch boxes beat a broad restaurant menu?","safeTitle":"The model needs daily repeat orders to work.","breakTitle":"Break-even depends on order density and food-cost control.","scaleTitle":"Start with one production model and a few corporate clients only.","portfolioTitle":"One operation first: gross revenue, net profit, and business valuation.","riskTitle":"Why the lunch boxes risk is high.","subtitle1":"This is contract lunch, not a random restaurant. The goal is recurring office or worker orders.","subtitle2":"The middle scenario is conservative-realistic: low demand, paid acquisition included, cautious revenue, and positive EBITDA only if execution is disciplined.","subtitle3":"Break-even stays under 1.5 years only if orders are recurring and food waste is controlled.","subtitle4":"Scale only after one menu and one delivery route are profitable.","subtitle5":"Business valuation is based on conservative EBITDA/profit, not revenue. It estimates a possible Year 3 exit value only if the business proves repeatable cash flow.","subtitle6":"Risk is very high because food quality, delivery timing, rent/kitchen cost, reviews, and waste control decide profit.","risks":[["Thin food margins","High risk because low-ticket meals require strong volume and strict portion control.","high"],["Delivery timing","High risk because lunch orders are time-sensitive and late delivery kills retention.","high"],["Food safety","High risk because hygiene failures can destroy the business.","high"],["Execution dependency","High risk because the model only works if daily operations, follow-up, customer service, and cash tracking are strict every week.","high"],["Customer acquisition","High risk because Dubai has strong competition; sales cannot be assumed just because the idea is good.","high"],["Cash-flow timing","Medium risk because suppliers, staff, ads, and license costs can be due before customers pay or repeat.","medium"]],"valuationMultiple":0.85,"grossPricePerUnitMonthly":6.0,"successScore":38,"riskLevel":"high","riskScore":84,"profitSpeedScore":48,"preferredCountries":["uae","usa","spain","morocco"],"countryFit":{"uae":0.72,"usa":0.66,"spain":0.58,"morocco":0.56},"saturationLevel":"Very high","growthMultipliers":{"1":1,"2":1.15,"3":1.35,"5":1.8}},{"id":"vending-machine-route","name":"Micro Vending Machine Route","shortName":"Micro Vending Route","category":"Retail automation","brandBase":"vending","brandAccent":"ceo","micro":"VENDING<br>CEO","tag":"LOCATION-DEPENDENT","description":"Small route of vending machines placed in offices, gyms, schools, or residential buildings. It works only if locations have real daily footfall.","unitName":"Transaction","unitPlural":"transactions","locationLabel":"vending machine route","capacity":4000,"pricePerUnitMonthly":1.2,"priceLabel":"$1.20 contribution per vending sale after product cost, spoilage, restocking, and location commission","recurringCostYearly":7200,"setupCost":4500,"openingCapital":14000,"targetLocations":1,"occupancies":[0.22,0.36,0.5],"scenarioLabels":["Stress","Conservative","Realistic"],"reservePerLocation":4000,"activeLabel":"paid units","emptyLabel":"unused capacity","grossLabel":"Conservative annual gross sales","portfolioGrossLabel":"One-unit conservative gross sales","source":"Proven but location-sensitive model: vending is simple but crowded in good locations. Conservative case assumes small route, second-hand/leased machines, and no premium locations guaranteed. Updated to conservative-realistic planning: low demand, paid acquisition, cautious EBITDA, and realistic but not inflated exit valuation.","mainQuestion":"Can vending create repeat sales with low staff pressure?","safeTitle":"The model depends almost entirely on location quality.","breakTitle":"Break-even is moderate because machines need capital upfront.","scaleTitle":"Add machines only after the first route proves turnover.","portfolioTitle":"One operation first: gross revenue, net profit, and business valuation.","riskTitle":"Why the vending route risk is high.","subtitle1":"This is a micro-route model, not a large vending company. Start with a few machines in proven footfall locations.","subtitle2":"The middle scenario is conservative-realistic: low demand, paid acquisition included, cautious revenue, and positive EBITDA only if execution is disciplined.","subtitle3":"Break-even stays under 1.5 years only if machines are placed in buildings with real foot traffic.","subtitle4":"Scale only after the first route proves weekly restocking demand.","subtitle5":"Business valuation is based on conservative EBITDA/profit, not revenue. It estimates a possible Year 3 exit value only if the business proves repeatable cash flow.","subtitle6":"Risk is high because location access, product mix, machine downtime, theft, and commissions control profit.","risks":[["Bad locations","High risk because a machine in a weak location ties up capital and produces low turnover.","high"],["Restocking discipline","Medium risk because empty machines or wrong products reduce sales.","medium"],["Maintenance/theft","Medium risk because machines can break, jam, or lose stock.","medium"],["Execution dependency","High risk because the model only works if daily operations, follow-up, customer service, and cash tracking are strict every week.","high"],["Customer acquisition","High risk because Dubai has strong competition; sales cannot be assumed just because the idea is good.","high"],["Cash-flow timing","Medium risk because suppliers, staff, ads, and license costs can be due before customers pay or repeat.","medium"]],"valuationMultiple":0.95,"grossPricePerUnitMonthly":2.4,"successScore":40,"riskLevel":"high","riskScore":80,"profitSpeedScore":48,"preferredCountries":["uae","usa","spain"],"countryFit":{"uae":0.66,"usa":0.7,"spain":0.58,"morocco":0.45},"saturationLevel":"High","growthMultipliers":{"1":1,"2":1.15,"3":1.35,"5":1.8}},{"id":"tower-grocery-shop","name":"Residential Tower Grocery Shop","shortName":"Tower Grocery Shop","category":"Grocery retail","brandBase":"tower","brandAccent":"grocery","micro":"TOWER<br>GROCERY","tag":"CAPTIVE RESIDENT DEMAND","description":"A small grocery / convenience shop placed directly below or inside a high-density residential tower cluster, where 1,500–2,500 residents can buy daily essentials without leaving the building area.","unitName":"Grocery Order","unitPlural":"grocery orders","locationLabel":"tower grocery shop","capacity":7500,"pricePerUnitMonthly":1.8,"grossPricePerUnitMonthly":7.5,"priceLabel":"$1.80 net contribution per basket after cost of goods, spoilage, card fees, discounts, delivery friction, and small wastage","recurringCostYearly":48000,"setupCost":14000,"openingCapital":45000,"targetLocations":1,"occupancies":[0.28,0.45,0.58],"scenarioLabels":["Stress","Conservative","Realistic"],"reservePerLocation":12000,"activeLabel":"paid baskets","emptyLabel":"unused daily demand capacity","grossLabel":"Conservative annual grocery sales","portfolioGrossLabel":"One strategic tower grocery shop sales","source":"Conservative UAE tower-grocery model. Based on a high-density tower cluster with 1,500–2,500 residents nearby, daily essentials demand, small basket sizes, low grocery margins, spoilage, staff cost, rent, inventory, license, and convenience-driven repeat purchases.","mainQuestion":"Can a grocery shop below a dense residential tower create stable daily cash flow?","safeTitle":"The model works only if the location has real captive residents.","breakTitle":"Break-even depends on daily baskets, not occasional big orders.","scaleTitle":"Open only in a tower cluster with strong resident traffic and low direct competition.","portfolioTitle":"One tower grocery shop: sales, EBITDA, profit, and exit value.","riskTitle":"Why grocery looks safe but can still fail.","subtitle1":"This business is a small grocery / convenience store located in a very strategic residential-tower location. The ideal location is similar to a shop below large towers where thousands of residents pass daily.","subtitle2":"The conservative case assumes 3,375 paid baskets per month. That means about 112 baskets per day, which is realistic only if the shop sits under or beside a dense tower cluster and sells daily essentials.","subtitle3":"The model assumes low average basket size, low margins, spoilage, card fees, delivery friction, staff cost, rent, license, equipment, and inventory. It does not assume supermarket-level volume.","subtitle4":"The store should sell essentials first: water, milk, bread, eggs, snacks, drinks, basic household items, phone accessories, urgent items, and WhatsApp/direct delivery inside the tower.","subtitle5":"Conservative case: about $303.8K yearly revenue, about $18.9K EBITDA/profit after recurring costs and paid promotion, and a Year 3 exit value around $47K including conservative stock/equipment value.","subtitle6":"Risk comes from wrong location, rent, low margins, spoilage, stock theft, supplier credit, delivery-app pressure, and competition from supermarkets or quick-commerce apps.","risks":[["Wrong tower location","If the tower does not have enough residents, daily footfall, or convenience demand, the business becomes just another low-margin grocery.","high"],["Low grocery margins","Groceries sell every day, but profit per basket is small. The business needs repeat daily purchases and strict supplier control.","high"],["Spoilage and dead stock","Fresh items, snacks, and slow-moving stock can expire or tie up cash. Inventory must be tight and fast-moving.","medium"],["Rent pressure","A strategic ground-floor location can be expensive. Rent must be justified by captive residents and daily basket volume.","high"],["Competition","Nearby supermarkets, quick-commerce apps, and other groceries can reduce basket size and frequency.","medium"],["Stock theft and cash leakage","Small shops can lose profit through staff leakage, poor POS control, and weak inventory tracking.","medium"]],"valuationMultiple":1.1,"exitAssetValue":22000,"successScore":50,"riskLevel":"medium","riskScore":72,"profitSpeedScore":45,"saturationLevel":"Medium-high","contentPlan":"Building-level flyers, WhatsApp groups, Google Maps reviews, direct tower delivery, and small paid ads. No viral growth is assumed.","marketingCostYearly":6000,"preferredCountries":["uae","morocco"],"countryFit":{"uae":0.86,"morocco":0.64,"spain":0.55,"usa":0.48},"countryStrategy":{"uae":"Best fit when placed under dense residential towers where convenience beats supermarket pricing.","morocco":"Possible in dense neighborhoods, but pricing and purchasing power are lower.","spain":"Possible in dense residential/tourist areas, but bureaucracy and labor cost matter.","usa":"Possible as a convenience-store model, but rent, labor, and regulation are much higher."}},{"id":"garage-auction-cars","name":"Garage + Auction Car Flip / Rental","shortName":"Garage + Car Flips","category":"Auto workshop / car trading","brandBase":"garage","brandAccent":"cars","micro":"GARAGE<br>CARS","tag":"SERVICE + ASSET FLIPS","description":"A UAE garage that repairs, washes, paints, and services customer cars while also buying selected auction cars, repairing them in-house, then either flipping them or renting them out.","unitName":"Auto Revenue Unit","unitPlural":"service jobs / car deals","locationLabel":"garage and car-flip operation","capacity":220,"pricePerUnitMonthly":120,"grossPricePerUnitMonthly":280,"priceLabel":"$120 blended contribution per service job / repair / wash / paint job / conservative car-deal equivalent after parts, labor, consumables, and rework risk","recurringCostYearly":72000,"setupCost":40000,"openingCapital":150000,"targetLocations":1,"occupancies":[0.24,0.38,0.52],"scenarioLabels":["Stress","Conservative","Realistic"],"reservePerLocation":30000,"activeLabel":"paid jobs / deals","emptyLabel":"unused workshop capacity","grossLabel":"Conservative annual auto revenue","portfolioGrossLabel":"One garage conservative service + car-deal revenue","source":"Conservative UAE garage model. Combines customer repair/wash/paint/service income with selective auction-car buying, in-house repair, resale, and small rental upside. Auction flipping is modeled cautiously because parts, hidden damage, registration, storage, and resale timing can destroy margin.","mainQuestion":"Can a garage make money from repairs while using its own workshop to flip auction cars?","safeTitle":"The model counts workshop income first; car flips are upside but risky.","breakTitle":"Break-even depends on paid jobs, parts control, and not overpaying at auction.","scaleTitle":"Start with services, then buy only one or two auction cars at a time.","portfolioTitle":"One garage: service revenue, EBITDA, car-flip upside, and exit value.","riskTitle":"Why garage + auction cars can work but needs strict control.","subtitle1":"This is one garage business with two income engines: customer services and owned-car opportunities. The garage fixes, washes, paints, and repairs customer cars, while also buying selected old or damaged cars from UAE auctions.","subtitle2":"The conservative case assumes 84 blended paid jobs/deals per month. It does not assume aggressive flipping. It assumes only a small number of auction cars are bought at a time to avoid cash being trapped.","subtitle3":"Opening capital is high because the business needs workshop setup, tools, lifts/equipment, parts float, initial staff, approvals, rent, insurance, and capital for the first few auction cars.","subtitle4":"The safest path is to make the garage profitable from customer work first. Auction cars should be bought only when repair cost and resale value are clear before bidding.","subtitle5":"Conservative case: about $281.0K yearly revenue, about $39.4K EBITDA/profit after recurring costs and marketing, and a Year 3 exit value around $118K including conservative equipment/asset value.","subtitle6":"Risk is very high because hidden car damage, parts delays, staff quality, paint mistakes, warranty claims, cash tied in inventory, rental misuse, and bad auction purchases can destroy profit.","risks":[["Hidden auction damage","Auction cars can look cheap but hide chassis, electrical, gearbox, airbag, or flood damage. One bad purchase can wipe out profit.","high"],["Cash trapped in cars","Buying too many cars can freeze cash in inventory while rent, staff, and parts bills continue.","high"],["Parts and rework cost","Parts delays, wrong parts, poor workmanship, paint rework, and customer complaints can reduce margin quickly.","high"],["Workshop approvals and location","Garage activities need the correct license, approvals, industrial/commercial location, safety compliance, and insurance.","high"],["Rental risk","Renting repaired cars can create accidents, misuse, fines, late returns, and maintenance cost.","high"],["Staff quality","A garage depends heavily on mechanics, painters, diagnostics, and supervision. Weak staff destroys reputation and profit.","high"]],"valuationMultiple":1.2,"exitAssetValue":60000,"successScore":43,"riskLevel":"high","riskScore":86,"profitSpeedScore":38,"saturationLevel":"High","contentPlan":"Google Maps, before/after repair videos, WhatsApp follow-up, fleet/outdoor ads, building relationships with used-car buyers, and cautious auction content. No viral growth is assumed.","marketingCostYearly":9000,"preferredCountries":["uae","usa"],"countryFit":{"uae":0.82,"usa":0.68,"morocco":0.58,"spain":0.52},"countryStrategy":{"uae":"Strong fit because car ownership, used-car demand, auctions, heat, dust, repairs, repainting, and resale are active markets.","usa":"Large auto repair and flipping market, but regulation, labor, insurance, and capital needs are much higher.","morocco":"Possible with lower costs, but purchasing power and resale liquidity are lower.","spain":"Possible but labor rules, workshop regulation, and demand patterns differ."}}];
+    const businessDecks = [{"id":"pastry-fast-food","name":"Inside Your Mouth (Fast Food / Pastries)","shortName":"Inside Your Mouth (Fast Food / Pastries)","category":"Food retail","brandBase":"inside","brandAccent":"mouth","micro":"INSIDE<br>MOUTH","tag":"FAST FOOD / PASTRIES","description":"Inside Your Mouth (Fast Food / Pastries) is one Dubai shop combining fast food and pastries in the same location: dine-in seating, takeaway, direct website orders, and delivery apps.","unitName":"Shop","unitPlural":"orders","locationLabel":"fast food and pastry shop","capacity":6000,"pricePerUnitMonthly":3.0,"priceLabel":"$3.00 net contribution per order after ingredients, packaging, delivery-app pressure, waste, and promo discounts","recurringCostYearly":34853.64193328795,"setupCost":4084.411164057182,"openingCapital":25867.937372362154,"targetLocations":1,"occupancies":[0.3,0.4,0.52],"scenarioLabels":["Stress","Conservative","Realistic"],"reservePerLocation":5445.881552076243,"activeLabel":"paid orders","emptyLabel":"unused kitchen/content capacity","grossLabel":"Conservative annual gross sales","portfolioGrossLabel":"One-shop conservative viral-menu sales","source":"User-provided Dubai fast food + pastry shop model: AED 60,000/year rent, AED 20,000/year license, AED 15,000 setup/furniture, 2 employees at AED 2,000/month each. Conservative model adds paid content/ads separately and assumes dine-in, takeaway, direct website orders, and delivery apps.","mainQuestion":"Can Inside Your Mouth (Fast Food / Pastries) combine dine-in, takeaway, website orders, and delivery apps profitably?","safeTitle":"The model counts one mixed food shop, not a separate new business.","breakTitle":"Break-even depends on daily orders across dine-in, takeaway, website, and delivery apps.","scaleTitle":"Start with fast food + pastries, then add viral menu drops monthly.","portfolioTitle":"Inside Your Mouth (Fast Food / Pastries): one shop, revenue, EBITDA, profit, and exit value.","riskTitle":"Why one mixed fast food + pastry shop still needs strict menu control.","subtitle1":"Inside Your Mouth is the same fast food and pastry shop, not a separate business. The shop has one brand and one location, but the layout combines fast food and pastries: customers can sit, take food home, order from the website, or use delivery platforms.","subtitle2":"The conservative case assumes around 2,400 paid orders per month across dine-in, takeaway, direct website orders, and delivery apps. This is roughly 80 paid orders/day, not guaranteed viral success.","subtitle3":"Initial investment is based on the provided shop model: AED 60K yearly rent, AED 20K license, AED 15K setup/furniture. Staff cost is recurring: two employees at AED 2K/month each.","subtitle4":"Inside Your Mouth starts with a tight fast food + pastry menu, then adds one new dish, recipe, or pastry every month based on viral ideas already proven abroad but still rare in UAE.","subtitle5":"Conservative case: about $195.8K yearly revenue and about $41.7K EBITDA/profit after rent, license, staff, and paid content/ads. Year 3 exit value is based on conservative EBITDA, not hype.","subtitle6":"Risk remains medium-to-high because delivery-app fees, menu complexity, food waste, ratings, and direct website adoption decide the result. Viral content is upside, not guaranteed revenue.","risks":[["Mixed-menu complexity","Fast food and pastries can work in one shop, but too many items can slow service, increase waste, and confuse staff. Start with a tight menu.","high"],["Delivery-app margin pressure","Talabat, Deliveroo, Careem, Noon Food, Keeta, and similar apps can increase reach, but commissions, refunds, discounts, and packaging reduce profit.","high"],["Direct website adoption","The website can protect margin by offering cheaper prices, but customers need trust, easy payment, clear delivery, and WhatsApp support.","medium"],["Viral does not guarantee sales","Views can be high while paid orders stay low. The model counts conservative order conversion, not guaranteed viral success.","high"],["Food cost and waste","Pastries, cooked food, and new monthly recipes can create expiry, failed batches, portion-control issues, and supplier-cost changes.","high"],["Copycats appear fast","If one product becomes popular, competitors can copy it. The shop needs branding, speed, packaging, reviews, and new monthly drops.","high"],["Repeat purchase risk","A viral item can sell once and then die. The real value comes from customers who order again through the website, dine-in, takeaway, or delivery apps.","high"]],"valuationMultiple":1.2,"grossPricePerUnitMonthly":6.8,"preferredCountries":["uae","spain","usa"],"countryFit":{"uae":0.86,"spain":0.66,"usa":0.68,"morocco":0.58},"countryStrategy":{"uae":"Best fit because Dubai supports dine-in, takeaway, delivery apps, direct ordering, food discovery, and social-media-driven food trials.","spain":"Possible in tourist/student areas, but local taste, regulation, and margins matter.","morocco":"Useful for lower-cost testing of recipes/content, but purchasing power is lower.","usa":"Large food trend upside, but competition, rent, labor, and regulation are harder."},"successScore":44,"riskScore":78,"profitSpeedScore":62,"riskLevel":"medium","saturationLevel":"Very high","contentPlan":"10 daily posts across TikTok, Instagram, YouTube Shorts, Facebook, Snapchat, and Google/Maps content. The content promotes Inside Your Mouth as the same fast food + pastry shop, not a separate business. New menu drop every month; viral upside is not counted as guaranteed revenue.","marketingCostYearly":18000,"growthMultipliers":{"1":1,"2":1.18,"3":1.35,"5":1.75}},{"id":"hostel-apartment","name":"Five-Hostel Apartment Brand","shortName":"5-Hostel Brand","category":"Shared accommodation","brandBase":"hostel","brandAccent":"homes","micro":"HOSTEL<br>HOMES","tag":"5 HOSTEL PORTFOLIO","description":"Five-hostel apartment brand. The operating profit is fixed at AED 12,000/month per hostel; homepage net profit is per hostel, while portfolio valuation combines all 5 hostels.","unitName":"Hostel","unitPlural":"beds","locationLabel":"hostel apartment","capacity":15,"pricePerUnitMonthly":408.44111640571816,"priceLabel":"AED 12,000/month fixed net profit per hostel, converted to USD per year on the card","recurringCostYearly":11436.35125936011,"setupCost":0,"openingCapital":21783.52620830497,"displayCurrency":"USD","targetLocations":5,"occupancies":[0.6,0.65,0.7],"scenarioLabels":["Stress","Conservative","Realistic"],"reservePerLocation":4084.411164057182,"activeLabel":"filled","emptyLabel":"empty","source":"User-confirmed hostel apartment model: AED 12,000/month net profit is fixed per hostel. Homepage net profit is shown per hostel; Money Simulator and Year 3 exit value combine all 5 hostels.","mainQuestion":"What is the value of five hostel apartments combined?","safeTitle":"The safe model counts 60% occupancy, not full beds.","breakTitle":"$21.8K can be recovered in roughly 0.5–0.7 years.","scaleTitle":"Hostels can scale to five; every other business starts with one unit.","portfolioTitle":"Five hostel apartments under one brand: combined profit and exit value.","riskTitle":"Why five hostels need brand discipline, not only good apartment numbers.","subtitle1":"The model uses the confirmed hostel apartment economics, but the valuation now treats the plan as five hostels combined under one operating brand.","subtitle2":"AED 12,000/month net profit is treated as fixed per hostel. It is not for all five hostels together.","subtitle3":"Simple break-even uses gross rent collection. Real break-even is stricter because it subtracts recurring monthly costs first. The real payback range is still under one year if the $2.7K–$3.3K monthly net profit holds.","subtitle4":"Hostel scaling is separate from the other businesses. This timeline uses conservative net profit and reinvests only after the opening capital is recovered. The target remains five hostels maximum.","subtitle5":"The exit valuation is based on the combined yearly profit of five hostel apartments. The homepage net-profit stat stays per hostel so the per-unit economics remain clear.","subtitle6":"The numbers can work, but only if the five apartments are legal, landlord-approved, consistently occupied, and operated under one controlled brand with strict tenant rules.","risks":[["Legal / landlord approval","High risk because a profitable bed-space model can still fail immediately if subletting, sharing, or bed-space operation is not allowed in writing.","high"],["Building rules","High risk because the building, security, neighbors, or management can block the model even if the apartment itself looks suitable.","high"],["Occupancy below 60%","High risk because the model depends on keeping at least the safe 60% occupancy. Empty beds reduce cash collection fast.","high"],["Tenant payment delays","Medium risk because one or two late payers can reduce monthly profit. Deposits and fast replacement rules are mandatory.","medium"],["Damage and utilities","Medium risk because shared living increases AC, water, cleaning, Wi‑Fi, laundry, and furniture damage. Costs must be controlled per bed.","medium"],["Opening too fast","High risk because reinvesting every dollar into the next apartment leaves no cushion for repairs, vacancies, or rent renewal.","high"]],"valuationMultiple":2.5,"grossPricePerUnitMonthly":408.44111640571816,"preferredCountries":["uae","usa","spain"],"countryFit":{"uae":0.92,"usa":0.62,"spain":0.56,"morocco":0.3},"countryStrategy":{"uae":"Best when the business needs local execution, paid ads, WhatsApp sales, and service delivery.","spain":"Good for EU lifestyle, tourism, food, ethnic imports, and portable online business, but local bureaucracy matters.","morocco":"Best as sourcing, low-cost operations, hiring, and export support rather than high-income end market.","usa":"Best for scale, e-commerce, services, and high purchasing power, but immigration/legal setup is the bottleneck."},"riskLevel":"medium","fixedAnnualNetPerLocation":39210.34717494895},{"id":"moroccan-import","name":"Moroccan Products Import + Pre-Order Business","shortName":"Moroccan Pre-Order Imports","category":"Import / pre-order distribution","brandBase":"morocco","brandAccent":"ceo","micro":"IMPORT<br>CEO","tag":"LOWER INVENTORY RISK","description":"Start with Moroccan products through pre-orders and lean inventory, then expand only after sell-through proves real demand.","unitName":"Store Channel","unitPlural":"inventory-turnover units","locationLabel":"Moroccan products store","capacity":1200,"pricePerUnitMonthly":6.5,"priceLabel":"$6.50 net contribution per fulfilled order after product cost, import freight, packaging, delivery friction, and small discounts","recurringCostYearly":30496.936691626957,"setupCost":4084.411164057182,"openingCapital":45867.937372362154,"targetLocations":1,"occupancies":[0.32,0.48,0.65],"scenarioLabels":["Stress","Conservative","Realistic"],"reservePerLocation":2722.9407760381214,"activeLabel":"sold through","emptyLabel":"inventory risk","source":"User-provided Moroccan import model: no more than $20,000 imported product stock, one worker at AED 2,000–2,500/month, rented shop, small fit-out, lean inventory, and pre-order/restock discipline.","mainQuestion":"Can Moroccan imports turn pre-orders into repeat cash flow?","safeTitle":"The safer model sells demand first, then restocks inventory.","breakTitle":"Break-even depends on repeat orders, not just first-batch sales.","scaleTitle":"Scale categories only after sell-through data proves demand.","portfolioTitle":"One lean import channel first: pre-orders, stock turnover, and valuation.","riskTitle":"Why Moroccan pre-order imports still carry real risk.","subtitle1":"This model combines Moroccan product imports with a pre-order system. The business should not buy a full shop-load of stock at the start. It should validate demand first through WhatsApp, community groups, paid ads, and limited lean stock.","subtitle2":"The conservative case assumes about 576 paid orders per month. This requires inventory turning steadily but does not assume viral demand or unlimited product sell-through.","subtitle3":"Opening capital includes up to $20K imported products plus shop rent, license, basic fit-out, and reserve. One worker is modeled at the upper end of AED 2,500/month.","subtitle4":"Expansion plan: Year 1 Moroccan products only. Year 2 add high-demand North African products. Year 3 add Egyptian products only if sell-through is proven. Wider MENA and expat products come later, based on real order data.","subtitle5":"Conservative case: about $124.4K yearly revenue, about $10.4K EBITDA/profit after shop, worker, license, utilities, and lean marketing. Year 3 exit value includes conservative stock/equipment value.","subtitle6":"Risk comes from dead stock, import delays, margin pressure, weak pre-orders, and cash being trapped in slow-moving inventory.","risks":[["Dead inventory","Lower than a full shop model, but still real. Products can expire, get damaged, or fail to sell after the first hype wave.","high"],["Pre-order trust","Customers need confidence that orders arrive on time and as promised. Bad delivery timing can kill repeat demand.","high"],["Import and landing cost","Customs, freight, labeling, damaged goods, expiry checks, and delays can change the real margin.","high"],["Narrow community demand","Moroccan products have demand, but the first audience is narrower than a general supermarket. Repeat order rate matters more than followers.","medium"],["Delivery economics","Delivery, packaging, refunds, and small orders can destroy margin if not controlled.","medium"],["Over-expansion","Adding Algerian, Tunisian, Egyptian, MENA, Indian, Pakistani, or Filipino products too early can create dead inventory. Add categories only after real sell-through data.","high"]],"valuationMultiple":1.05,"grossPricePerUnitMonthly":18.0,"grossLabel":"Conservative annual gross sales","portfolioGrossLabel":"One-store conservative gross sales","preferredCountries":["uae","spain","usa","morocco"],"countryFit":{"uae":0.88,"spain":0.74,"usa":0.66,"morocco":0.58},"countryStrategy":{"uae":"Best when the business needs local execution, paid ads, WhatsApp sales, and service delivery.","spain":"Good for EU lifestyle, tourism, food, ethnic imports, and portable online business, but local bureaucracy matters.","morocco":"Best as sourcing, low-cost operations, hiring, and export support rather than high-income end market.","usa":"Best for scale, e-commerce, services, and high purchasing power, but immigration/legal setup is the bottleneck."},"successScore":43,"riskLevel":"medium","riskScore":76,"profitSpeedScore":44,"saturationLevel":"Medium-high","contentPlan":"Paid ads plus 10 daily Arabic/English posts focused on pre-order deadlines, product demos, bundles, and community proof. Restock only after paid demand is proven.","marketingCostYearly":6500,"growthMultipliers":{"1":1,"2":1.35,"3":1.75,"5":2.5},"exitAssetValue":18000},{"id":"garage-auction-cars","name":"Garage + Auction Car Flip / Rental","shortName":"Garage + Car Flips","category":"Auto workshop / car trading","brandBase":"garage","brandAccent":"cars","micro":"GARAGE<br>CARS","tag":"SERVICE + ASSET FLIPS","description":"A UAE garage that repairs, washes, paints, and services customer cars while also buying selected auction cars, repairing them in-house, then either flipping them or renting them out.","unitName":"Auto Revenue Unit","unitPlural":"service jobs / car deals","locationLabel":"garage and car-flip operation","capacity":125,"pricePerUnitMonthly":170,"grossPricePerUnitMonthly":380,"priceLabel":"$170 blended contribution per service job / repair / wash / detailing / paint job / conservative car-deal equivalent after parts, labor, consumables, and rework risk","recurringCostYearly":57181.75629680055,"setupCost":9530.292716133425,"openingCapital":65350.57862491491,"targetLocations":1,"occupancies":[0.25,0.43,0.58],"scenarioLabels":["Stress","Conservative","Realistic"],"reservePerLocation":10891.763104152486,"activeLabel":"paid jobs / deals","emptyLabel":"unused workshop capacity","grossLabel":"Conservative annual auto revenue","portfolioGrossLabel":"One garage conservative service + car-deal revenue","source":"Conservative UAE garage + auction-car model: rented workshop, 2–3 mechanics, traditional car washing/detailing, repairs/painting, and cautious auction cars around AED 35K purchase plus around AED 20K parts/repair budget per car.","mainQuestion":"Can a garage make money from repairs while using its own workshop to flip auction cars?","safeTitle":"The model counts workshop income first; car flips are upside but risky.","breakTitle":"Break-even depends on paid jobs, parts control, and not overpaying at auction.","scaleTitle":"Start with services, then buy only one or two auction cars at a time.","portfolioTitle":"One garage: service revenue, EBITDA, car-flip upside, and exit value.","riskTitle":"Why garage + auction cars can work but needs strict control.","subtitle1":"This is one garage business with two income engines: customer services and owned-car opportunities. The garage fixes, washes, paints, and repairs customer cars, while also buying selected old or damaged cars from UAE auctions.","subtitle2":"The conservative case assumes about 54 blended paid jobs/deals per month across repair, wash, detailing, paint work, and limited auction-car flipping/rental. It does not assume aggressive car flipping.","subtitle3":"Opening capital is now based on a lean garage: rented shop, basic tools/equipment, approvals/license, three mechanics, reserve, and capital for the first auction car plus parts.","subtitle4":"Auction cars are bought carefully: around AED 35K purchase plus around AED 20K parts/repair budget. If a car does not flip in 3–4 months, the backup plan is monthly rental after finding the right renter.","subtitle5":"Conservative case: about $245.1K yearly revenue, about $49.1K EBITDA/profit after rent, mechanics, utilities/admin, and marketing. Year 3 exit value includes conservative tools and car/parts float value.","subtitle6":"Risk remains high because hidden auction damage, slow resale, renter misuse, rework, parts delays, staff quality, and cash trapped in cars can damage profit.","risks":[["Hidden auction damage","Auction cars can look cheap but hide chassis, electrical, gearbox, airbag, or flood damage. One bad purchase can wipe out profit.","high"],["Cash trapped in cars","Buying too many cars can freeze cash in inventory while rent, staff, and parts bills continue.","high"],["Parts and rework cost","Parts delays, wrong parts, poor workmanship, paint rework, and customer complaints can reduce margin quickly.","high"],["Workshop approvals and location","Garage activities need the correct license, approvals, industrial/commercial location, safety compliance, and insurance.","high"],["Rental risk","Renting repaired cars can create accidents, misuse, fines, late returns, and maintenance cost.","high"],["Staff quality","A garage depends heavily on mechanics, painters, diagnostics, and supervision. Weak staff destroys reputation and profit.","high"]],"valuationMultiple":1.2,"exitAssetValue":44928.522804629,"successScore":43,"riskLevel":"high","riskScore":82,"profitSpeedScore":44,"saturationLevel":"High","contentPlan":"Google Maps, before/after repair videos, WhatsApp follow-up, fleet/outdoor ads, building relationships with used-car buyers, and cautious auction content. No viral growth is assumed.","marketingCostYearly":9000,"preferredCountries":["uae","usa"],"countryFit":{"uae":0.82,"usa":0.68,"morocco":0.58,"spain":0.52},"countryStrategy":{"uae":"Strong fit because car ownership, used-car demand, auctions, heat, dust, repairs, repainting, and resale are active markets.","usa":"Large auto repair and flipping market, but regulation, labor, insurance, and capital needs are much higher.","morocco":"Possible with lower costs, but purchasing power and resale liquidity are lower.","spain":"Possible but labor rules, workshop regulation, and demand patterns differ."}},{"id":"tower-grocery-shop","name":"Residential Tower Grocery Shop","shortName":"Tower Grocery Shop","category":"Grocery retail","brandBase":"tower","brandAccent":"grocery","micro":"TOWER<br>GROCERY","tag":"CAPTIVE RESIDENT DEMAND","description":"A small grocery / convenience shop placed directly below or inside a high-density residential tower cluster, where 1,500–2,500 residents can buy daily essentials without leaving the building area.","unitName":"Grocery Order","unitPlural":"grocery orders","locationLabel":"tower grocery shop","capacity":7500,"pricePerUnitMonthly":1.8,"grossPricePerUnitMonthly":7.5,"priceLabel":"$1.80 net contribution per basket after cost of goods, spoilage, card fees, discounts, delivery friction, and small wastage","recurringCostYearly":57726.344452008176,"setupCost":13614.703880190607,"openingCapital":80326.75289312458,"targetLocations":1,"occupancies":[0.34,0.5,0.64],"scenarioLabels":["Stress","Conservative","Realistic"],"reservePerLocation":6807.351940095304,"activeLabel":"paid baskets","emptyLabel":"unused daily demand capacity","grossLabel":"Conservative annual grocery sales","portfolioGrossLabel":"One strategic tower grocery shop sales","source":"Conservative Dubai tower grocery model: AED 100K–150K/year rent assumption, two workers at AED 2,000/month each, inventory, license/permits, shelves/fridges/POS, utilities/admin, and daily resident convenience demand.","mainQuestion":"Can a grocery shop below a dense residential tower create stable daily cash flow?","safeTitle":"The model works only if the location has real captive residents.","breakTitle":"Break-even depends on daily baskets, not occasional big orders.","scaleTitle":"Open only in a tower cluster with strong resident traffic and low direct competition.","portfolioTitle":"One tower grocery shop: sales, EBITDA, profit, and exit value.","riskTitle":"Why grocery looks safe but can still fail.","subtitle1":"This business is a small grocery / convenience store located in a very strategic residential-tower location. The ideal location is similar to a shop below large towers where thousands of residents pass daily.","subtitle2":"The conservative case assumes about 3,750 paid baskets per month, around 125 baskets/day. This only makes sense in a dense tower cluster with real daily resident footfall.","subtitle3":"Initial investment is now built from realistic Dubai items: AED 125K rent, AED 80K initial stock, AED 20K license/permits, AED 50K shelves/fridges/POS/basic setup, and AED 20K reserve.","subtitle4":"The store should sell essentials first: water, milk, bread, eggs, snacks, drinks, basic household items, phone accessories, urgent items, and WhatsApp/direct delivery inside the tower.","subtitle5":"Conservative case: about $337.5K yearly revenue, about $21.2K EBITDA/profit after rent, two workers, license, utilities, and building-level promotion. Year 3 exit value includes conservative stock/equipment value.","subtitle6":"Risk comes from low grocery margins, wrong tower location, expensive rent, stock expiry, theft/leakage, and competition from supermarkets or quick-commerce apps.","risks":[["Wrong tower location","If the tower does not have enough residents, daily footfall, or convenience demand, the business becomes just another low-margin grocery.","high"],["Low grocery margins","Groceries sell every day, but profit per basket is small. The business needs repeat daily purchases and strict supplier control.","high"],["Spoilage and dead stock","Fresh items, snacks, and slow-moving stock can expire or tie up cash. Inventory must be tight and fast-moving.","medium"],["Rent pressure","A strategic ground-floor location can be expensive. Rent must be justified by captive residents and daily basket volume.","high"],["Competition","Nearby supermarkets, quick-commerce apps, and other groceries can reduce basket size and frequency.","medium"],["Stock theft and cash leakage","Small shops can lose profit through staff leakage, poor POS control, and weak inventory tracking.","medium"]],"valuationMultiple":1.1,"exitAssetValue":32675.289312457455,"successScore":46,"riskLevel":"medium","riskScore":74,"profitSpeedScore":34,"saturationLevel":"Medium-high","contentPlan":"Building-level flyers, WhatsApp groups, Google Maps reviews, direct tower delivery, and small paid ads. No viral growth is assumed.","marketingCostYearly":6000,"preferredCountries":["uae","morocco"],"countryFit":{"uae":0.86,"morocco":0.64,"spain":0.55,"usa":0.48},"countryStrategy":{"uae":"Best fit when placed under dense residential towers where convenience beats supermarket pricing.","morocco":"Possible in dense neighborhoods, but pricing and purchasing power are lower.","spain":"Possible in dense residential/tourist areas, but bureaucracy and labor cost matter.","usa":"Possible as a convenience-store model, but rent, labor, and regulation are much higher."}},{"id":"facilities-management-amc","name":"Facilities Management / AMC Company","shortName":"Facilities AMC","category":"B2B property services","brandBase":"facility","brandAccent":"ceo","micro":"AMC<br>CEO","tag":"MULTI-MILLION POTENTIAL","description":"Annual maintenance contracts for small buildings, villas, offices, holiday homes, and retail units. Bigger than handyman work, but harder because contracts, staff, and service quality must be controlled.","unitName":"AMC Route","unitPlural":"active maintenance contracts","locationLabel":"facilities management route","capacity":40,"pricePerUnitMonthly":600,"priceLabel":"$600 contribution per active contract after technician, transport, and parts pressure","recurringCostYearly":65000,"setupCost":20000,"openingCapital":90000,"targetLocations":1,"occupancies":[0.18,0.32,0.46],"scenarioLabels":["Stress","Conservative","Realistic"],"reservePerLocation":12000,"activeLabel":"active contracts","emptyLabel":"unused route capacity","grossLabel":"Conservative annual contract billing","portfolioGrossLabel":"Multi-route conservative contract billing","source":"Conservative Dubai facilities-management model. Dubai property growth creates demand, but the business is execution-heavy and contract margins can be thin. Updated to conservative-realistic planning: low demand, paid acquisition, cautious EBITDA, and realistic but not inflated exit valuation.","mainQuestion":"Can maintenance contracts become a multi-million property service business?","safeTitle":"The model counts recurring contracts, not random repair calls.","breakTitle":"Break-even depends on contract density and technician utilization.","scaleTitle":"Scale routes only after response time and renewals are proven.","portfolioTitle":"Multi-route potential: gross revenue, net profit, and business valuation.","riskTitle":"Why facilities-management risk is high.","subtitle1":"This model sells recurring annual maintenance contracts for villas, apartments, short-term rentals, small buildings, offices, and retail units. It is bigger than simple handyman work because it depends on repeat contracts.","subtitle2":"The middle scenario is conservative-realistic: low demand, paid acquisition included, cautious revenue, and positive EBITDA only if execution is disciplined.","subtitle3":"Break-even depends on technician utilization, parts cost, emergency callouts, travel time, and contract renewals. Bad pricing can turn recurring work into recurring losses.","subtitle4":"Scale by adding service teams and geographic routes only after SLA control, renewal rate, and complaint handling are proven.","subtitle5":"Business valuation is based on conservative EBITDA/profit, not revenue. It estimates a possible Year 3 exit value only if the business proves repeatable cash flow.","subtitle6":"Risk is high because one bad team can damage reviews, contracts, and renewal rates. Strong supervision is mandatory.","risks":[["Staff execution","High risk because late technicians, poor repairs, and messy service can lose contracts fast.","high"],["Underpriced contracts","High risk because too many emergency visits or parts can erase monthly margin.","high"],["Complaint management","Medium risk because property owners expect fast response and clear updates.","medium"],["Parts and warranty exposure","Medium risk because repeat failures can create free rework and refunds.","medium"],["Scaling too fast","High risk because each new team adds vehicles, tools, supervision, and quality risk.","high"]],"valuationMultiple":1.1,"grossPricePerUnitMonthly":1200,"successScore":40,"riskLevel":"high","riskScore":84,"profitSpeedScore":36,"preferredCountries":["uae","usa","spain"],"countryFit":{"uae":0.9,"usa":0.74,"spain":0.58,"morocco":0.42},"countryStrategy":{"uae":"Best when the business needs local execution, paid ads, WhatsApp sales, and service delivery.","spain":"Good for EU lifestyle, tourism, food, ethnic imports, and portable online business, but local bureaucracy matters.","morocco":"Best as sourcing, low-cost operations, hiring, and export support rather than high-income end market.","usa":"Best for scale, e-commerce, services, and high purchasing power, but immigration/legal setup is the bottleneck."}},{"id":"ecommerce-brand-testing","name":"E-commerce Brand Testing Business","shortName":"E-commerce Brand","category":"Online commerce","brandBase":"ecom","brandAccent":"ceo","micro":"ECOM<br>CEO","tag":"CONSERVATIVE MODEL","description":"Test multiple products, kill losers quickly, and only scale a product when CAC, margin, returns, and delivery are proven.","unitName":"Product Line","unitPlural":"orders","locationLabel":"e-commerce product line","capacity":1500,"pricePerUnitMonthly":12,"priceLabel":"conservative contribution profit per order","recurringCostYearly":30000,"setupCost":25000,"openingCapital":95000,"targetLocations":1,"occupancies":[0.15,0.26,0.36],"scenarioLabels":["Stress","Conservative","Realistic"],"reservePerLocation":30000,"activeLabel":"profitable","emptyLabel":"failed test","source":"Conservative model using UAE e-commerce growth, average conversion-rate pressure, ad cost risk, returns, fulfilment, and failed product testing Updated to conservative-realistic planning: low demand, paid acquisition, cautious EBITDA, and realistic but not inflated exit valuation.","mainQuestion":"Can product testing create one profitable e-commerce brand?","safeTitle":"The operating plan assumes most products fail.","breakTitle":"Break-even is not reliable until CAC is proven.","scaleTitle":"Start with one profitable product line before scaling.","portfolioTitle":"One winning product line first: gross revenue, net profit, and business valuation.","riskTitle":"Why e-commerce risk is high.","subtitle1":"E-commerce model focused on testing products, killing losers quickly, then scaling one strong brand. The model uses contribution profit after product and fulfilment, before yearly operating burn.","subtitle2":"The middle scenario is conservative-realistic: low demand, paid acquisition included, cautious revenue, and positive EBITDA only if execution is disciplined.","subtitle3":"Real break-even must include product cost, shipping, returns, payment fees, ads, creatives, influencers, storage, failed tests, and customer support.","subtitle4":"This business should not be treated as five product lines from day one. Test many products, but only one validated product line should be scaled after CAC, returns, fulfilment, and repeat purchase are proven.","subtitle5":"Business valuation is based on conservative EBITDA/profit, not revenue. It estimates a possible Year 3 exit value only if the business proves repeatable cash flow.","subtitle6":"Risk is high because most products fail before finding profitable acquisition. Paid ads, weak creatives, high CAC, refunds, delivery delays, low repeat purchase, and supplier problems can burn cash before a winning product appears.","risks":[["High CAC","High risk because ads can spend money every day while the unit economics stay negative. Revenue growth does not mean profit.","high"],["Weak product-market fit","High risk because most tested products will fail. Losing products must be killed quickly.","high"],["Returns and complaints","Medium risk because refunds, damaged items, late delivery, and customer support can erase contribution profit.","medium"],["Supplier delays","Medium risk because slow or inconsistent fulfillment destroys reviews and repeat purchase.","medium"],["Ad account instability","Medium risk because depending on one platform creates risk if costs rise or the account gets restricted.","medium"],["Scaling too fast","High risk because increasing ad spend before contribution profit is proven can burn cash quickly.","high"]],"valuationMultiple":0.85,"grossPricePerUnitMonthly":35,"grossLabel":"Conservative annual gross sales","portfolioGrossLabel":"One-product-line conservative gross sales","preferredCountries":["usa","spain","uae"],"countryFit":{"usa":0.88,"spain":0.74,"uae":0.7,"morocco":0.62},"countryStrategy":{"uae":"Best when the business needs local execution, paid ads, WhatsApp sales, and service delivery.","spain":"Good for EU lifestyle, tourism, food, ethnic imports, and portable online business, but local bureaucracy matters.","morocco":"Best as sourcing, low-cost operations, hiring, and export support rather than high-income end market.","usa":"Best for scale, e-commerce, services, and high purchasing power, but immigration/legal setup is the bottleneck."},"successScore":34,"riskScore":86,"profitSpeedScore":24,"riskLevel":"high"},{"id":"handyman-maintenance","name":"Handyman / Move-In Maintenance Business","shortName":"Handyman Maintenance","category":"Home services","brandBase":"repair","brandAccent":"ceo","micro":"FIX<br>CEO","tag":"RECURRING MAINTENANCE","description":"General handyman, move-in/move-out repairs, furniture assembly, small plumbing/electrical coordination, painting touch-ups, and landlord/property-manager work.","unitName":"Maintenance Job","unitPlural":"maintenance jobs","locationLabel":"handyman maintenance","capacity":700,"pricePerUnitMonthly":22,"priceLabel":"$22.00 contribution per paid job after direct cost pressure","recurringCostYearly":40000,"setupCost":4000,"openingCapital":17000,"targetLocations":1,"occupancies":[0.22,0.34,0.46],"scenarioLabels":["Stress","Conservative","Realistic"],"reservePerLocation":5000,"activeLabel":"paid jobs","emptyLabel":"unused capacity","grossLabel":"Conservative annual gross sales","portfolioGrossLabel":"One-operation conservative gross sales","source":"Conservative Dubai handyman/maintenance model supported by public market commentary that Dubai residential and commercial properties need regular maintenance and AMCs. The model stays cautious because labor quality and complaints are major risks. Updated to conservative-realistic planning: low demand, paid acquisition, cautious EBITDA, and realistic but not inflated exit valuation.","mainQuestion":"Can handyman maintenance create repeat property-service income?","safeTitle":"The model counts paid jobs and small AMCs, not every Dubai apartment.","breakTitle":"Break-even can be strong if property managers give repeat jobs.","scaleTitle":"Scale through property managers, landlords, and short-term rental operators.","portfolioTitle":"One operation first: gross revenue, net profit, and business valuation.","riskTitle":"Why handyman maintenance risk is high.","subtitle1":"This business targets tenants, landlords, holiday homes, shared apartments, property managers, and small offices needing fast small repairs.","subtitle2":"The middle scenario is conservative-realistic: low demand, paid acquisition included, cautious revenue, and positive EBITDA only if execution is disciplined.","subtitle3":"Break-even depends on contribution after technician pay, transport, tools, materials, callbacks, damage claims, and marketplace fees.","subtitle4":"Scale through maintenance packages, real estate agents, hostel operators, Airbnb hosts, and property-management relationships.","subtitle5":"Business valuation is based on conservative EBITDA/profit, not revenue. It estimates a possible Year 3 exit value only if the business proves repeatable cash flow.","subtitle6":"Risk is high because service quality must be consistent. Late arrivals, bad repairs, material theft, and complaints can erase profit and reputation.","risks":[["Staff / technician quality","High risk because bad work leads to refunds, repeat visits, damage claims, and lost accounts.","high"],["Liability and damage","High risk because work happens inside customer homes and offices.","high"],["Low-price competition","High risk because Dubai has many maintenance providers and marketplace options.","high"],["Materials control","Medium risk because small parts and materials can leak margin if not tracked.","medium"],["Repeat contracts","Medium risk because one-off jobs are unstable without AMCs or property-manager relationships.","medium"]],"valuationMultiple":1.0,"grossPricePerUnitMonthly":68,"successScore":45,"riskLevel":"medium","riskScore":79,"profitSpeedScore":56,"preferredCountries":["uae","usa","spain"],"countryFit":{"uae":0.84,"usa":0.76,"spain":0.62,"morocco":0.5},"countryStrategy":{"uae":"Best when the business needs local execution, paid ads, WhatsApp sales, and service delivery.","spain":"Good for EU lifestyle, tourism, food, ethnic imports, and portable online business, but local bureaucracy matters.","morocco":"Best as sourcing, low-cost operations, hiring, and export support rather than high-income end market.","usa":"Best for scale, e-commerce, services, and high purchasing power, but immigration/legal setup is the bottleneck."}},{"id":"short-term-rental-management","name":"Short-Term Rental Management Business","shortName":"Rental Management","category":"Property services","brandBase":"rental","brandAccent":"ceo","micro":"RENTAL<br>CEO","tag":"FAST CASH-FLOW MODEL","description":"Manage Airbnb/short-stay units for owners without buying property. Low opening capital, strong upside, but legal and occupancy risk remain high.","unitName":"Managed Unit","unitPlural":"managed units","locationLabel":"short-term rental management operation","capacity":25,"pricePerUnitMonthly":520,"priceLabel":"$520.00 contribution per managed unit after direct cost pressure","recurringCostYearly":24000,"setupCost":2500,"openingCapital":12000,"targetLocations":1,"occupancies":[0.18,0.3,0.42],"scenarioLabels":["Stress","Conservative","Realistic"],"reservePerLocation":6000,"activeLabel":"paid units","emptyLabel":"unused capacity","grossLabel":"Conservative annual gross sales","portfolioGrossLabel":"One-unit conservative gross sales","source":"Conservative Dubai property-service model. Short-term rental management is treated as fee-based service income, not property ownership. Setup cost includes basic license/admin, sales material, software, photography buffer, and owner acquisition. Updated to conservative-realistic planning: low demand, paid acquisition, cautious EBITDA, and realistic but not inflated exit valuation.","mainQuestion":"Can property management beat physical shops on profit speed?","safeTitle":"The model earns from managing units, not owning property.","breakTitle":"$12K opening capital can pay back fast if owner acquisition works.","scaleTitle":"Start with a few owners first. Do not hire a large team until unit count is proven.","portfolioTitle":"One operation first: gross revenue, net profit, and business valuation.","riskTitle":"Why the rental management risk is high.","subtitle1":"This business targets owners who want short-stay income but do not want to manage guests, cleaners, listings, check-ins, pricing, and complaints themselves.","subtitle2":"The middle scenario is conservative-realistic: low demand, paid acquisition included, cautious revenue, and positive EBITDA only if execution is disciplined.","subtitle3":"Break-even depends on signing owners, keeping guests happy, controlling cleaning quality, and collecting management fees without owning the real estate.","subtitle4":"Scale only after cleaning partners, guest reviews, owner reporting, legal compliance, and unit economics are stable for several months.","subtitle5":"Business valuation is based on conservative EBITDA/profit, not revenue. It estimates a possible Year 3 exit value only if the business proves repeatable cash flow.","subtitle6":"Risk is high because you do not control the property, building rules, guest behavior, owner expectations, or platform ratings. One bad unit can damage reputation quickly.","risks":[["Owner acquisition","High risk because owners already have agents and managers pitching them. Trust must be earned before revenue exists.","high"],["Guest reviews","High risk because bad cleaning, check-in problems, or false expectations can damage ratings fast.","high"],["Regulatory/building rules","High risk because short-stay operation depends on permits, building acceptance, and compliance.","high"],["Execution dependency","High risk because the model only works if daily operations, follow-up, customer service, and cash tracking are strict every week.","high"],["Customer acquisition","High risk because Dubai has strong competition; sales cannot be assumed just because the idea is good.","high"],["Cash-flow timing","Medium risk because suppliers, staff, ads, and license costs can be due before customers pay or repeat.","medium"]],"valuationMultiple":1.1,"grossPricePerUnitMonthly":650,"successScore":45,"riskLevel":"medium","riskScore":78,"profitSpeedScore":60,"preferredCountries":["uae","spain","usa"],"countryFit":{"uae":0.86,"spain":0.82,"usa":0.76,"morocco":0.34},"countryStrategy":{"uae":"Best when the business needs local execution, paid ads, WhatsApp sales, and service delivery.","spain":"Good for EU lifestyle, tourism, food, ethnic imports, and portable online business, but local bureaucracy matters.","morocco":"Best as sourcing, low-cost operations, hiring, and export support rather than high-income end market.","usa":"Best for scale, e-commerce, services, and high purchasing power, but immigration/legal setup is the bottleneck."}},{"id":"pest-control-service","name":"Pest Control Service Business","shortName":"Pest Control","category":"Home services","brandBase":"pest","brandAccent":"ceo","micro":"PEST<br>CEO","tag":"PERMIT-BASED SERVICE","description":"Dubai pest control service for apartments, restaurants, villas, small offices, and rental turnovers. Better than generic agencies because it has repeat need and clear local demand.","unitName":"Pest Job","unitPlural":"pest-control jobs","locationLabel":"pest control","capacity":650,"pricePerUnitMonthly":24,"priceLabel":"$24.00 contribution per paid job after direct cost pressure","recurringCostYearly":41000,"setupCost":3500,"openingCapital":15500,"targetLocations":1,"occupancies":[0.22,0.34,0.46],"scenarioLabels":["Stress","Conservative","Realistic"],"reservePerLocation":5000,"activeLabel":"paid jobs","emptyLabel":"unused capacity","grossLabel":"Conservative annual gross sales","portfolioGrossLabel":"One-operation conservative gross sales","source":"Conservative Dubai pest-control model using public setup-cost guidance: license/company setup, Dubai Municipality-related approvals and exams, equipment/chemicals, and marketing. Dubai Municipality has a dedicated Public Health Pest Control section, so compliance matters. Updated to conservative-realistic planning: low demand, paid acquisition, cautious EBITDA, and realistic but not inflated exit valuation.","mainQuestion":"Can pest control create recurring, high-need local service income?","safeTitle":"The model counts paid treatments, not all inquiries.","breakTitle":"Break-even can be fast if repeat jobs and B2B accounts are built.","scaleTitle":"Scale only after technician quality, permits, and reviews are stable.","portfolioTitle":"One operation first: gross revenue, net profit, and business valuation.","riskTitle":"Why pest control risk is high.","subtitle1":"This business targets apartments, villas, restaurants, cafeterias, shared accommodations, and offices that need pest treatment and follow-up visits.","subtitle2":"The middle scenario is conservative-realistic: low demand, paid acquisition included, cautious revenue, and positive EBITDA only if execution is disciplined.","subtitle3":"Break-even depends on contribution after technician wages, chemicals, transport, repeat visits, discounts, and customer acquisition.","subtitle4":"Scale through annual contracts with landlords, restaurants, real estate agents, hostels, and property managers — not only one-time jobs.","subtitle5":"Business valuation is based on conservative EBITDA/profit, not revenue. It estimates a possible Year 3 exit value only if the business proves repeatable cash flow.","subtitle6":"Risk is high because this is a regulated service. Bad treatment quality, missing approvals, chemical misuse, poor staff training, or weak follow-up can kill the business quickly.","risks":[["Regulatory compliance","High risk because pest control needs correct licensing, approvals, trained technicians, and safe chemical handling. Non-compliance can stop the business.","high"],["Technician quality","High risk because poor treatment causes complaints, refunds, repeat visits, and bad reviews.","high"],["Customer acquisition","High risk because Dubai already has many pest-control companies and marketplaces.","high"],["Chemical and safety risk","Medium risk because incorrect handling can create liability and health complaints.","medium"],["Recurring contracts","Medium risk because one-time jobs are weaker than AMCs; the business needs repeat accounts to stabilize.","medium"]],"valuationMultiple":1.0,"grossPricePerUnitMonthly":75,"successScore":45,"riskLevel":"medium","riskScore":78,"profitSpeedScore":58,"preferredCountries":["uae","usa","spain"],"countryFit":{"uae":0.86,"usa":0.78,"spain":0.6,"morocco":0.45},"countryStrategy":{"uae":"Best when the business needs local execution, paid ads, WhatsApp sales, and service delivery.","spain":"Good for EU lifestyle, tourism, food, ethnic imports, and portable online business, but local bureaucracy matters.","morocco":"Best as sourcing, low-cost operations, hiring, and export support rather than high-income end market.","usa":"Best for scale, e-commerce, services, and high purchasing power, but immigration/legal setup is the bottleneck."}},{"id":"corporate-lunch-boxes","name":"Corporate / Worker Lunch Box Contracts","shortName":"Lunch Box Contracts","category":"Food services","brandBase":"lunch","brandAccent":"ceo","micro":"LUNCH<br>CEO","tag":"PROVEN, LOW MARGIN","description":"Daily lunch boxes for offices, small teams, worker groups, and recurring contracts. It can make money quickly only if production is lean and orders are recurring.","unitName":"Meal Order","unitPlural":"meal orders","locationLabel":"corporate lunch box operation","capacity":5000,"pricePerUnitMonthly":2.0,"priceLabel":"$2 contribution per lunch box after food cost, packaging, delivery, refunds, and platform/lead pressure","recurringCostYearly":9000,"setupCost":4000,"openingCapital":12000,"targetLocations":1,"occupancies":[0.16,0.28,0.4],"scenarioLabels":["Stress","Conservative","Realistic"],"reservePerLocation":4000,"activeLabel":"paid units","emptyLabel":"unused capacity","grossLabel":"Conservative annual gross sales","portfolioGrossLabel":"One-unit conservative gross sales","source":"Proven but low-margin model: UAE food delivery and B2B catering demand are large, but competition, delivery cost, food waste, and price sensitivity make profit difficult. Updated to conservative-realistic planning: low demand, paid acquisition, cautious EBITDA, and realistic but not inflated exit valuation.","mainQuestion":"Can focused lunch boxes beat a broad restaurant menu?","safeTitle":"The model needs daily repeat orders to work.","breakTitle":"Break-even depends on order density and food-cost control.","scaleTitle":"Start with one production model and a few corporate clients only.","portfolioTitle":"One operation first: gross revenue, net profit, and business valuation.","riskTitle":"Why the lunch boxes risk is high.","subtitle1":"This is contract lunch, not a random restaurant. The goal is recurring office or worker orders.","subtitle2":"The middle scenario is conservative-realistic: low demand, paid acquisition included, cautious revenue, and positive EBITDA only if execution is disciplined.","subtitle3":"Break-even stays under 1.5 years only if orders are recurring and food waste is controlled.","subtitle4":"Scale only after one menu and one delivery route are profitable.","subtitle5":"Business valuation is based on conservative EBITDA/profit, not revenue. It estimates a possible Year 3 exit value only if the business proves repeatable cash flow.","subtitle6":"Risk is very high because food quality, delivery timing, rent/kitchen cost, reviews, and waste control decide profit.","risks":[["Thin food margins","High risk because low-ticket meals require strong volume and strict portion control.","high"],["Delivery timing","High risk because lunch orders are time-sensitive and late delivery kills retention.","high"],["Food safety","High risk because hygiene failures can destroy the business.","high"],["Execution dependency","High risk because the model only works if daily operations, follow-up, customer service, and cash tracking are strict every week.","high"],["Customer acquisition","High risk because Dubai has strong competition; sales cannot be assumed just because the idea is good.","high"],["Cash-flow timing","Medium risk because suppliers, staff, ads, and license costs can be due before customers pay or repeat.","medium"]],"valuationMultiple":0.85,"grossPricePerUnitMonthly":6.0,"successScore":38,"riskLevel":"high","riskScore":84,"profitSpeedScore":48,"preferredCountries":["uae","usa","spain","morocco"],"countryFit":{"uae":0.72,"usa":0.66,"spain":0.58,"morocco":0.56},"saturationLevel":"Very high","growthMultipliers":{"1":1,"2":1.15,"3":1.35,"5":1.8}},{"id":"mobile-car-detailing","name":"Mobile Car Wash / Detailing Micro-Crew","shortName":"Mobile Car Wash","category":"Auto services","brandBase":"car","brandAccent":"ceo","micro":"CAR<br>CEO","tag":"SATURATED BUT PROVEN","description":"Mobile car wash and detailing with one lean crew. Demand is proven in Dubai, but competition is heavy, so the model must win through building access, subscriptions, and repeat customers.","unitName":"Detailing Job","unitPlural":"detailing jobs","locationLabel":"mobile detailing operation","capacity":320,"pricePerUnitMonthly":22,"priceLabel":"$22 contribution per completed wash/detailing order after consumables, worker cost, transport, and platform pressure","recurringCostYearly":12500,"setupCost":4500,"openingCapital":18000,"targetLocations":1,"occupancies":[0.24,0.38,0.52],"scenarioLabels":["Stress","Conservative","Realistic"],"reservePerLocation":6000,"activeLabel":"paid units","emptyLabel":"unused capacity","grossLabel":"Conservative annual gross sales","portfolioGrossLabel":"One-unit conservative gross sales","source":"Proven but crowded model: UAE car-wash demand is supported by dust, heat, vehicle ownership, and existing mobile operators. Conservative case assumes one lean mobile crew, paid ads, building partnerships, and no viral guarantee. Updated to conservative-realistic planning: low demand, paid acquisition, cautious EBITDA, and realistic but not inflated exit valuation.","mainQuestion":"Can mobile detailing work without a fixed expensive location?","safeTitle":"The model counts 315 monthly jobs in the conservative case.","breakTitle":"Break-even is slower than agency models because equipment and labor are needed.","scaleTitle":"Add vans or staff only after repeat locations are proven.","portfolioTitle":"One operation first: gross revenue, net profit, and business valuation.","riskTitle":"Why the car detailing risk is high.","subtitle1":"This is not a luxury detailing studio. It is a mobile wash/detailing route built around repeat building customers, subscriptions, and WhatsApp booking.","subtitle2":"The middle scenario is conservative-realistic: low demand, paid acquisition included, cautious revenue, and positive EBITDA only if execution is disciplined.","subtitle3":"Break-even stays under 1.5 years only if the crew keeps repeat orders and avoids idle time.","subtitle4":"Scale only after one route is filled with repeat customers.","subtitle5":"Business valuation is based on conservative EBITDA/profit, not revenue. It estimates a possible Year 3 exit value only if the business proves repeatable cash flow.","subtitle6":"Risk is high because parking access, building rules, repeat demand, reviews, and labor reliability decide profit.","risks":[["Location permissions","High risk because communities or office towers may not allow washing or detailing without approvals.","high"],["Staff productivity","High risk because profits depend on how many jobs a team completes daily.","high"],["Price competition","Medium risk because basic wash services can be price-sensitive.","medium"],["Execution dependency","High risk because the model only works if daily operations, follow-up, customer service, and cash tracking are strict every week.","high"],["Customer acquisition","High risk because Dubai has strong competition; sales cannot be assumed just because the idea is good.","high"],["Cash-flow timing","Medium risk because suppliers, staff, ads, and license costs can be due before customers pay or repeat.","medium"]],"valuationMultiple":0.95,"grossPricePerUnitMonthly":38,"successScore":43,"riskLevel":"medium","riskScore":77,"profitSpeedScore":55,"preferredCountries":["uae","usa","spain"],"countryFit":{"uae":0.86,"usa":0.72,"spain":0.58,"morocco":0.45},"saturationLevel":"Very high","growthMultipliers":{"1":1,"2":1.15,"3":1.35,"5":1.8}},{"id":"pet-grooming-mobile","name":"Mobile Pet Grooming Micro-Van","shortName":"Mobile Pet Grooming","category":"Pet services","brandBase":"pet","brandAccent":"ceo","micro":"PET<br>CEO","tag":"SATURATED BUT GROWING","description":"Mobile pet grooming for dog/cat owners who pay for convenience. It can work in Dubai, , and the U.S., but the service is already crowded and quality-sensitive.","unitName":"Grooming Booking","unitPlural":"grooming bookings","locationLabel":"mobile pet grooming","capacity":180,"pricePerUnitMonthly":40,"priceLabel":"$40 contribution per grooming booking after groomer pay, transport, products, and customer acquisition","recurringCostYearly":11000,"setupCost":6500,"openingCapital":18000,"targetLocations":1,"occupancies":[0.22,0.34,0.48],"scenarioLabels":["Stress","Conservative","Realistic"],"reservePerLocation":6000,"activeLabel":"paid jobs","emptyLabel":"unused capacity","grossLabel":"Conservative annual gross sales","portfolioGrossLabel":"One-operation conservative gross sales","source":"Proven but competitive model: UAE pet ownership and grooming demand are growing, but grooming quality, reviews, and repeat bookings decide whether the model becomes profitable. Updated to conservative-realistic planning: low demand, paid acquisition, cautious EBITDA, and realistic but not inflated exit valuation.","mainQuestion":"Can mobile pet grooming build repeat monthly bookings?","safeTitle":"The model counts repeatable bookings, not viral pet demand.","breakTitle":"Break-even is moderate because mobile setup and staff quality matter.","scaleTitle":"Scale only after grooming quality and repeat clients are proven.","portfolioTitle":"One operation first: gross revenue, net profit, and business valuation.","riskTitle":"Why mobile pet grooming risk is high.","subtitle1":"This is a mobile convenience service: grooming comes to the customer instead of the customer going to a salon.","subtitle2":"The middle scenario is conservative-realistic: low demand, paid acquisition included, cautious revenue, and positive EBITDA only if execution is disciplined.","subtitle3":"Break-even stays under 1.5 years only if the van/groomer gets repeat monthly customers.","subtitle4":"Scale only after one micro-van or grooming crew has predictable recurring demand.","subtitle5":"Business valuation is based on conservative EBITDA/profit, not revenue. It estimates a possible Year 3 exit value only if the business proves repeatable cash flow.","subtitle6":"Risk is high because pets, customer trust, hygiene, punctuality, and reviews matter heavily.","risks":[["Trust and reviews","High risk because pet owners are emotional buyers and bad grooming experiences spread quickly.","high"],["Equipment / van cost","High risk because mobile grooming can require van conversion, water, power, AC, tools, and maintenance.","high"],["Staff skill","High risk because one weak groomer can damage the brand.","high"],["Cancellations","Medium risk because mobile appointments waste time when customers cancel or are not home.","medium"],["Competition","Medium risk because Dubai already has salons and mobile grooming providers.","medium"]],"valuationMultiple":1.0,"grossPricePerUnitMonthly":75,"successScore":42,"riskLevel":"high","riskScore":80,"profitSpeedScore":50,"preferredCountries":["uae","usa","spain"],"countryFit":{"uae":0.78,"usa":0.76,"spain":0.62,"morocco":0.35},"saturationLevel":"High","growthMultipliers":{"1":1,"2":1.15,"3":1.35,"5":1.8}},{"id":"cleaning-services","name":"Home / Deep Cleaning Micro-Crew","shortName":"Cleaning Service","category":"Home services","brandBase":"cleaning","brandAccent":"ceo","micro":"CLEANING<br>CEO","tag":"SATURATED BUT PROVEN","description":"Lean cleaning service for apartments, move-in/move-out jobs, Airbnb turnover cleaning, and deep cleaning. The market is huge but extremely competitive.","unitName":"Cleaning Job","unitPlural":"cleaning jobs","locationLabel":"cleaning service operation","capacity":260,"pricePerUnitMonthly":20,"priceLabel":"$20 contribution per cleaning job after worker pay, supplies, transport, refunds, and booking friction","recurringCostYearly":6000,"setupCost":3500,"openingCapital":14000,"targetLocations":1,"occupancies":[0.24,0.38,0.52],"scenarioLabels":["Stress","Conservative","Realistic"],"reservePerLocation":4500,"activeLabel":"paid units","emptyLabel":"unused capacity","grossLabel":"Conservative annual gross sales","portfolioGrossLabel":"One-unit conservative gross sales","source":"Proven but crowded model: UAE cleaning/home-services demand is large, with established platforms and many providers. Conservative case assumes paid ads, bilingual content, repeat customers, and high price competition. Updated to conservative-realistic planning: low demand, paid acquisition, cautious EBITDA, and realistic but not inflated exit valuation.","mainQuestion":"Can cleaning create stable recurring service income?","safeTitle":"The conservative case counts only 315 paid jobs/month.","breakTitle":"Break-even depends on repeat customers and staff utilization.","scaleTitle":"Scale teams only after one route and review system works.","portfolioTitle":"One operation first: gross revenue, net profit, and business valuation.","riskTitle":"Why the cleaning service risk is high.","subtitle1":"This is a micro-cleaning crew, not a large facilities company. Start with home cleaning, deep cleaning, and move-in/move-out jobs.","subtitle2":"The middle scenario is conservative-realistic: low demand, paid acquisition included, cautious revenue, and positive EBITDA only if execution is disciplined.","subtitle3":"Break-even stays under 1.5 years only with repeat customers, tight scheduling, and low refund/rework rates.","subtitle4":"Scale by adding crews only after one crew has predictable weekly bookings.","subtitle5":"Business valuation is based on conservative EBITDA/profit, not revenue. It estimates a possible Year 3 exit value only if the business proves repeatable cash flow.","subtitle6":"Risk is high because service quality, worker attendance, reviews, and price pressure control profit.","risks":[["Staff reliability","High risk because cleaning businesses fail when staff are late, absent, or inconsistent.","high"],["Damage claims","Medium risk because customer property damage can erase profit.","medium"],["Low-price competition","High risk because many cleaning providers compete on price.","high"],["Execution dependency","High risk because the model only works if daily operations, follow-up, customer service, and cash tracking are strict every week.","high"],["Customer acquisition","High risk because Dubai has strong competition; sales cannot be assumed just because the idea is good.","high"],["Cash-flow timing","Medium risk because suppliers, staff, ads, and license costs can be due before customers pay or repeat.","medium"]],"valuationMultiple":0.95,"grossPricePerUnitMonthly":45,"successScore":45,"riskLevel":"medium","riskScore":77,"profitSpeedScore":52,"preferredCountries":["uae","usa","spain"],"countryFit":{"uae":0.84,"usa":0.7,"spain":0.6,"morocco":0.48},"saturationLevel":"Very high","growthMultipliers":{"1":1,"2":1.15,"3":1.35,"5":1.8}},{"id":"ac-cleaning-maintenance","name":"AC Duct Cleaning / Light Maintenance Crew","shortName":"AC Duct Cleaning","category":"Home services","brandBase":"ac","brandAccent":"ceo","micro":"AC<br>CEO","tag":"DUBAI NEED, HIGH COMPETITION","description":"AC duct/filter cleaning and light maintenance for apartments, villas, offices, and short-term rental units. Dubai climate makes the need real, but competition is high.","unitName":"Service Job","unitPlural":"service jobs","locationLabel":"AC cleaning service","capacity":160,"pricePerUnitMonthly":42,"priceLabel":"$42 contribution per AC/duct cleaning job after worker pay, tools, consumables, transport, and lead cost","recurringCostYearly":12000,"setupCost":7000,"openingCapital":20000,"targetLocations":1,"occupancies":[0.24,0.36,0.5],"scenarioLabels":["Stress","Conservative","Realistic"],"reservePerLocation":6500,"activeLabel":"paid units","emptyLabel":"unused capacity","grossLabel":"Conservative annual gross sales","portfolioGrossLabel":"One-unit conservative gross sales","source":"Proven but crowded model: Dubai dust, heat, indoor-air concerns, and constant AC use create demand, while many service companies compete on price and reviews. Updated to conservative-realistic planning: low demand, paid acquisition, cautious EBITDA, and realistic but not inflated exit valuation.","mainQuestion":"Can AC service create recurring Dubai demand?","safeTitle":"The model counts only 35% service capacity in the conservative case.","breakTitle":"Break-even is possible within 1–2 years if reviews and repeat service work.","scaleTitle":"Do not buy heavy equipment before job flow is proven.","portfolioTitle":"One operation first: gross revenue, net profit, and business valuation.","riskTitle":"Why the ac maintenance risk is high.","subtitle1":"This is a focused AC cleaning crew, not a full MEP company. Start with apartments, villas, Airbnb units, and small offices.","subtitle2":"The middle scenario is conservative-realistic: low demand, paid acquisition included, cautious revenue, and positive EBITDA only if execution is disciplined.","subtitle3":"Break-even stays under 1.5 years only if the crew avoids idle days and gets repeat annual cleaning customers.","subtitle4":"Scale by adding crews only after one crew has enough weekly bookings.","subtitle5":"Business valuation is based on conservative EBITDA/profit, not revenue. It estimates a possible Year 3 exit value only if the business proves repeatable cash flow.","subtitle6":"Risk is high because tools, training, customer complaints, and price competition can wipe out margin.","risks":[["Technician quality","High risk because bad service can create damage claims, refunds, and negative reviews.","high"],["Lead cost","Medium risk because home-service ads and marketplace leads can become expensive.","medium"],["Seasonality","Medium risk because demand peaks seasonally and must be managed carefully.","medium"],["Execution dependency","High risk because the model only works if daily operations, follow-up, customer service, and cash tracking are strict every week.","high"],["Customer acquisition","High risk because Dubai has strong competition; sales cannot be assumed just because the idea is good.","high"],["Cash-flow timing","Medium risk because suppliers, staff, ads, and license costs can be due before customers pay or repeat.","medium"]],"valuationMultiple":1.0,"grossPricePerUnitMonthly":95,"successScore":43,"riskLevel":"medium","riskScore":78,"profitSpeedScore":50,"preferredCountries":["uae","usa","spain"],"countryFit":{"uae":0.88,"usa":0.66,"spain":0.52,"morocco":0.42},"saturationLevel":"High","growthMultipliers":{"1":1,"2":1.15,"3":1.35,"5":1.8}},{"id":"vending-machine-route","name":"Micro Vending Machine Route","shortName":"Micro Vending Route","category":"Retail automation","brandBase":"vending","brandAccent":"ceo","micro":"VENDING<br>CEO","tag":"LOCATION-DEPENDENT","description":"Small route of vending machines placed in offices, gyms, schools, or residential buildings. It works only if locations have real daily footfall.","unitName":"Transaction","unitPlural":"transactions","locationLabel":"vending machine route","capacity":4000,"pricePerUnitMonthly":1.2,"priceLabel":"$1.20 contribution per vending sale after product cost, spoilage, restocking, and location commission","recurringCostYearly":7200,"setupCost":4500,"openingCapital":14000,"targetLocations":1,"occupancies":[0.22,0.36,0.5],"scenarioLabels":["Stress","Conservative","Realistic"],"reservePerLocation":4000,"activeLabel":"paid units","emptyLabel":"unused capacity","grossLabel":"Conservative annual gross sales","portfolioGrossLabel":"One-unit conservative gross sales","source":"Proven but location-sensitive model: vending is simple but crowded in good locations. Conservative case assumes small route, second-hand/leased machines, and no premium locations guaranteed. Updated to conservative-realistic planning: low demand, paid acquisition, cautious EBITDA, and realistic but not inflated exit valuation.","mainQuestion":"Can vending create repeat sales with low staff pressure?","safeTitle":"The model depends almost entirely on location quality.","breakTitle":"Break-even is moderate because machines need capital upfront.","scaleTitle":"Add machines only after the first route proves turnover.","portfolioTitle":"One operation first: gross revenue, net profit, and business valuation.","riskTitle":"Why the vending route risk is high.","subtitle1":"This is a micro-route model, not a large vending company. Start with a few machines in proven footfall locations.","subtitle2":"The middle scenario is conservative-realistic: low demand, paid acquisition included, cautious revenue, and positive EBITDA only if execution is disciplined.","subtitle3":"Break-even stays under 1.5 years only if machines are placed in buildings with real foot traffic.","subtitle4":"Scale only after the first route proves weekly restocking demand.","subtitle5":"Business valuation is based on conservative EBITDA/profit, not revenue. It estimates a possible Year 3 exit value only if the business proves repeatable cash flow.","subtitle6":"Risk is high because location access, product mix, machine downtime, theft, and commissions control profit.","risks":[["Bad locations","High risk because a machine in a weak location ties up capital and produces low turnover.","high"],["Restocking discipline","Medium risk because empty machines or wrong products reduce sales.","medium"],["Maintenance/theft","Medium risk because machines can break, jam, or lose stock.","medium"],["Execution dependency","High risk because the model only works if daily operations, follow-up, customer service, and cash tracking are strict every week.","high"],["Customer acquisition","High risk because Dubai has strong competition; sales cannot be assumed just because the idea is good.","high"],["Cash-flow timing","Medium risk because suppliers, staff, ads, and license costs can be due before customers pay or repeat.","medium"]],"valuationMultiple":0.95,"grossPricePerUnitMonthly":2.4,"successScore":40,"riskLevel":"high","riskScore":80,"profitSpeedScore":48,"preferredCountries":["uae","usa","spain"],"countryFit":{"uae":0.66,"usa":0.7,"spain":0.58,"morocco":0.45},"saturationLevel":"High","growthMultipliers":{"1":1,"2":1.15,"3":1.35,"5":1.8}},{"id":"laundry-pickup-delivery","name":"Laundry Service + Sales Brokerage","shortName":"Laundry Service","category":"Laundry services","brandBase":"laundry","brandAccent":"ceo","micro":"LAUNDRY<br>CEO","tag":"SERVICE + SALES","description":"Operate laundry pickup/delivery as a real service, while salespeople bring customers and broker overflow work to partner laundries when needed.","unitName":"Laundry Order","unitPlural":"laundry orders","locationLabel":"laundry pickup delivery operation","capacity":650,"pricePerUnitMonthly":7.5,"priceLabel":"$7.50 contribution per paid laundry order after partner laundry cost, pickup/delivery, staff, packaging, and failed-order buffer","recurringCostYearly":8000,"setupCost":4500,"openingCapital":16000,"targetLocations":1,"occupancies":[0.22,0.36,0.5],"scenarioLabels":["Stress","Conservative","Realistic"],"reservePerLocation":4500,"activeLabel":"paid units","emptyLabel":"unused capacity","grossLabel":"Conservative annual gross sales","portfolioGrossLabel":"One-unit conservative gross sales","source":"Service-led laundry model: start with pickup/delivery, salespeople, and partner laundries. Brokerage skills are used inside the company to close B2C/B2B accounts and outsource overflow instead of staying as a pure broker. Updated to conservative-realistic planning: low demand, paid acquisition, cautious EBITDA, and realistic but not inflated exit valuation.","mainQuestion":"Can repeat laundry orders create stable local cash flow?","safeTitle":"The model needs repeat orders, not one-time discounts.","breakTitle":"Break-even is possible only if logistics stay efficient.","scaleTitle":"Use partners first; do not build a plant before demand is proven.","portfolioTitle":"One operation first: gross revenue, net profit, and business valuation.","riskTitle":"Why the laundry delivery risk is high.","subtitle1":"This is a laundry service company, not just a broker. Salespeople bring customers, operations collect/deliver, and partner laundries handle overflow until volume is stable.","subtitle2":"The middle scenario is conservative-realistic: low demand, paid acquisition included, cautious revenue, and positive EBITDA only if execution is disciplined.","subtitle3":"Break-even stays under 1.5 years only if salespeople secure repeat customers and routes are efficient.","subtitle4":"Scale by adding routes and partner capacity before buying expensive equipment.","subtitle5":"Business valuation is based on conservative EBITDA/profit, not revenue. It estimates a possible Year 3 exit value only if the business proves repeatable cash flow.","subtitle6":"Risk is high because lost items, late deliveries, partner quality, refunds, and price competition can damage trust fast.","risks":[["Logistics density","High risk because spread-out orders create transport cost and time loss.","high"],["Quality complaints","High risk because lost, damaged, or late clothing creates refunds and bad reviews.","high"],["Partner dependency","Medium risk because outsourced processing quality can damage your brand.","medium"],["Execution dependency","High risk because the model only works if daily operations, follow-up, customer service, and cash tracking are strict every week.","high"],["Customer acquisition","High risk because Dubai has strong competition; sales cannot be assumed just because the idea is good.","high"],["Cash-flow timing","Medium risk because suppliers, staff, ads, and license costs can be due before customers pay or repeat.","medium"]],"valuationMultiple":0.9,"grossPricePerUnitMonthly":15,"successScore":40,"riskLevel":"high","riskScore":82,"profitSpeedScore":43,"preferredCountries":["uae","usa","spain"],"countryFit":{"uae":0.74,"usa":0.7,"spain":0.55,"morocco":0.48},"saturationLevel":"Very high","growthMultipliers":{"1":1,"2":1.15,"3":1.35,"5":1.8},"contentPlan":"Paid ads plus 10 daily bilingual Arabic/English posts. Salespeople target B2C subscriptions and B2B accounts; partner laundries handle overflow.","marketingCostYearly":9000}];
 
     const deepDiveDetails = {
       'hostel-apartment': {
@@ -12444,7 +12957,7 @@
 
     const businessMeta = {
       'hostel-apartment': { successScore: 68, riskLevel: 'high', riskScore: 62, profitSpeedScore: 84, preferredCountries: ['uae'], countryFit: { uae: 1.00, spain: 0.25, usa: 0.25 } },
-      'pastry-fast-food': { successScore: 38, riskLevel: 'very-high', riskScore: 88, profitSpeedScore: 22, preferredCountries: ['uae', 'spain'], countryFit: { uae: 0.75, spain: 0.65, usa: 0.50 } },
+      'pastry-fast-food': { successScore: 38, riskLevel: 'high', riskScore: 88, profitSpeedScore: 22, preferredCountries: ['uae', 'spain'], countryFit: { uae: 0.75, spain: 0.65, usa: 0.50 } },
       'moroccan-import': { successScore: 47, riskLevel: 'high', riskScore: 76, profitSpeedScore: 34, preferredCountries: ['uae'], countryFit: { uae: 0.92, spain: 0.45, usa: 0.35 } },
       'ecommerce-brand-testing': { successScore: 43, riskLevel: 'high', riskScore: 78, profitSpeedScore: 31, preferredCountries: ['uae', 'usa', 'spain'], countryFit: { uae: 0.82, spain: 0.70, usa: 0.82 } }
     };
@@ -12521,10 +13034,10 @@
 
     const customMarketingByDeck = {
       'hostel-apartment': { cost: 2400, saturation: 'High', content: 'No content engine. Paid ads/classified ads only to find tenants and replace empty beds.' },
-      'pastry-fast-food': { cost: 18000, saturation: 'Very high', content: '10 daily posts across TikTok, Instagram, YouTube Shorts, Facebook, Snapchat, plus paid ads to Dubai residents. The content promotes Inside Your Mouth: one fast food + pastry shop with direct website orders, delivery apps, dine-in, and takeaway.' },
-      'moroccan-import': { cost: 6500, saturation: 'Medium-high', content: 'Paid ads plus 10 daily Arabic/English posts focused on pre-order drops, bundles, WhatsApp catalogues, and community trust.' },
-      'tower-grocery-shop': { cost: 6000, saturation: 'Medium-high', content: 'Building-level flyers, WhatsApp direct ordering, Google Maps reviews, and small paid ads to nearby residents.' },
-      'garage-auction-cars': { cost: 9000, saturation: 'High', content: 'Google Maps, before/after repair videos, WhatsApp follow-up, used-car buyer outreach, and cautious auction-car content.' },
+      'pastry-fast-food': { cost: 9800, saturation: 'High', content: '10 daily posts across TikTok, Instagram, YouTube Shorts, Facebook, Snapchat, plus lean paid ads. Content is mostly in-house; viral upside is not counted as guaranteed revenue.' },
+      'moroccan-import': { cost: 4000, saturation: 'Medium-high', content: 'Lean WhatsApp/community selling, pre-order drops, small paid ads, and product proof content. No large marketing team is assumed.' },
+      'tower-grocery-shop': { cost: 2200, saturation: 'Medium-high', content: 'Building-level flyers, WhatsApp direct ordering, Google Maps reviews, and small local promotions. No viral growth is assumed.' },
+      'garage-auction-cars': { cost: 3300, saturation: 'High', content: 'Google Maps, WhatsApp follow-up, before/after repair videos, renter/buyer outreach, and cautious auction-car content.' },
       'ecommerce-brand-testing': { cost: 18000, saturation: 'Very high', content: 'Paid ads plus 10 daily bilingual Arabic/English posts for product testing. No viral lift is guaranteed.' },
       'licensed-wealth-referral-platform': { cost: 48000, saturation: 'Very high', content: 'Paid acquisition plus compliance-safe content. Revenue is counted only from qualified referrals.' },
       'fixed-income-cash-ladder': { cost: 500, saturation: 'Low', content: 'No paid ads or daily content because this is a passive fixed-income/cash allocation.' },
@@ -12733,9 +13246,13 @@
     const deckPage = document.getElementById('deckPage');
     const businessGrid = document.getElementById('businessGrid');
     const businessPanel = document.getElementById('businessPanel');
+    const calculatorPanel = document.getElementById('calculatorPanel');
+    const moneyPanel = document.getElementById('moneyPanel');
     const jobsPanel = document.getElementById('jobsPanel');
     const timelinePanel = document.getElementById('timelinePanel');
     const businessTab = document.getElementById('businessTab');
+    const calculatorTab = document.getElementById('calculatorTab');
+    const moneyTab = document.getElementById('moneyTab');
     const jobsTab = document.getElementById('jobsTab');
     const timelineTab = document.getElementById('timelineTab');
     const investmentFilter = document.getElementById('investmentFilter');
@@ -12817,10 +13334,11 @@
         const monthlyContributionRevenue = occupiedUnits * deck.pricePerUnitMonthly;
         const annualContributionRevenue = monthlyContributionRevenue * 12;
         const variableCostYearly = Math.max(0, annualGrossRevenue - annualContributionRevenue);
-        const annualNetBeforeSetup = annualContributionRevenue - deck.recurringCostYearly;
+        const hasFixedNet = Number.isFinite(deck.fixedAnnualNetPerLocation);
+        const annualNetBeforeSetup = hasFixedNet ? deck.fixedAnnualNetPerLocation : annualContributionRevenue - deck.recurringCostYearly;
         const firstYearNetAfterSetup = annualNetBeforeSetup - deck.setupCost;
         const monthlyRecurringCost = deck.recurringCostYearly / 12;
-        const monthlyNetCashFlow = monthlyContributionRevenue - monthlyRecurringCost;
+        const monthlyNetCashFlow = hasFixedNet ? annualNetBeforeSetup / 12 : monthlyContributionRevenue - monthlyRecurringCost;
         const ebitda = annualNetBeforeSetup;
         const valuation = Math.max(0, ebitda) * (deck.valuationMultiple || 1.2);
         return {
@@ -12847,7 +13365,7 @@
     }
 
     function riskRank(level) {
-      return { low: 1, medium: 2, high: 3, 'very-high': 4 }[level] || 3;
+      return { low: 1, medium: 2, high: 3, 'high': 4 }[level] || 3;
     }
 
     function riskLabel(level) {
@@ -12913,9 +13431,23 @@
 
       const sortKey = businessSort.value;
       const direction = businessOrder.value === 'asc' ? 1 : -1;
+      const fixedHomepageOrder = ['pastry-fast-food', 'hostel-apartment', 'moroccan-import', 'garage-auction-cars'];
+
       filtered.sort((a, b) => {
         const sa = deckStats(a);
         const sb = deckStats(b);
+
+        if (sortKey === 'bestOverall') {
+          const ai = fixedHomepageOrder.indexOf(a.id);
+          const bi = fixedHomepageOrder.indexOf(b.id);
+          if (ai !== -1 || bi !== -1) {
+            if (ai === -1) return 1;
+            if (bi === -1) return -1;
+            return ai - bi;
+          }
+          return sb.yearlyNet - sa.yearlyNet;
+        }
+
         const values = {
           bestOverall: [sa.researchScore, sb.researchScore],
           profitEfficiency: [sa.profitEfficiency, sb.profitEfficiency],
@@ -13015,7 +13547,7 @@
               <p class="card-desc">${deck.description}</p>
               <div class="card-stats">
                 <div class="card-stat"><strong>${fmtCompactMoney(deck.openingCapital, deck)}</strong><span>initial investment</span></div>
-                <div class="card-stat ${isNegative ? 'negative' : ''}"><strong>${fmtCompactMoney(base.annualNetBeforeSetup, deck)}</strong><span>${deck.id === 'hostel-apartment' ? 'confirmed net / yr' : 'conservative net / yr'}</span></div>
+                <div class="card-stat ${isNegative ? 'negative' : ''}"><strong>${fmtCompactMoney(base.annualNetBeforeSetup, deck)}</strong><span>${deck.id === 'hostel-apartment' ? 'net / yr / hostel' : 'conservative net / yr'}</span></div>
                 <div class="card-stat"><strong>${years(base.conservativeBreakEvenMonths)}</strong><span>real break-even</span></div>
                 <div class="card-stat desktop-multiplier-card"><strong>${multiplierLabel(stats.multiplier)}</strong><span>1-year multiplier</span></div>
                 <div class="card-stat"><strong>${deck.saturationLevel}</strong><span>saturation level</span></div>
@@ -14219,20 +14751,306 @@
       setTimeout(() => window.print(), 700);
     }
 
+
+    function moneyStartingHostels() {
+      const input = document.getElementById('moneyStartingHostels');
+      return Math.max(1, Math.min(5, Number(input ? input.value : 1) || 1));
+    }
+
+    function moneyTargetHostels() {
+      const input = document.getElementById('moneyTargetHostels');
+      const start = moneyStartingHostels();
+      return Math.max(start, Math.min(5, Number(input ? input.value : 5) || 5));
+    }
+
+    function moneyBusinessScale(deck) {
+      if (!deck) return 1;
+      if (deck.id === 'hostel-apartment') return moneyStartingHostels();
+      return Math.max(1, deck.moneyScale || 1);
+    }
+
+    function moneyMetricFor(deck, scenarioIndex = 1) {
+      const rows = calculateData(deck);
+      const base = rows[Math.max(0, Math.min(rows.length - 1, Number(scenarioIndex) || 1))] || rows[1] || rows[0];
+      const scale = moneyBusinessScale(deck);
+      const capital = (deck.openingCapital || 0) * scale;
+      const yearlyRevenue = (base.annualGrossRevenue || 0) * scale;
+      const yearlyNet = (base.annualNetBeforeSetup || 0) * scale;
+      const monthlyNet = (base.monthlyNetCashFlow || 0) * scale;
+      const y3Exit = deck.id === 'hostel-apartment'
+        ? Math.max(0, base.annualNetBeforeSetup || 0) * scale * (deck.valuationMultiple || 1) * 1.35
+        : threeYearConservativeValuation(deck, deckStats(deck))[2] * scale;
+
+      return {
+        deck,
+        scale,
+        capital,
+        yearlyRevenue,
+        yearlyNet,
+        monthlyNet,
+        y3Exit,
+        breakEvenYears: yearlyNet > 0 ? capital / yearlyNet : Infinity,
+        risk: deck.riskScore || 75,
+        success: deck.successScore || 40
+      };
+    }
+
+    function setupMoneySimulator() {
+      const list = document.getElementById('moneyBusinessList');
+      if (!list) return;
+      const defaultSelected = new Set(['hostel-apartment', 'pastry-fast-food']);
+      list.innerHTML = businessDecks.map(deck => {
+        const metric = moneyMetricFor(deck, 1);
+        const checked = defaultSelected.has(deck.id) ? 'checked' : '';
+        const scaleLabel = deck.id === 'hostel-apartment' ? 'starts with selected hostel count' : '1 business counted';
+        return `
+          <label class="money-business-card">
+            <input type="checkbox" value="${deck.id}" ${checked}>
+            <span>
+              <strong>${deck.shortName || deck.name}</strong>
+              <em>${fmtUSD(metric.capital)} capital · ${fmtUSD(metric.yearlyNet)} net / yr · ${scaleLabel}</em>
+            </span>
+          </label>`;
+      }).join('');
+      renderMoneySimulator();
+    }
+
+    function selectedMoneyBusinesses() {
+      const list = document.getElementById('moneyBusinessList');
+      if (!list) return [];
+      const checkedIds = Array.from(list.querySelectorAll('input:checked')).map(input => input.value);
+      return businessDecks.filter(deck => checkedIds.includes(deck.id));
+    }
+
+    function comboName(count) {
+      if (count === 0) return 'No businesses selected';
+      if (count === 1) return 'Single business';
+      if (count === 2) return 'Business duo';
+      if (count === 3) return 'Business trio';
+      return `${count}-business portfolio`;
+    }
+
+    function riskWordFromAverage(avgRisk) {
+      return avgRisk >= 80 ? 'High risk' : 'Medium risk';
+    }
+
+
+    function buildHostelReinvestmentPlan(selected, metrics, scenarioIndex) {
+      const hostel = selected.find(deck => deck.id === 'hostel-apartment');
+      if (!hostel) return '';
+
+      const hostelRows = calculateData(hostel);
+      const hostelBase = hostelRows[Math.max(0, Math.min(hostelRows.length - 1, Number(scenarioIndex) || 1))] || hostelRows[1] || hostelRows[0];
+      const perHostelCapital = hostel.openingCapital || 0;
+      const perHostelMonthlyNet = hostelBase.monthlyNetCashFlow || 0;
+      const startHostels = moneyStartingHostels();
+      const targetHostels = moneyTargetHostels();
+
+      const nonHostelMonthlyNet = metrics
+        .filter(item => item.deck.id !== 'hostel-apartment')
+        .reduce((sum, item) => sum + item.monthlyNet, 0);
+
+      let currentHostels = startHostels;
+      let currentMonthlyNet = nonHostelMonthlyNet + (currentHostels * perHostelMonthlyNet);
+      let cash = 0;
+      let month = 0;
+      const rows = [];
+
+      while (currentHostels < targetHostels && month < 60 && currentMonthlyNet > 0 && perHostelCapital > 0) {
+        const needed = Math.max(0, perHostelCapital - cash);
+        const monthsNeeded = Math.max(1, Math.ceil(needed / currentMonthlyNet));
+        month += monthsNeeded;
+        cash += monthsNeeded * currentMonthlyNet;
+        cash -= perHostelCapital;
+        currentHostels += 1;
+        currentMonthlyNet = nonHostelMonthlyNet + (currentHostels * perHostelMonthlyNet);
+        rows.push({
+          month,
+          hostelNumber: currentHostels,
+          monthlyNet: currentMonthlyNet,
+          cashLeft: cash
+        });
+      }
+
+      let month36Hostels = startHostels;
+      let month36Cash = 0;
+      let month36MonthlyNet = nonHostelMonthlyNet + startHostels * perHostelMonthlyNet;
+      for (let m = 1; m <= 36; m += 1) {
+        month36Cash += month36MonthlyNet;
+        while (month36Hostels < targetHostels && month36Cash >= perHostelCapital) {
+          month36Cash -= perHostelCapital;
+          month36Hostels += 1;
+          month36MonthlyNet = nonHostelMonthlyNet + month36Hostels * perHostelMonthlyNet;
+        }
+      }
+
+      const month36AnnualNet = month36MonthlyNet * 12;
+      const hostelY3Exit = perHostelMonthlyNet * 12 * month36Hostels * (hostel.valuationMultiple || 1) * 1.35;
+
+      return `
+        <div class="reinvestment-engine">
+          <div class="eligible-title combo-title">
+            <h3>Reinvestment engine <span class="orange-text">no salaries taken</span></h3>
+            <p>100% of combined monthly profit is reinvested into opening the next hostel. Inside Your Mouth keeps operating while hostel profit compounds into more hostels.</p>
+          </div>
+
+          <div class="money-summary-grid">
+            <div class="calculator-summary-card">
+              <span>Starting structure</span>
+              <strong>${startHostels} hostel${startHostels > 1 ? 's' : ''} + selected businesses</strong>
+              <small>No owner salaries withdrawn</small>
+            </div>
+            <div class="calculator-summary-card">
+              <span>Starting monthly profit</span>
+              <strong>${fmtUSD(nonHostelMonthlyNet + startHostels * perHostelMonthlyNet)}</strong>
+              <small>All reinvested</small>
+            </div>
+            <div class="calculator-summary-card">
+              <span>Next hostel cost</span>
+              <strong>${fmtUSD(perHostelCapital)}</strong>
+              <small>Per additional hostel</small>
+            </div>
+            <div class="calculator-summary-card">
+              <span>Month 36 position</span>
+              <strong>${month36Hostels} hostel${month36Hostels > 1 ? 's' : ''}</strong>
+              <small>${fmtUSD(month36AnnualNet)} yearly EBITDA/profit run-rate</small>
+            </div>
+          </div>
+
+          <div class="reinvestment-timeline">
+            ${rows.length ? rows.map(row => `
+              <div class="reinvestment-step">
+                <strong>Month ${row.month}</strong>
+                <span>Open hostel #${row.hostelNumber}</span>
+                <em>New monthly profit: ${fmtUSD(row.monthlyNet)} · cash left: ${fmtUSD(row.cashLeft)}</em>
+              </div>`).join('') : `
+              <div class="reinvestment-step">
+                <strong>No expansion needed</strong>
+                <span>You already selected the target number of hostels.</span>
+                <em>Change the target if you want to test more growth.</em>
+              </div>`}
+          </div>
+
+          <div class="calculator-empty">
+            <strong>Conservative Year 3 hostel-brand value: ${fmtUSD(hostelY3Exit)}</strong>
+            <span>This is based on the number of hostels reached by month 36, using the fixed AED 12,000/month net profit per hostel. Extra cash left after reinvestment is not counted as business valuation.</span>
+          </div>
+        </div>`;
+    }
+
+    function renderMoneySimulator() {
+      const output = document.getElementById('moneyOutput');
+      const budgetInput = document.getElementById('moneyBudget');
+      const scenarioSelect = document.getElementById('moneyScenario');
+      if (!output || !scenarioSelect) return;
+
+      const scenarioIndex = Number(scenarioSelect.value || 1);
+      const selected = selectedMoneyBusinesses();
+      if (!selected.length) {
+        output.innerHTML = `
+          <div class="calculator-empty warning">
+            <strong>Select at least one business.</strong>
+            <span>Choose 2 businesses for a duo, 3 for a trio, or more for a full portfolio simulation.</span>
+          </div>`;
+        return;
+      }
+
+      const metrics = selected.map(deck => moneyMetricFor(deck, scenarioIndex));
+      const totalCapital = metrics.reduce((sum, item) => sum + item.capital, 0);
+      const totalRevenue = metrics.reduce((sum, item) => sum + item.yearlyRevenue, 0);
+      const totalNet = metrics.reduce((sum, item) => sum + item.yearlyNet, 0);
+      const totalMonthlyNet = metrics.reduce((sum, item) => sum + item.monthlyNet, 0);
+      const totalExit = metrics.reduce((sum, item) => sum + item.y3Exit, 0);
+      const avgRisk = metrics.reduce((sum, item) => sum + item.risk, 0) / metrics.length;
+      const avgSuccess = metrics.reduce((sum, item) => sum + item.success, 0) / metrics.length;
+      const breakEvenYears = totalNet > 0 ? totalCapital / totalNet : Infinity;
+      const budget = parseMoneyInput(budgetInput ? budgetInput.value : 0);
+      const remaining = budget ? budget - totalCapital : null;
+      const scenarioLabel = ['Stress', 'Conservative', 'Realistic'][scenarioIndex] || 'Conservative';
+
+      output.innerHTML = `
+        <div class="money-summary-grid">
+          <div class="calculator-summary-card">
+            <span>${comboName(selected.length)}</span>
+            <strong>${selected.length} selected</strong>
+            <small>${scenarioLabel} scenario</small>
+          </div>
+          <div class="calculator-summary-card">
+            <span>Total capital needed</span>
+            <strong>${fmtUSD(totalCapital)}</strong>
+            <small>${budget ? (remaining >= 0 ? `${fmtUSD(remaining)} left` : `${fmtUSD(Math.abs(remaining))} short`) : 'Budget optional'}</small>
+          </div>
+          <div class="calculator-summary-card">
+            <span>Combined revenue</span>
+            <strong>${fmtUSD(totalRevenue)}</strong>
+            <small>Conservative annual gross sales</small>
+          </div>
+          <div class="calculator-summary-card">
+            <span>Combined EBITDA / profit</span>
+            <strong>${fmtUSD(totalNet)}</strong>
+            <small>${fmtUSD(totalMonthlyNet)} / month</small>
+          </div>
+          <div class="calculator-summary-card">
+            <span>Real break-even</span>
+            <strong>${Number.isFinite(breakEvenYears) ? `${oneDecimal.format(breakEvenYears)} yr` : 'N/A'}</strong>
+            <small>Capital ÷ yearly EBITDA/profit</small>
+          </div>
+          <div class="calculator-summary-card">
+            <span>Year 3 exit value</span>
+            <strong>${fmtUSD(totalExit)}</strong>
+            <small>Combined conservative exit value</small>
+          </div>
+          <div class="calculator-summary-card">
+            <span>Risk level</span>
+            <strong>${riskWordFromAverage(avgRisk)}</strong>
+            <small>Average risk score ${Math.round(avgRisk)}/100</small>
+          </div>
+          <div class="calculator-summary-card">
+            <span>Success score</span>
+            <strong>${Math.round(avgSuccess)}%</strong>
+            <small>Average of selected businesses</small>
+          </div>
+        </div>
+
+        <div class="money-selected-list">
+          ${metrics.map(item => `
+            <button type="button" class="money-selected-row" data-deck-id="${item.deck.id}">
+              <strong>${item.deck.shortName || item.deck.name}</strong>
+              <span>${fmtUSD(item.capital)} capital · ${fmtUSD(item.yearlyRevenue)} revenue · ${fmtUSD(item.yearlyNet)} EBITDA/profit · ${fmtUSD(item.y3Exit)} Y3 exit</span>
+            </button>`).join('')}
+        </div>
+
+        ${buildHostelReinvestmentPlan(selected, metrics, scenarioIndex)}
+
+        ${budget && remaining < 0 ? `
+          <div class="calculator-empty warning">
+            <strong>Capital is not enough.</strong>
+            <span>This combination needs ${fmtUSD(Math.abs(remaining))} more than the budget you typed.</span>
+          </div>` : ''}`;
+
+      output.querySelectorAll('[data-deck-id]').forEach(button => {
+        button.addEventListener('click', () => openDeck(button.dataset.deckId));
+      });
+    }
+
     function switchHomeTab(tab) {
       const showBusiness = tab === 'business';
       const showCalculator = tab === 'calculator';
+      const showMoney = tab === 'money';
       const showJobs = tab === 'jobs';
       const showTimeline = tab === 'timeline';
       businessPanel.classList.toggle('screen-hidden', !showBusiness);
       calculatorPanel.classList.toggle('screen-hidden', !showCalculator);
+      moneyPanel.classList.toggle('screen-hidden', !showMoney);
       jobsPanel.classList.toggle('screen-hidden', !showJobs);
       timelinePanel.classList.toggle('screen-hidden', !showTimeline);
       businessTab.classList.toggle('active', showBusiness);
       calculatorTab.classList.toggle('active', showCalculator);
+      moneyTab.classList.toggle('active', showMoney);
       jobsTab.classList.toggle('active', showJobs);
       timelineTab.classList.toggle('active', showTimeline);
       if (showCalculator) renderInvestmentCalculator();
+      if (showMoney) renderMoneySimulator();
       if (showJobs) renderJobs();
       if (showTimeline) {
         renderCountries();
@@ -14834,6 +15652,7 @@
 
     setupBusinessFilters();
     setupScenarioControls();
+    setupMoneySimulator();
 
     [investmentFilter, riskFilter, profitSpeedFilter, successFilter, businessSort, businessOrder].forEach(control => {
       control.addEventListener('input', renderHomepage);
@@ -14878,6 +15697,7 @@
     businessCheckboxes.addEventListener('change', renderScenarioPlanner);
     businessTab.addEventListener('click', () => switchHomeTab('business'));
     calculatorTab.addEventListener('click', () => switchHomeTab('calculator'));
+    moneyTab.addEventListener('click', () => switchHomeTab('money'));
     jobsTab.addEventListener('click', () => switchHomeTab('jobs'));
     timelineTab.addEventListener('click', () => switchHomeTab('timeline'));
 
@@ -14887,6 +15707,14 @@
       control.addEventListener('change', renderInvestmentCalculator);
     });
     // Calculator updates live when the user types; no button needed.
+
+    [document.getElementById('moneyBudget'), document.getElementById('moneyScenario'), document.getElementById('moneyStartingHostels'), document.getElementById('moneyTargetHostels'), document.getElementById('moneyBusinessList')].forEach(control => {
+      if (!control) return;
+      control.addEventListener('input', renderMoneySimulator);
+      control.addEventListener('change', renderMoneySimulator);
+    });
+    // Money simulator updates live when the user types/selects businesses.
+
 
 
     // v39 mobile/app-style selection behavior for compact job and life cards.
